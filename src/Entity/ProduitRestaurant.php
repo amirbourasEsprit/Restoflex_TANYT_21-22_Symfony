@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="produit_restaurant", indexes={@ORM\Index(name="id_res_produit_fk", columns={"id_rest"})})
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ProduitRestaurantRepository")
  */
 class ProduitRestaurant
 {

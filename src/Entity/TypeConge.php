@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="type_conge")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\TypeCongeRepository")
  */
 class TypeConge
 {

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="conge", indexes={@ORM\Index(name="id_conge_fk", columns={"id_type_conge"}), @ORM\Index(name="id_utilisateur_cong_fk", columns={"id_utilisateur"})})
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CongeRepository")
  */
 class Conge
 {

@@ -10,6 +10,7 @@ use App\Validators as MyValidation;
  *
  * @ORM\Table(name="restaurant", uniqueConstraints={@ORM\UniqueConstraint(name="nom", columns={"nom"})})
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\RestaurantRepository")
  */
 class Restaurant
 {
