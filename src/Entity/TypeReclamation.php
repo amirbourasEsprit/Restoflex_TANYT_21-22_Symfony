@@ -2,7 +2,11 @@
 
 namespace App\Entity;
 
+use App\Entity\TypeReclamation;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Validators as MyValidation;
+
 
 /**
  * TypeReclamation
@@ -15,10 +19,11 @@ class TypeReclamation
 {
     /**
      * @var int
-     *
+     * @ORM\OneToMany(targetEntity="Reclamation")
      * @ORM\Column(name="id_type_reclamation", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     *  
      */
     private $idTypeReclamation;
 
@@ -26,12 +31,24 @@ class TypeReclamation
      * @var string
      *
      * @ORM\Column(name="nom_type_reclamation", type="string", length=255, nullable=false)
+     * @Assert\Length(
+     * min =4,
+     * minMessage=" Entrer au moins 4 caracteres"
+     * )  
+     * @MyValidation\VerifNull
+     
      */
     private $nomTypeReclamation;
 
     public function getIdTypeReclamation(): ?int
     {
         return $this->idTypeReclamation;
+    }
+    public function setIdTypeReclamation(int $idTypeReclamation): self
+    {
+        $this->id_type_reclamation = $idTypeReclamation;
+
+        return $this;
     }
 
     public function getNomTypeReclamation(): ?string
@@ -46,5 +63,9 @@ class TypeReclamation
         return $this;
     }
 
+    public function __toString() :string
+    {
+        return $this->nomTypeReclamation;
+    }
 
 }

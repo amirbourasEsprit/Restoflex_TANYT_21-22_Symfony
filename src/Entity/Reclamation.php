@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Validators as MyValidation;
+
 
 /**
  * Reclamation
@@ -26,6 +29,11 @@ class Reclamation
      * @var string
      *
      * @ORM\Column(name="destinataire", type="string", length=255, nullable=false)
+     * @Assert\Length(
+     * min =4,
+     * minMessage=" Entrer au moins 4 caracteres"
+     * )  
+     * @MyValidation\VerifNull
      */
     private $destinataire;
 
@@ -33,6 +41,11 @@ class Reclamation
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     * @Assert\Length(
+     * min =4,
+     * minMessage=" Entrer au moins 4 caracteres"
+     * )  
+     * @MyValidation\VerifNull
      */
     private $description;
 
@@ -40,6 +53,11 @@ class Reclamation
      * @var string
      *
      * @ORM\Column(name="statut_reclamation", type="string", length=255, nullable=false)
+     * @Assert\Length(
+     * min =4,
+     * minMessage=" Entrer au moins 4 caracteres"
+     * )  
+     * @MyValidation\VerifNull
      */
     private $statutReclamation;
 
@@ -59,14 +77,13 @@ class Reclamation
      * })
      */
     private $idUtilisateur;
-
     /**
      * @var \TypeReclamation
      *
      * @ORM\ManyToOne(targetEntity="TypeReclamation")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_type_reclamation", referencedColumnName="id_type_reclamation")
-     * })
+     *   @ORM\JoinColumn(name="id_type_reclamation", referencedColumnName="id_type_reclamation", onDelete="CASCADE")
+     * } )
      */
     private $idTypeReclamation;
 
@@ -126,6 +143,7 @@ class Reclamation
     public function getIdUtilisateur(): ?Utilisateur
     {
         return $this->idUtilisateur;
+        
     }
 
     public function setIdUtilisateur(?Utilisateur $idUtilisateur): self
@@ -146,6 +164,18 @@ class Reclamation
 
         return $this;
     }
+    public function getTypeReclamation(): ?TypeReclamation
+    {
+        return $this->TypeReclamation;
+    }
+
+    public function setTypeReclamation(?TypeReclamation $TypeReclamation): self
+    {
+        $this->TypeReclamation = $TypeReclamation;
+
+        return $this;
+    }
+
 
 
 }

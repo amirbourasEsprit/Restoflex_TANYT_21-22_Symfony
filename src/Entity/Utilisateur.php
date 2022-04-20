@@ -18,7 +18,7 @@ class Utilisateur implements UserInterface
 {
     /**
      * @var int
-     *
+     * @ORM\OneToMany(targetEntity="Reclamation")
      * @ORM\Column(name="id_utilisateur", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -381,6 +381,10 @@ class Utilisateur implements UserInterface
         $this->email = $email;
 
         return $this;
+    }
+    public function __toString() :string
+    {
+        return $this->nom;
     }
 
 
