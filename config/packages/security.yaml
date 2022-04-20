@@ -1,14 +1,33 @@
 security:
+    encoders:
+        App\Entity\Utilisateur:
+            algorithm: md5
+            encode_as_base64: false
+            iterations: 0
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         users_in_memory: { memory: null }
+        in_database:
+            entity:
+                class: App\Entity\Utilisateur
+                property: email
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: lazy
-            provider: users_in_memory
+            provider: in_database
+
+            form_login:
+                login_path: connexion
+                check_path: connexion
+                default_target_path: app_test
+            logout:
+                path: deconnexion
+                target: connexion
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

@@ -10,6 +10,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.11",
         "gregwar/captcha-bundle": "2.1",
+        "ip2location/ip2location-php": "^8.3",
         "phpdocumentor/reflection-docblock": "^5.3",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "4.4.*",
@@ -34,6 +35,7 @@
         "symfony/validator": "4.4.*",
         "symfony/web-link": "4.4.*",
         "symfony/yaml": "4.4.*",
+        "symfonycasts/reset-password-bundle": "^1.13",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },

@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistrer Vous{% endblock %}
+{% block header %}{% endblock %}
+
+{% block sidebar %}{% endblock %}
+{% block navbar %}{% endblock %}
+
+
+{% block content %}
+
+	<!-- Nested Row within Card Body -->
+	<div class="row justify-content-md-center">
+
+		<div class="col-lg-6">
+			<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card-body p-0">
+					<div class="p-5">
+						<div class="text-center">
+							<h1 class="h4 text-gray-900 mb-4">Créer Votre compte</h1>
+						</div>
+
+						{{form_start(form,{attr:{'novalidate':'novalidate', 'class':"user"}})}}
+						<div class="form-group row">
+							<div class="col-sm-6 mb-3 mb-sm-0">
+
+								{{ form_widget(form.nom,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Nom'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.nom) }}</div>
+							</div>
+							<div class="col-sm-6">
+								{{ form_widget(form.prenom,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Prénom'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.prenom) }}</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-6 mb-3 mb-sm-0">
+								{{ form_widget(form.cin,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Carte d\'identité'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.cin) }}</div>
+							</div>
+							<div class="col-sm-6">
+								{{ form_widget(form.password,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Mot de passe'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.password) }}</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-6 mb-3 mb-sm-0">
+								{{ form_widget(form.email,{ 'attr': {'class': "form-control form-control-user",
+                                        'placeholder': 'Email'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.email) }}</div>
+							</div>
+							<div class="col-sm-6">
+								{{ form_widget(form.numTel,{ 'attr': {'class': "form-control form-control-user",
+                                        'placeholder': 'Numéro télèphone'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.numTel) }}</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-6 mb-3 mb-sm-0">
+								{{ form_widget(form.dateNaissance,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'date de naissance'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.dateNaissance) }}</div>
+							</div>
+							<div class="col-sm-6">
+									{{ form_widget(form.adresse,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Adresse'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.adresse) }}</div>
+							</div>
+						</div>
+                        	<div class="form-group row">
+							<div class="col-sm-6 mb-3 mb-sm-0">
+								{{ form_widget(form.posteEmploye,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Poste employee'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.posteEmploye) }}</div>
+							</div>
+							<div class="col-sm-6">
+								{{ form_widget(form.idrest,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Télèphone Restaurant'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.idrest) }}</div>
+                                </div>
+						</div>
+					
+						<div class="form-group row">
+
+							<div class="col-sm-6 mb-3 mb-sm-0">
+								{{ form_widget(form.captcha,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder':'Tapez le Code'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.captcha) }}</div>
+							</div>
+						</div>
+					
+					<hr>
+					<div class="d-grid gap-2 col-4 mx-auto">
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+							Inscription
+						</button>
+                        <a  href="{{ path('connexion') }}" class="btn btn-primary btn-user btn-block">Annuler</a>
+					</div>
+					
+                      {{form_end(form)}}
+
+					<hr>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+{% endblock %}

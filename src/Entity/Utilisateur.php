@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use App\Validators as MyValidation;
+
 
 /**
  * Utilisateur
@@ -11,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
  */
-class Utilisateur
+class Utilisateur implements UserInterface
 {
     /**
      * @var int
@@ -20,12 +23,15 @@ class Utilisateur
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idUtilisateur;
+    private $id;
+
+  
 
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
+     * @MyValidation\VerifNull
      */
     private $nom;
 
@@ -33,6 +39,7 @@ class Utilisateur
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255, nullable=false)
+     * @MyValidation\VerifNull
      */
     private $prenom;
 
@@ -40,6 +47,7 @@ class Utilisateur
      * @var string
      *
      * @ORM\Column(name="cin", type="string", length=8, nullable=false)
+     * @MyValidation\VerifCin
      */
     private $cin;
 
@@ -47,13 +55,15 @@ class Utilisateur
      * @var string
      *
      * @ORM\Column(name="mdp", type="string", length=255, nullable=false)
+     * @MyValidation\VerifPassword
      */
-    private $mdp;
+    private $password;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     * @MyValidation\VerifEmail
      */
     private $email;
 
@@ -61,6 +71,7 @@ class Utilisateur
      * @var string
      *
      * @ORM\Column(name="num_tel", type="string", length=8, nullable=false)
+     * @MyValidation\VerifTel
      */
     private $numTel;
 
@@ -68,6 +79,7 @@ class Utilisateur
      * @var \DateTime
      *
      * @ORM\Column(name="date_naissance", type="date", nullable=false)
+     * @MyValidation\VerifNull
      */
     private $dateNaissance;
 
@@ -75,6 +87,7 @@ class Utilisateur
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
+     * @MyValidation\VerifNull
      */
     private $adresse;
 
@@ -82,6 +95,7 @@ class Utilisateur
      * @var int|null
      *
      * @ORM\Column(name="salaire", type="integer", nullable=true, options={"default"="NULL"})
+     * 
      */
     private $salaire = NULL;
 
@@ -89,6 +103,7 @@ class Utilisateur
      * @var int|null
      *
      * @ORM\Column(name="solde_conge", type="integer", nullable=true, options={"default"="30"})
+     * 
      */
     private $soldeConge = 30;
 
@@ -96,15 +111,16 @@ class Utilisateur
      * @var string|null
      *
      * @ORM\Column(name="poste_employe", type="string", length=255, nullable=true, options={"default"="NULL"})
+     * @MyValidation\VerifNull
      */
-    private $posteEmploye = 'NULL';
+    private $posteEmploye;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Status_compte", type="string", length=255, nullable=false, options={"default"="'non_verifier'"})
+     * @ORM\Column(name="Status_compte", type="string", length=255, nullable=false, options={"default"="non_verifier"})
      */
-    private $statusCompte = '\'non_verifier\'';
+    private $statusCompte = 'non_verifier';
 
     /**
      * @var \Role
@@ -115,6 +131,12 @@ class Utilisateur
      * })
      */
     private $idRole;
+
+
+    /**
+     * @ORM\Column(type="json", nullable=true)
+     */
+    private $roles = [];
 
     /**
      * @var \Restaurant
@@ -177,14 +199,14 @@ class Utilisateur
         return $this;
     }
 
-    public function getMdp(): ?string
+    public function getPassword(): ?string
     {
-        return $this->mdp;
+        return $this->password;
     }
 
-    public function setMdp(string $mdp): self
+    public function setPassword(string $password): self
     {
-        $this->mdp = $mdp;
+        $this->password = $password;
 
         return $this;
     }
@@ -218,7 +240,7 @@ class Utilisateur
         return $this->dateNaissance;
     }
 
-    public function setDateNaissance(\DateTimeInterface $dateNaissance): self
+    public function setDateNaissance($dateNaissance): self
     {
         $this->dateNaissance = $dateNaissance;
 
@@ -317,6 +339,46 @@ class Utilisateur
     public function setIdFournisseur(?Fournisseur $idFournisseur): self
     {
         $this->idFournisseur = $idFournisseur;
+
+        return $this;
+    }
+
+    
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+
+    public function getUsername(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setUsername(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "acab9764773c3bf8256207313f1f4617",
+    "content-hash": "d9a9018ded4eaa8816a04f3eea4bac8f",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1635,6 +1635,50 @@
                 "source": "https://github.com/Gregwar/CaptchaBundle/tree/master"
             },
             "time": "2020-01-08T15:31:01+00:00"
+        },
+        {
+            "name": "ip2location/ip2location-php",
+            "version": "8.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chrislim2888/IP2Location-PHP-Module.git",
+                "reference": "4c501aa1f666ae85eab84d4df9d19399f2e6ce15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chrislim2888/IP2Location-PHP-Module/zipball/4c501aa1f666ae85eab84d4df9d19399f2e6ce15",
+                "reference": "4c501aa1f666ae85eab84d4df9d19399f2e6ce15",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "IP2Location.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "IP2Location",
+                    "email": "support@ip2location.com",
+                    "homepage": "http://www.ip2location.com"
+                }
+            ],
+            "description": "[Official Release] IP2Location PHP API to get location info from IPv4 and IPv6 address.",
+            "homepage": "http://www.ip2location.com",
+            "keywords": [
+                "geolocation",
+                "ip2location",
+                "ip2locationlite"
+            ],
+            "support": {
+                "issues": "https://github.com/chrislim2888/IP2Location-PHP-Module/issues",
+                "source": "https://github.com/chrislim2888/IP2Location-PHP-Module/tree/8.3.0"
+            },
+            "time": "2020-11-23T04:30:39+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -7125,6 +7169,56 @@
                 }
             ],
             "time": "2022-01-24T20:11:01+00:00"
+        },
+        {
+            "name": "symfonycasts/reset-password-bundle",
+            "version": "v1.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SymfonyCasts/reset-password-bundle.git",
+                "reference": "6e926da7fb2031ef38a385a994ea3a52b436dc8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SymfonyCasts/reset-password-bundle/zipball/6e926da7fb2031ef38a385a994ea3a52b436dc8c",
+                "reference": "6e926da7fb2031ef38a385a994ea3a52b436dc8c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/config": "^4.4 | ^5.0 | ^6.0",
+                "symfony/dependency-injection": "^4.4 | ^5.0 | ^6.0",
+                "symfony/deprecation-contracts": "^2.2 | ^3.0",
+                "symfony/http-kernel": "^4.4 | ^5.0 | ^6.0"
+            },
+            "conflict": {
+                "doctrine/orm": "<2.7",
+                "symfony/framework-bundle": "<4.4",
+                "symfony/http-foundation": "<4.4"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "^2.0.3",
+                "doctrine/orm": "^2.7",
+                "symfony/framework-bundle": "^4.4 | ^5.0 | ^6.0",
+                "symfony/phpunit-bridge": "^5.0 | ^6.0",
+                "vimeo/psalm": "^4.3"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SymfonyCasts\\Bundle\\ResetPassword\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Symfony bundle that adds password reset functionality.",
+            "support": {
+                "issues": "https://github.com/SymfonyCasts/reset-password-bundle/issues",
+                "source": "https://github.com/SymfonyCasts/reset-password-bundle/tree/v1.13.0"
+            },
+            "time": "2022-02-23T14:48:27+00:00"
         },
         {
             "name": "twig/extra-bundle",

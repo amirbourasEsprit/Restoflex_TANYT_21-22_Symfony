@@ -36,7 +36,7 @@ class AjoutRestaurantController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('app_test');
         }
-        return $this->render('ajout_restaurant/index.html.twig', [
+        return $this->render('restaurant/index.html.twig', [
             'form' => $form->createView(),
         ]);
        

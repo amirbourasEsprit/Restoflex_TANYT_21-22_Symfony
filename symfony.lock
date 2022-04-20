@@ -91,6 +91,9 @@
     "gregwar/captcha-bundle": {
         "version": "v2.1.0"
     },
+    "ip2location/ip2location-php": {
+        "version": "8.3.0"
+    },
     "laminas/laminas-code": {
         "version": "4.5.1"
     },
@@ -569,6 +572,18 @@
     },
     "symfony/yaml": {
         "version": "v4.4.37"
+    },
+    "symfonycasts/reset-password-bundle": {
+        "version": "1.13",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "97c1627c0384534997ae1047b93be517ca16de43"
+        },
+        "files": [
+            "./config/packages/reset_password.yaml"
+        ]
     },
     "theseer/tokenizer": {
         "version": "1.2.1"
