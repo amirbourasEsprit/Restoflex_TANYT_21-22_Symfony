@@ -2,8 +2,7 @@
 
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
-        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
-        clone ($p['App\\Validators\\VerifNull'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('App\\Validators\\VerifNull')),
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
     ],
     null,
     [
@@ -31,16 +30,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'default' => 'NULL',
                 ],
             ],
-            'groups' => [
-                1 => [
-                    'Default',
-                ],
-            ],
         ],
     ],
     [
         $o[0],
-        $o[1],
     ],
     []
 ); }];

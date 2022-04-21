@@ -445,10 +445,21 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\utilisateur\RegisterEmployesController"/>
       </call>
     </service>
+    <service id="App\Controller\utilisateur\RegisterFournisseurController" class="App\Controller\utilisateur\RegisterFournisseurController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="security.user_password_encoder.generic"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\utilisateur\RegisterFournisseurController"/>
+      </call>
+    </service>
     <service id="App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\RegisterEmployesType" class="App\Form\RegisterEmployesType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\RegisterFournisseurType" class="App\Form\RegisterFournisseurType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\ResetPasswordRequestFormType" class="App\Form\ResetPasswordRequestFormType" autowire="true" autoconfigure="true">
@@ -976,6 +987,7 @@
       <argument type="collection">
         <argument>App\Form\ChangePasswordFormType</argument>
         <argument>App\Form\RegisterEmployesType</argument>
+        <argument>App\Form\RegisterFournisseurType</argument>
         <argument>App\Form\ResetPasswordRequestFormType</argument>
         <argument>App\Form\RestaurantType</argument>
         <argument>App\Form\RoleType</argument>
@@ -1313,7 +1325,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.k1F_i5P"/>
+      <argument type="service" id=".service_locator.AT.l7IK"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4589,6 +4601,7 @@
     <service id="security.authentication.manager" class="Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager" public="false">
       <argument type="iterator">
         <argument type="service" id="security.authentication.provider.dao.main"/>
+        <argument type="service" id="security.authentication.provider.rememberme.main"/>
         <argument type="service" id="security.authentication.provider.anonymous.main"/>
       </argument>
       <argument>true</argument>
@@ -5107,11 +5120,13 @@
       <argument>null</argument>
       <argument type="collection">
         <argument>form_login</argument>
+        <argument>remember_me</argument>
         <argument>anonymous</argument>
       </argument>
       <argument>null</argument>
     </service>
     <service id="security.context_listener.0" class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
+      <tag name="security.remember_me_aware" id="main" provider="none"/>
       <argument type="service" id="security.untracked_token_storage"/>
       <argument type="iterator">
         <argument type="service" id="security.user.provider.concrete.users_in_memory"/>
@@ -5125,6 +5140,9 @@
         <argument type="service" id="security.token_storage"/>
         <argument>enableUsageTracking</argument>
       </argument>
+      <call method="setRememberMeServices">
+        <argument type="service" id="security.authentication.rememberme.services.simplehash.main"/>
+      </call>
     </service>
     <service id="security.logout_listener.main" class="Symfony\Component\Security\Http\Firewall\LogoutListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -5140,6 +5158,9 @@
       </call>
       <call method="addHandler">
         <argument type="service" id="security.logout.handler.session"/>
+      </call>
+      <call method="addHandler">
+        <argument type="service" id="security.authentication.rememberme.services.simplehash.main"/>
       </call>
     </service>
     <service id="security.logout.success_handler.main" class="Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler" public="false">
@@ -5205,12 +5226,48 @@
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
       <argument>null</argument>
+      <call method="setRememberMeServices">
+        <argument type="service" id="security.authentication.rememberme.services.simplehash.main"/>
+      </call>
     </service>
     <service id="security.authentication.form_entry_point.main" class="Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint" public="false">
       <argument type="service" id="http_kernel"/>
       <argument type="service" id="security.http_utils"/>
       <argument>connexion</argument>
       <argument>false</argument>
+    </service>
+    <service id="security.authentication.provider.rememberme.main" class="Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider" public="false">
+      <argument type="service" id="security.user_checker"/>
+      <argument>%env(APP_SECRET)%</argument>
+      <argument>main</argument>
+    </service>
+    <service id="security.authentication.rememberme.services.simplehash.main" class="Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices" public="false">
+      <argument type="collection">
+        <argument type="service" id="security.user.provider.concrete.in_database"/>
+      </argument>
+      <argument>%env(APP_SECRET)%</argument>
+      <argument>main</argument>
+      <argument type="collection">
+        <argument key="lifetime">604800</argument>
+        <argument key="name">REMEMBERME</argument>
+        <argument key="path">/</argument>
+        <argument key="domain">null</argument>
+        <argument key="secure">null</argument>
+        <argument key="httponly">true</argument>
+        <argument key="samesite">lax</argument>
+        <argument key="always_remember_me">false</argument>
+        <argument key="remember_me_parameter">_remember_me</argument>
+      </argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+    </service>
+    <service id="security.authentication.listener.rememberme.main" class="Symfony\Component\Security\Http\Firewall\RememberMeListener" public="false">
+      <argument type="service" id="security.untracked_token_storage"/>
+      <argument type="service" id="security.authentication.rememberme.services.simplehash.main"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+      <argument>true</argument>
+      <argument type="service" id="security.authentication.session_strategy"/>
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.untracked_token_storage"/>
@@ -5237,6 +5294,7 @@
         <argument type="service" id="security.channel_listener"/>
         <argument type="service" id="security.context_listener.0"/>
         <argument type="service" id="security.authentication.listener.form.main"/>
+        <argument type="service" id="security.authentication.listener.rememberme.main"/>
         <argument type="service" id="security.authentication.listener.anonymous.main"/>
         <argument type="service" id="security.access_listener"/>
       </argument>
@@ -5336,10 +5394,15 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\utilisateur\RegisterEmployesController" class="App\Controller\utilisateur\RegisterEmployesController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\utilisateur\RegisterEmployesController" class="App\Controller\utilisateur\RegisterEmployesController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\utilisateur\RegisterEmployesController" class="App\Controller\utilisateur\RegisterEmployesController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\utilisateur\RegisterFournisseurController" class="App\Controller\utilisateur\RegisterFournisseurController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\utilisateur\RegisterFournisseurController" class="App\Controller\utilisateur\RegisterFournisseurController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\utilisateur\RegisterFournisseurController" class="App\Controller\utilisateur\RegisterFournisseurController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegisterEmployesType" class="App\Form\RegisterEmployesType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RegisterEmployesType" class="App\Form\RegisterEmployesType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegisterFournisseurType" class="App\Form\RegisterFournisseurType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\RegisterFournisseurType" class="App\Form\RegisterFournisseurType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ResetPasswordRequestFormType" class="App\Form\ResetPasswordRequestFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ResetPasswordRequestFormType" class="App\Form\ResetPasswordRequestFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RestaurantType" class="App\Form\RestaurantType" autowire="true" abstract="true"/>
@@ -5703,7 +5766,7 @@
         <argument key="maLocalisation" type="service_closure" id="App\Services\MaLocalisation"/>
       </argument>
     </service>
-    <service id=".service_locator.LtbGw0s" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.RD5YYZx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ResetPasswordController::request" type="service_closure" id=".service_locator.tejTvi1"/>
@@ -5711,11 +5774,13 @@
         <argument key="App\Controller\SecurityController::connexion" type="service_closure" id=".service_locator.Z9YHLOP"/>
         <argument key="App\Controller\role\AjoutRoleController::listerRole" type="service_closure" id=".service_locator.QrD46LN"/>
         <argument key="App\Controller\utilisateur\RegisterEmployesController::AjouterEmployee" type="service_closure" id=".service_locator.Zl1Tas8"/>
+        <argument key="App\Controller\utilisateur\RegisterFournisseurController::AjouterEmployee" type="service_closure" id=".service_locator.Zl1Tas8"/>
         <argument key="App\Controller\ResetPasswordController:request" type="service_closure" id=".service_locator.tejTvi1"/>
         <argument key="App\Controller\ResetPasswordController:reset" type="service_closure" id=".service_locator.IHMIEEW"/>
         <argument key="App\Controller\SecurityController:connexion" type="service_closure" id=".service_locator.Z9YHLOP"/>
         <argument key="App\Controller\role\AjoutRoleController:listerRole" type="service_closure" id=".service_locator.QrD46LN"/>
         <argument key="App\Controller\utilisateur\RegisterEmployesController:AjouterEmployee" type="service_closure" id=".service_locator.Zl1Tas8"/>
+        <argument key="App\Controller\utilisateur\RegisterFournisseurController:AjouterEmployee" type="service_closure" id=".service_locator.Zl1Tas8"/>
       </argument>
     </service>
     <service id=".service_locator.dCjaNZJ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5782,11 +5847,12 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.k1F_i5P" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.AT.l7IK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\ChangePasswordFormType" type="service_closure" id="App\Form\ChangePasswordFormType"/>
         <argument key="App\Form\RegisterEmployesType" type="service_closure" id="App\Form\RegisterEmployesType"/>
+        <argument key="App\Form\RegisterFournisseurType" type="service_closure" id="App\Form\RegisterFournisseurType"/>
         <argument key="App\Form\ResetPasswordRequestFormType" type="service_closure" id="App\Form\ResetPasswordRequestFormType"/>
         <argument key="App\Form\RestaurantType" type="service_closure" id="App\Form\RestaurantType"/>
         <argument key="App\Form\RoleType" type="service_closure" id="App\Form\RoleType"/>
@@ -6075,6 +6141,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\utilisateur\RegisterFournisseurController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\utilisateur\RegisterFournisseurController"/>
+      <argument>App\Controller\utilisateur\RegisterFournisseurController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
     <service id=".service_locator.vdmMuyE.App\Services\GetUser" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Services\GetUser"/>
       <argument>App\Services\GetUser</argument>
@@ -6233,12 +6305,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.LtbGw0s"/>
+      <argument type="service" id=".service_locator.RD5YYZx"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.LtbGw0s"/>
+      <argument type="service" id=".service_locator.RD5YYZx"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6632,7 +6704,7 @@
     <service id="SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface" alias="symfonycasts.reset_password.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.LtbGw0s"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.RD5YYZx"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
@@ -6647,7 +6719,7 @@
     <service id="Psr\Log\LoggerInterface $doctrineLogger" alias="monolog.logger.doctrine"/>
     <service id="Psr\Log\LoggerInterface $securityLogger" alias="monolog.logger.security"/>
     <service id=".service_locator.vCZtrFV" alias=".service_locator.dCjaNZJ" public="false"/>
-    <service id=".service_locator.NWTtrYk" alias=".service_locator.k1F_i5P" public="false"/>
+    <service id=".service_locator.xMqGPuz" alias=".service_locator.AT.l7IK" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="translator.data_collector.inner" alias="translator.default" public="false"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>

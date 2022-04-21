@@ -92,28 +92,28 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 \t\t\t";
         // line 35
         $this->displayBlock('sidebar', $context, $blocks);
-        // line 172
+        // line 192
         echo "
 \t\t\t<!-- End of Sidebar -->
 
 \t\t\t<!-- Content Wrapper -->
 \t\t\t";
-        // line 176
+        // line 196
         $this->displayBlock('wrapper', $context, $blocks);
-        // line 740
+        // line 760
         echo "\t\t<!-- End of Content Wrapper -->
 \t\t<!-- Footer -->
 \t\t";
-        // line 742
+        // line 762
         $this->displayBlock('footer', $context, $blocks);
-        // line 751
+        // line 771
         echo "\t\t<!-- End of Footer -->
 \t</body>
 </html></div><!-- End of Page Wrapper --><!-- Scroll to Top Button--><a class=\"scroll-to-top rounded\" href=\"#page-top\">
 <i class=\"fas fa-angle-up\"></i></a>";
-        // line 754
+        // line 774
         $this->displayBlock('js', $context, $blocks);
-        // line 770
+        // line 790
         $this->displayBlock('JsAfterTemplate', $context, $blocks);
         echo "</body></html>
 ";
@@ -230,7 +230,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 \t\t\t\t\t<!-- Sidebar - Brand -->
 \t\t\t\t\t<a class=\"sidebar-brand d-flex align-items-center justify-content-center\" href=\"index.html\">
 \t\t\t\t\t\t<div class=\"sidebar-brand-icon rotate-n-15\">
-\t\t\t\t\t\t\t<i class=\"fas fa-laugh-wink\"></i>
+\t\t\t\t\t\t\t<i class=\"fas fa-cog\"></i>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"sidebar-brand-text mx-3\">Restoflex<sup>TANYT</sup>
 \t\t\t\t\t\t</div>
@@ -242,118 +242,160 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 
 \t\t\t\t\t<!-- Nav Item - Dashboard -->
 \t\t\t\t\t<li class=\"nav-item active\">
-\t\t\t\t\t\t<a class=\"nav-link\" href=\"index.html\">
-\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-tachometer-alt\"></i>
-\t\t\t\t\t\t\t<span>Dashboard</span>
+\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-chart-pie\"></i>
+\t\t\t\t\t\t\t<span>Tableau de board</span>
 \t\t\t\t\t\t</a>
 
 \t\t\t\t\t</li>
-\t\t\t\t\t<!-- Divider -->
+\t\t\t\t\t
+\t\t\t\t\t
 \t\t\t\t\t<hr
 \t\t\t\t\tclass=\"sidebar-divider\">
 
-\t\t\t\t\t<!-- Heading -->
-\t\t\t\t\t<div class=\"sidebar-heading\">
-\t\t\t\t\t\tInterface
-\t\t\t\t\t</div>
-
-\t\t\t\t\t<!-- Nav Item - Pages Collapse Menu -->
-\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t<a class=\"nav-link collapsed\" href=\"#\" data-toggle=\"collapse\" data-target=\"#collapseTwo\" aria-expanded=\"true\" aria-controls=\"collapseTwo\">
-\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-cog\"></i>
-\t\t\t\t\t\t\t<span>Components</span>
-\t\t\t\t\t\t</a>
-\t\t\t\t\t\t<div id=\"collapseTwo\" class=\"collapse\" aria-labelledby=\"headingTwo\" data-parent=\"#accordionSidebar\">
-\t\t\t\t\t\t\t<div class=\"bg-white py-2 collapse-inner rounded\">
-\t\t\t\t\t\t\t\t<h6 class=\"collapse-header\">Custom Components:</h6>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"buttons.html\">Buttons</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"cards.html\">Cards</a>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</li>
-
-\t\t\t\t\t<!-- Nav Item - Utilities Collapse Menu -->
-\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t<a class=\"nav-link collapsed\" href=\"#\" data-toggle=\"collapse\" data-target=\"#collapseUtilities\" aria-expanded=\"true\" aria-controls=\"collapseUtilities\">
-\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-wrench\"></i>
-\t\t\t\t\t\t\t<span>Utilities</span>
-\t\t\t\t\t\t</a>
-\t\t\t\t\t\t<div id=\"collapseUtilities\" class=\"collapse\" aria-labelledby=\"headingUtilities\" data-parent=\"#accordionSidebar\">
-\t\t\t\t\t\t\t<div class=\"bg-white py-2 collapse-inner rounded\">
-\t\t\t\t\t\t\t\t<h6 class=\"collapse-header\">Custom Utilities:</h6>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"utilities-color.html\">Colors</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"utilities-border.html\">Borders</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"utilities-animation.html\">Animations</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"utilities-other.html\">Other</a>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</li>
-
-\t\t\t\t\t<!-- Divider -->
-\t\t\t\t\t<hr
-\t\t\t\t\tclass=\"sidebar-divider\">
-
-\t\t\t\t\t<!-- Heading -->
-\t\t\t\t\t<div class=\"sidebar-heading\">
-\t\t\t\t\t\tAddons
-\t\t\t\t\t</div>
-
-\t\t\t\t\t<!-- Nav Item - Pages Collapse Menu -->
-\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t<a class=\"nav-link collapsed\" href=\"#\" data-toggle=\"collapse\" data-target=\"#collapsePages\" aria-expanded=\"true\" aria-controls=\"collapsePages\">
-\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-folder\"></i>
-\t\t\t\t\t\t\t<span>Pages</span>
-\t\t\t\t\t\t</a>
-\t\t\t\t\t\t<div id=\"collapsePages\" class=\"collapse\" aria-labelledby=\"headingPages\" data-parent=\"#accordionSidebar\">
-\t\t\t\t\t\t\t<div class=\"bg-white py-2 collapse-inner rounded\">
-\t\t\t\t\t\t\t\t<h6 class=\"collapse-header\">Login Screens:</h6>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"login.html\">Login</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"register.html\">Register</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"forgot-password.html\">Forgot Password</a>
-\t\t\t\t\t\t\t\t<div class=\"collapse-divider\"></div>
-\t\t\t\t\t\t\t\t<h6 class=\"collapse-header\">Other Pages:</h6>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"404.html\">404 Page</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"blank.html\">Blank Page</a>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</li>
-
+\t\t\t\t";
+        // line 67
+        echo "
 \t\t\t\t\t<!-- Nav Item - Charts -->
 \t\t\t\t\t";
-        // line 132
+        // line 69
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
-            // line 133
+            // line 70
             echo "
 \t\t\t\t\t\t";
-            // line 134
-            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 134, $this->source); })()), "user", [], "any", false, false, false, 134), "idRole", [], "any", false, false, false, 134), "nomRole", [], "any", false, false, false, 134), "Gérant"))) {
-                // line 135
+            // line 71
+            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 71, $this->source); })()), "user", [], "any", false, false, false, 71), "idRole", [], "any", false, false, false, 71), "nomRole", [], "any", false, false, false, 71), "Gérant"))) {
+                // line 72
                 echo "
 \t\t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"";
-                // line 137
+                // line 74
                 echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("listEmployes");
                 echo "\">
-\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-chart-area\"></i>
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-users\"></i>
 \t\t\t\t\t\t\t\t\t<span>Employes</span>
 \t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-dolly\"></i>
+\t\t\t\t\t\t\t\t\t<span>Fournisseurs</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-box-open\"></i>
+\t\t\t\t\t\t\t\t\t<span>Commandes</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-calendar-check\"></i>
+\t\t\t\t\t\t\t\t\t<span>Congés</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t<a class=\"nav-link collapsed\" href=\"#\" data-toggle=\"collapse\" data-target=\"#collapseTwo\" aria-expanded=\"true\" aria-controls=\"collapseTwo\">
+\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-exclamation-triangle\"></i>
+\t\t\t\t\t\t\t<span>Réclamations</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t\t\t<div id=\"collapseTwo\" class=\"collapse\" aria-labelledby=\"headingTwo\" data-parent=\"#accordionSidebar\">
+\t\t\t\t\t\t\t<div class=\"bg-white py-2 collapse-inner rounded\">
+\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"#\">Type Réclamations</a>
+\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"#\">Mes Réclamations</a>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</li>
 \t\t\t\t\t\t";
             }
-            // line 143
+            // line 110
             echo "\t\t\t\t\t";
         }
-        // line 144
+        // line 111
         echo "
+\t\t\t\t\t";
+        // line 113
+        echo "\t\t\t\t\t\t";
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
+            // line 114
+            echo "
+\t\t\t\t\t\t";
+            // line 115
+            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 115, $this->source); })()), "user", [], "any", false, false, false, 115), "idRole", [], "any", false, false, false, 115), "nomRole", [], "any", false, false, false, 115), "Employée"))) {
+                // line 116
+                echo "
+\t\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-box-open\"></i>
+\t\t\t\t\t\t\t\t\t<span>Commandes</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-calendar-check\"></i>
+\t\t\t\t\t\t\t\t\t<span>Congés</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-exclamation-triangle\"></i>
+\t\t\t\t\t\t\t\t\t<span>Réclamations</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t
+\t\t\t\t\t\t";
+            }
+            // line 137
+            echo "\t\t\t\t\t";
+        }
+        // line 138
+        echo "
+\t\t";
+        // line 140
+        echo "
+\t\t\t\t\t<!-- Nav Item - Charts -->
+\t\t\t\t\t";
+        // line 142
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
+            // line 143
+            echo "
+\t\t\t\t\t\t";
+            // line 144
+            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 144, $this->source); })()), "user", [], "any", false, false, false, 144), "idRole", [], "any", false, false, false, 144), "nomRole", [], "any", false, false, false, 144), "Utilisateur_fournisseur"))) {
+                // line 145
+                echo "
+\t\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-box-open\"></i>
+\t\t\t\t\t\t\t\t\t<span>Commandes</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-dolly\"></i>
+\t\t\t\t\t\t\t\t\t<span>Stock</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-file-invoice-dollar\"></i>
+\t\t\t\t\t\t\t\t\t<span>Factures</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
 
-\t\t\t\t\t<!-- Nav Item - Tables -->
-\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t<a class=\"nav-link\" href=\"tables.html\">
-\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-table\"></i>
-\t\t\t\t\t\t\t<span>Tables</span>
-\t\t\t\t\t\t</a>
-\t\t\t\t\t</li>
-
+\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-exclamation-triangle\"></i>
+\t\t\t\t\t\t\t\t\t\t<span>Réclamations</span>
+\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t";
+            }
+            // line 172
+            echo "\t\t\t\t\t";
+        }
+        // line 173
+        echo "
 \t\t\t\t\t<!-- Divider -->
 \t\t\t\t\t<hr
 \t\t\t\t\tclass=\"sidebar-divider d-none d-md-block\">
@@ -364,7 +406,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 \t\t\t\t\t</div>
 
 \t\t\t\t\t";
-        // line 169
+        // line 189
         echo "
 \t\t\t\t</ul>
 \t\t\t";
@@ -376,7 +418,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 
     }
 
-    // line 176
+    // line 196
     public function block_wrapper($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -386,22 +428,22 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "wrapper"));
 
-        // line 177
+        // line 197
         echo "\t\t\t<div id=\"content-wrapper\" class=\"d-flex flex-column\">
 
 \t\t\t\t<!-- Main Content -->
 \t\t\t\t<div id=\"content\">
 \t\t\t\t\t";
-        // line 181
+        // line 201
         $this->displayBlock('navbar', $context, $blocks);
-        // line 396
+        // line 416
         echo "
 
 \t\t\t\t<!-- Begin Page Content -->
 \t\t\t\t";
-        // line 399
+        // line 419
         $this->displayBlock('content', $context, $blocks);
-        // line 733
+        // line 753
         echo "\t\t\t\t<!-- /.container-fluid -->
 
 \t\t\t
@@ -417,7 +459,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 
     }
 
-    // line 181
+    // line 201
     public function block_navbar($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -427,7 +469,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navbar"));
 
-        // line 182
+        // line 202
         echo "\t\t\t\t\t\t<!-- Topbar -->
 \t\t\t\t\t\t<nav
 \t\t\t\t\t\t\tclass=\"navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow\">
@@ -537,7 +579,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"#\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-list-image mr-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle\" src=\"";
-        // line 290
+        // line 310
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/img/undraw_profile_1.svg"), "html", null, true);
         echo "\" alt=\"\">
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"status-indicator bg-success\"></div>
@@ -551,7 +593,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"#\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-list-image mr-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle\" src=\"";
-        // line 301
+        // line 321
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/img/undraw_profile_2.svg"), "html", null, true);
         echo "\" alt=\"\">
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"status-indicator\"></div>
@@ -565,7 +607,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"#\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-list-image mr-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle\" src=\"";
-        // line 312
+        // line 332
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/img/undraw_profile_3.svg"), "html", null, true);
         echo "\" alt=\"\">
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"status-indicator bg-warning\"></div>
@@ -595,25 +637,25 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 
 \t\t\t\t\t\t\t\t<!-- Nav Item - User Information -->
 \t\t\t\t\t\t\t\t";
-        // line 339
+        // line 359
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
-            // line 340
+            // line 360
             echo "
 \t\t\t\t\t\t\t\t\t<li class=\"nav-item dropdown no-arrow\">
 \t\t\t\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"";
-            // line 342
+            // line 362
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("#"), "html", null, true);
             echo "\" id=\"userDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
 \t\t\t\t\t\t\t\t\t\t\t<span class=\"mr-2 d-none d-lg-inline text-gray-600 small\">";
-            // line 343
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 343, $this->source); })()), "user", [], "any", false, false, false, 343), "nom", [], "any", false, false, false, 343), "html", null, true);
+            // line 363
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 363, $this->source); })()), "user", [], "any", false, false, false, 363), "nom", [], "any", false, false, false, 363), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 344
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 344, $this->source); })()), "user", [], "any", false, false, false, 344), "prenom", [], "any", false, false, false, 344), "html", null, true);
+            // line 364
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 364, $this->source); })()), "user", [], "any", false, false, false, 364), "prenom", [], "any", false, false, false, 364), "html", null, true);
             echo "</span>
 \t\t\t\t\t\t\t\t\t\t\t<img class=\"img-profile rounded-circle\" src=\"";
-            // line 345
+            // line 365
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/img/undraw_profile.svg"), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t\t\t</a>
@@ -640,7 +682,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 \t\t\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t\t";
         }
-        // line 369
+        // line 389
         echo "
 \t\t\t\t\t\t\t</ul>
 
@@ -660,7 +702,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 \t\t\t\t\t\t\t\t\t<div class=\"modal-footer\">
 \t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-secondary\" type=\"button\" data-dismiss=\"modal\">Annuler</button>
 \t\t\t\t\t\t\t\t\t\t<a class=\"btn btn-primary\" href=\"";
-        // line 387
+        // line 407
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deconnexion");
         echo "\">Déconnexion</a>
 
@@ -679,7 +721,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 
     }
 
-    // line 399
+    // line 419
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -689,7 +731,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 400
+        // line 420
         echo "\t\t\t\t\t<div
 \t\t\t\t\t\tclass=\"container-fluid\">
 
@@ -994,7 +1036,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 \t\t\t\t\t\t\t\t\t<div class=\"card-body\">
 \t\t\t\t\t\t\t\t\t\t<div class=\"text-center\">
 \t\t\t\t\t\t\t\t\t\t\t<img class=\"img-fluid px-3 px-sm-4 mt-3 mb-4\" style=\"width: 25rem;\" src=\"";
-        // line 703
+        // line 723
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/img/undraw_posting_photo.svg\" alt=\" "), "html", null, true);
         echo "\">
 \t\t\t\t\t\t\t\t\t\t</div>
@@ -1034,7 +1076,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 
     }
 
-    // line 742
+    // line 762
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -1044,7 +1086,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 743
+        // line 763
         echo "\t\t\t<footer class=\"sticky-footer bg-white\">
 \t\t\t\t<div class=\"container my-auto\">
 \t\t\t\t\t<div class=\"copyright text-center my-auto\">
@@ -1061,7 +1103,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 
     }
 
-    // line 754
+    // line 774
     public function block_js($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -1071,42 +1113,42 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 755
+        // line 775
         echo "<!-- Bootstrap core JavaScript-->
 <script src=\"";
-        // line 756
+        // line 776
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/vendor/jquery/jquery.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 757
+        // line 777
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/vendor/bootstrap/js/bootstrap.bundle.min.js"), "html", null, true);
         echo "\"></script>
 
 <!-- Core plugin JavaScript-->
 <script src=\"";
-        // line 760
+        // line 780
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/vendor/jquery-easing/jquery.easing.min.js"), "html", null, true);
         echo "\"></script>
 
 <!-- Custom scripts for all pages-->
 <script src=\"";
-        // line 763
+        // line 783
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/sb-admin-2.min.js"), "html", null, true);
         echo "\"></script>
 
 <!-- Page level plugins -->
 <script src=\"";
-        // line 766
+        // line 786
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/vendor/chart.js/Chart.min.js"), "html", null, true);
         echo "\"></script>
 
 <!-- Page level custom scripts -->
 <script src=\"";
-        // line 769
+        // line 789
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/demo/chart-area-demo.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 770
+        // line 790
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/demo/chart-pie-demo.js"), "html", null, true);
         echo "\"></script>";
         
@@ -1141,7 +1183,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 
     public function getDebugInfo()
     {
-        return array (  1110 => 770,  1106 => 769,  1100 => 766,  1094 => 763,  1088 => 760,  1082 => 757,  1078 => 756,  1075 => 755,  1065 => 754,  1048 => 743,  1038 => 742,  998 => 703,  693 => 400,  683 => 399,  664 => 387,  644 => 369,  617 => 345,  613 => 344,  609 => 343,  605 => 342,  601 => 340,  599 => 339,  569 => 312,  555 => 301,  541 => 290,  431 => 182,  421 => 181,  405 => 733,  403 => 399,  398 => 396,  396 => 181,  390 => 177,  380 => 176,  368 => 169,  347 => 144,  344 => 143,  335 => 137,  331 => 135,  329 => 134,  326 => 133,  324 => 132,  226 => 36,  216 => 35,  198 => 29,  180 => 27,  168 => 24,  159 => 19,  149 => 18,  129 => 13,  117 => 770,  115 => 754,  110 => 751,  108 => 742,  104 => 740,  102 => 176,  96 => 172,  94 => 35,  87 => 30,  85 => 29,  82 => 28,  80 => 27,  77 => 26,  75 => 18,  70 => 15,  68 => 13,  54 => 1,);
+        return array (  1152 => 790,  1148 => 789,  1142 => 786,  1136 => 783,  1130 => 780,  1124 => 777,  1120 => 776,  1117 => 775,  1107 => 774,  1090 => 763,  1080 => 762,  1040 => 723,  735 => 420,  725 => 419,  706 => 407,  686 => 389,  659 => 365,  655 => 364,  651 => 363,  647 => 362,  643 => 360,  641 => 359,  611 => 332,  597 => 321,  583 => 310,  473 => 202,  463 => 201,  447 => 753,  445 => 419,  440 => 416,  438 => 201,  432 => 197,  422 => 196,  410 => 189,  398 => 173,  395 => 172,  366 => 145,  364 => 144,  361 => 143,  359 => 142,  355 => 140,  352 => 138,  349 => 137,  326 => 116,  324 => 115,  321 => 114,  318 => 113,  315 => 111,  312 => 110,  273 => 74,  269 => 72,  267 => 71,  264 => 70,  262 => 69,  258 => 67,  226 => 36,  216 => 35,  198 => 29,  180 => 27,  168 => 24,  159 => 19,  149 => 18,  129 => 13,  117 => 790,  115 => 774,  110 => 771,  108 => 762,  104 => 760,  102 => 196,  96 => 192,  94 => 35,  87 => 30,  85 => 29,  82 => 28,  80 => 27,  77 => 26,  75 => 18,  70 => 15,  68 => 13,  54 => 1,);
     }
 
     public function getSourceContext()
@@ -1188,7 +1230,7 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 \t\t\t\t\t<!-- Sidebar - Brand -->
 \t\t\t\t\t<a class=\"sidebar-brand d-flex align-items-center justify-content-center\" href=\"index.html\">
 \t\t\t\t\t\t<div class=\"sidebar-brand-icon rotate-n-15\">
-\t\t\t\t\t\t\t<i class=\"fas fa-laugh-wink\"></i>
+\t\t\t\t\t\t\t<i class=\"fas fa-cog\"></i>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"sidebar-brand-text mx-3\">Restoflex<sup>TANYT</sup>
 \t\t\t\t\t\t</div>
@@ -1200,81 +1242,18 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 
 \t\t\t\t\t<!-- Nav Item - Dashboard -->
 \t\t\t\t\t<li class=\"nav-item active\">
-\t\t\t\t\t\t<a class=\"nav-link\" href=\"index.html\">
-\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-tachometer-alt\"></i>
-\t\t\t\t\t\t\t<span>Dashboard</span>
+\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-chart-pie\"></i>
+\t\t\t\t\t\t\t<span>Tableau de board</span>
 \t\t\t\t\t\t</a>
 
 \t\t\t\t\t</li>
-\t\t\t\t\t<!-- Divider -->
+\t\t\t\t\t
+\t\t\t\t\t
 \t\t\t\t\t<hr
 \t\t\t\t\tclass=\"sidebar-divider\">
 
-\t\t\t\t\t<!-- Heading -->
-\t\t\t\t\t<div class=\"sidebar-heading\">
-\t\t\t\t\t\tInterface
-\t\t\t\t\t</div>
-
-\t\t\t\t\t<!-- Nav Item - Pages Collapse Menu -->
-\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t<a class=\"nav-link collapsed\" href=\"#\" data-toggle=\"collapse\" data-target=\"#collapseTwo\" aria-expanded=\"true\" aria-controls=\"collapseTwo\">
-\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-cog\"></i>
-\t\t\t\t\t\t\t<span>Components</span>
-\t\t\t\t\t\t</a>
-\t\t\t\t\t\t<div id=\"collapseTwo\" class=\"collapse\" aria-labelledby=\"headingTwo\" data-parent=\"#accordionSidebar\">
-\t\t\t\t\t\t\t<div class=\"bg-white py-2 collapse-inner rounded\">
-\t\t\t\t\t\t\t\t<h6 class=\"collapse-header\">Custom Components:</h6>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"buttons.html\">Buttons</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"cards.html\">Cards</a>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</li>
-
-\t\t\t\t\t<!-- Nav Item - Utilities Collapse Menu -->
-\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t<a class=\"nav-link collapsed\" href=\"#\" data-toggle=\"collapse\" data-target=\"#collapseUtilities\" aria-expanded=\"true\" aria-controls=\"collapseUtilities\">
-\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-wrench\"></i>
-\t\t\t\t\t\t\t<span>Utilities</span>
-\t\t\t\t\t\t</a>
-\t\t\t\t\t\t<div id=\"collapseUtilities\" class=\"collapse\" aria-labelledby=\"headingUtilities\" data-parent=\"#accordionSidebar\">
-\t\t\t\t\t\t\t<div class=\"bg-white py-2 collapse-inner rounded\">
-\t\t\t\t\t\t\t\t<h6 class=\"collapse-header\">Custom Utilities:</h6>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"utilities-color.html\">Colors</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"utilities-border.html\">Borders</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"utilities-animation.html\">Animations</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"utilities-other.html\">Other</a>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</li>
-
-\t\t\t\t\t<!-- Divider -->
-\t\t\t\t\t<hr
-\t\t\t\t\tclass=\"sidebar-divider\">
-
-\t\t\t\t\t<!-- Heading -->
-\t\t\t\t\t<div class=\"sidebar-heading\">
-\t\t\t\t\t\tAddons
-\t\t\t\t\t</div>
-
-\t\t\t\t\t<!-- Nav Item - Pages Collapse Menu -->
-\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t<a class=\"nav-link collapsed\" href=\"#\" data-toggle=\"collapse\" data-target=\"#collapsePages\" aria-expanded=\"true\" aria-controls=\"collapsePages\">
-\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-folder\"></i>
-\t\t\t\t\t\t\t<span>Pages</span>
-\t\t\t\t\t\t</a>
-\t\t\t\t\t\t<div id=\"collapsePages\" class=\"collapse\" aria-labelledby=\"headingPages\" data-parent=\"#accordionSidebar\">
-\t\t\t\t\t\t\t<div class=\"bg-white py-2 collapse-inner rounded\">
-\t\t\t\t\t\t\t\t<h6 class=\"collapse-header\">Login Screens:</h6>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"login.html\">Login</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"register.html\">Register</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"forgot-password.html\">Forgot Password</a>
-\t\t\t\t\t\t\t\t<div class=\"collapse-divider\"></div>
-\t\t\t\t\t\t\t\t<h6 class=\"collapse-header\">Other Pages:</h6>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"404.html\">404 Page</a>
-\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"blank.html\">Blank Page</a>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</li>
+\t\t\t\t{# side bar pour le gérant#}
 
 \t\t\t\t\t<!-- Nav Item - Charts -->
 \t\t\t\t\t{% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -1283,21 +1262,104 @@ class __TwigTemplate_19cd67cd428cc804ef4aed49b45dce0e721740eeb49ec5b85b12da52156
 
 \t\t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ path('listEmployes') }}\">
-\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-chart-area\"></i>
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-users\"></i>
 \t\t\t\t\t\t\t\t\t<span>Employes</span>
 \t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-dolly\"></i>
+\t\t\t\t\t\t\t\t\t<span>Fournisseurs</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-box-open\"></i>
+\t\t\t\t\t\t\t\t\t<span>Commandes</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-calendar-check\"></i>
+\t\t\t\t\t\t\t\t\t<span>Congés</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t<a class=\"nav-link collapsed\" href=\"#\" data-toggle=\"collapse\" data-target=\"#collapseTwo\" aria-expanded=\"true\" aria-controls=\"collapseTwo\">
+\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-exclamation-triangle\"></i>
+\t\t\t\t\t\t\t<span>Réclamations</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t\t\t<div id=\"collapseTwo\" class=\"collapse\" aria-labelledby=\"headingTwo\" data-parent=\"#accordionSidebar\">
+\t\t\t\t\t\t\t<div class=\"bg-white py-2 collapse-inner rounded\">
+\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"#\">Type Réclamations</a>
+\t\t\t\t\t\t\t\t<a class=\"collapse-item\" href=\"#\">Mes Réclamations</a>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</li>
 \t\t\t\t\t\t{% endif %}
 \t\t\t\t\t{% endif %}
 
+\t\t\t\t\t{# side bar pour l'employee#}
+\t\t\t\t\t\t{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-\t\t\t\t\t<!-- Nav Item - Tables -->
-\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t<a class=\"nav-link\" href=\"tables.html\">
-\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-table\"></i>
-\t\t\t\t\t\t\t<span>Tables</span>
-\t\t\t\t\t\t</a>
-\t\t\t\t\t</li>
+\t\t\t\t\t\t{% if app.user.idRole.nomRole==\"Employée\"%}
+
+\t\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-box-open\"></i>
+\t\t\t\t\t\t\t\t\t<span>Commandes</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-calendar-check\"></i>
+\t\t\t\t\t\t\t\t\t<span>Congés</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-exclamation-triangle\"></i>
+\t\t\t\t\t\t\t\t\t<span>Réclamations</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t
+\t\t\t\t\t\t{% endif %}
+\t\t\t\t\t{% endif %}
+
+\t\t{# side bar pour le utilisateur fournisseur#}
+
+\t\t\t\t\t<!-- Nav Item - Charts -->
+\t\t\t\t\t{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+\t\t\t\t\t\t{% if app.user.idRole.nomRole==\"Utilisateur_fournisseur\"%}
+
+\t\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-box-open\"></i>
+\t\t\t\t\t\t\t\t\t<span>Commandes</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-dolly\"></i>
+\t\t\t\t\t\t\t\t\t<span>Stock</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-file-invoice-dollar\"></i>
+\t\t\t\t\t\t\t\t\t<span>Factures</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+
+\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"#\">
+\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-fw fa-exclamation-triangle\"></i>
+\t\t\t\t\t\t\t\t\t\t<span>Réclamations</span>
+\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t{% endif %}
+\t\t\t\t\t{% endif %}
 
 \t\t\t\t\t<!-- Divider -->
 \t\t\t\t\t<hr

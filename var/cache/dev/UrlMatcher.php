@@ -25,8 +25,9 @@ return [
         '/ajout/role' => [[['_route' => 'ajout_role', '_controller' => 'App\\Controller\\role\\AjoutRoleController::AjouterRole'], null, null, null, false, false, null]],
         '/employe' => [[['_route' => 'app_employe', '_controller' => 'App\\Controller\\utilisateur\\EmployeController::index'], null, null, null, false, false, null]],
         '/employes' => [[['_route' => 'listEmployes', '_controller' => 'App\\Controller\\utilisateur\\EmployeController::afficher'], null, null, null, false, false, null]],
-        '/register/employes' => [[['_route' => 'app_register_employes', '_controller' => 'App\\Controller\\utilisateur\\RegisterEmployesController::index'], null, null, null, false, false, null]],
         '/ajouter/employee' => [[['_route' => 'ajout_employee', '_controller' => 'App\\Controller\\utilisateur\\RegisterEmployesController::AjouterEmployee'], null, null, null, false, false, null]],
+        '/register/employes' => [[['_route' => 'app_register_employes', '_controller' => 'App\\Controller\\utilisateur\\RegisterFournisseurController::index'], null, null, null, false, false, null]],
+        '/ajouter/Ufournisseur' => [[['_route' => 'ajout_utilisateur_fournisseur', '_controller' => 'App\\Controller\\utilisateur\\RegisterFournisseurController::AjouterEmployee'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

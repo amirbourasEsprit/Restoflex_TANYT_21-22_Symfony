@@ -23,6 +23,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'referencedColumnName' => [
                 2 => 'id_type_reclamation',
             ],
+            'onDelete' => [
+                2 => 'CASCADE',
+            ],
         ],
     ],
     [

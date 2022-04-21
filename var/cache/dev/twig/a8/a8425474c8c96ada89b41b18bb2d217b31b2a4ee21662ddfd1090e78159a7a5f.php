@@ -194,9 +194,8 @@ class __TwigTemplate_6f977d70cd7d38cf5d1b0741c47054e615cd4cae12aaba2810cec4d0d43
         // line 44
         echo "\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"custom-control custom-checkbox small\">
-\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"checkbox\" class=\"custom-control-input\" id=\"customCheck\">
-\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"custom-control-label\" for=\"customCheck\">Remember
-\t\t\t\t\t\t\t\t\t\t\t\t\t                                                    Me</label>
+\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"checkbox\" class=\"custom-control-input\"  name=\"_remember_me\" id=\"customCheck\" checked>
+\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"custom-control-label\" for=\"customCheck\">Se souvenir</label>
 \t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t</div>
 
@@ -208,25 +207,31 @@ class __TwigTemplate_6f977d70cd7d38cf5d1b0741c47054e615cd4cae12aaba2810cec4d0d43
 \t\t\t\t\t\t\t\t\t\t<hr>
 \t\t\t\t\t\t\t\t\t\t<a href=\"index.html\" class=\"btn btn-google btn-user btn-block\">
 \t\t\t\t\t\t\t\t\t\t\t<i class=\"fab fa-google fa-fw\"></i>
-\t\t\t\t\t\t\t\t\t\t\tLogin with Google
+\t\t\t\t\t\t\t\t\t\t\tConnecter avec Google
 \t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t<a href=\"index.html\" class=\"btn btn-facebook btn-user btn-block\">
 \t\t\t\t\t\t\t\t\t\t\t<i class=\"fab fa-facebook-f fa-fw\"></i>
-\t\t\t\t\t\t\t\t\t\t\tLogin with Facebook
+\t\t\t\t\t\t\t\t\t\t\tConnecter avec Facebook
 \t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t</form>
 \t\t\t\t\t\t\t\t\t<hr>
 \t\t\t\t\t\t\t\t\t<div class=\"text-center\">
 \t\t\t\t\t\t\t\t\t\t<a class=\"small\"  href=\"";
-        // line 69
+        // line 68
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forgot_password_request");
-        echo "\">Forgot Password?</a>
+        echo "\">Mot de passe oublier?</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t<div class=\"text-center\">
 \t\t\t\t\t\t\t\t\t\t<a class=\"small\" href=\"";
-        // line 72
+        // line 71
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("ajout_employee");
-        echo "\">Create an Account!</a>
+        echo "\">Vous êtes un Employée!</a>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t<div class=\"text-center\">
+\t\t\t\t\t\t\t\t\t\t<a class=\"small\" href=\"";
+        // line 74
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("ajout_utilisateur_fournisseur");
+        echo "\">Vous êtes un Fournisseur!</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
               </div>
@@ -251,7 +256,7 @@ class __TwigTemplate_6f977d70cd7d38cf5d1b0741c47054e615cd4cae12aaba2810cec4d0d43
 
     }
 
-    // line 90
+    // line 92
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -281,7 +286,7 @@ class __TwigTemplate_6f977d70cd7d38cf5d1b0741c47054e615cd4cae12aaba2810cec4d0d43
 
     public function getDebugInfo()
     {
-        return array (  255 => 90,  228 => 72,  222 => 69,  195 => 44,  190 => 41,  188 => 40,  178 => 33,  173 => 31,  164 => 25,  148 => 11,  138 => 10,  120 => 9,  102 => 8,  84 => 6,  73 => 3,  63 => 2,  40 => 1,);
+        return array (  260 => 92,  233 => 74,  227 => 71,  221 => 68,  195 => 44,  190 => 41,  188 => 40,  178 => 33,  173 => 31,  164 => 25,  148 => 11,  138 => 10,  120 => 9,  102 => 8,  84 => 6,  73 => 3,  63 => 2,  40 => 1,);
     }
 
     public function getSourceContext()
@@ -331,9 +336,8 @@ class __TwigTemplate_6f977d70cd7d38cf5d1b0741c47054e615cd4cae12aaba2810cec4d0d43
 \t\t\t\t\t\t\t\t\t\t{% endif %}
 \t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"custom-control custom-checkbox small\">
-\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"checkbox\" class=\"custom-control-input\" id=\"customCheck\">
-\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"custom-control-label\" for=\"customCheck\">Remember
-\t\t\t\t\t\t\t\t\t\t\t\t\t                                                    Me</label>
+\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"checkbox\" class=\"custom-control-input\"  name=\"_remember_me\" id=\"customCheck\" checked>
+\t\t\t\t\t\t\t\t\t\t\t\t<label class=\"custom-control-label\" for=\"customCheck\">Se souvenir</label>
 \t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t</div>
 
@@ -345,19 +349,22 @@ class __TwigTemplate_6f977d70cd7d38cf5d1b0741c47054e615cd4cae12aaba2810cec4d0d43
 \t\t\t\t\t\t\t\t\t\t<hr>
 \t\t\t\t\t\t\t\t\t\t<a href=\"index.html\" class=\"btn btn-google btn-user btn-block\">
 \t\t\t\t\t\t\t\t\t\t\t<i class=\"fab fa-google fa-fw\"></i>
-\t\t\t\t\t\t\t\t\t\t\tLogin with Google
+\t\t\t\t\t\t\t\t\t\t\tConnecter avec Google
 \t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t<a href=\"index.html\" class=\"btn btn-facebook btn-user btn-block\">
 \t\t\t\t\t\t\t\t\t\t\t<i class=\"fab fa-facebook-f fa-fw\"></i>
-\t\t\t\t\t\t\t\t\t\t\tLogin with Facebook
+\t\t\t\t\t\t\t\t\t\t\tConnecter avec Facebook
 \t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t</form>
 \t\t\t\t\t\t\t\t\t<hr>
 \t\t\t\t\t\t\t\t\t<div class=\"text-center\">
-\t\t\t\t\t\t\t\t\t\t<a class=\"small\"  href=\"{{ path('app_forgot_password_request') }}\">Forgot Password?</a>
+\t\t\t\t\t\t\t\t\t\t<a class=\"small\"  href=\"{{ path('app_forgot_password_request') }}\">Mot de passe oublier?</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t<div class=\"text-center\">
-\t\t\t\t\t\t\t\t\t\t<a class=\"small\" href=\"{{ path('ajout_employee') }}\">Create an Account!</a>
+\t\t\t\t\t\t\t\t\t\t<a class=\"small\" href=\"{{ path('ajout_employee') }}\">Vous êtes un Employée!</a>
+\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t<div class=\"text-center\">
+\t\t\t\t\t\t\t\t\t\t<a class=\"small\" href=\"{{ path('ajout_utilisateur_fournisseur') }}\">Vous êtes un Fournisseur!</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
               </div>

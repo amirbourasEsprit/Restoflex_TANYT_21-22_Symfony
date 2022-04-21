@@ -28,6 +28,7 @@ return [
     'ajout_role' => [[], ['_controller' => 'App\\Controller\\role\\AjoutRoleController::AjouterRole'], [], [['text', '/ajout/role']], [], []],
     'app_employe' => [[], ['_controller' => 'App\\Controller\\utilisateur\\EmployeController::index'], [], [['text', '/employe']], [], []],
     'listEmployes' => [[], ['_controller' => 'App\\Controller\\utilisateur\\EmployeController::afficher'], [], [['text', '/employes']], [], []],
-    'app_register_employes' => [[], ['_controller' => 'App\\Controller\\utilisateur\\RegisterEmployesController::index'], [], [['text', '/register/employes']], [], []],
     'ajout_employee' => [[], ['_controller' => 'App\\Controller\\utilisateur\\RegisterEmployesController::AjouterEmployee'], [], [['text', '/ajouter/employee']], [], []],
+    'app_register_employes' => [[], ['_controller' => 'App\\Controller\\utilisateur\\RegisterFournisseurController::index'], [], [['text', '/register/employes']], [], []],
+    'ajout_utilisateur_fournisseur' => [[], ['_controller' => 'App\\Controller\\utilisateur\\RegisterFournisseurController::AjouterEmployee'], [], [['text', '/ajouter/Ufournisseur']], [], []],
 ];

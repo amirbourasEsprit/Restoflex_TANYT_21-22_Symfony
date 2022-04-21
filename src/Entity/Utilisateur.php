@@ -111,9 +111,8 @@ class Utilisateur implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="poste_employe", type="string", length=255, nullable=true, options={"default"="NULL"})
-     * @MyValidation\VerifNull
      */
-    private $posteEmploye;
+    private $posteEmploye = NULL;
 
     /**
      * @var string
@@ -381,10 +380,6 @@ class Utilisateur implements UserInterface
         $this->email = $email;
 
         return $this;
-    }
-    public function __toString() :string
-    {
-        return $this->nom;
     }
 
 

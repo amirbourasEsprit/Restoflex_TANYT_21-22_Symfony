@@ -151,7 +151,7 @@ class __TwigTemplate_94e53bdcb917da52c58712c1958257afeca38f732b06e5d99c0c4858ce5
 \t\t\t\t<div class=\"card-body p-0\">
 \t\t\t\t\t<div class=\"p-5\">
 \t\t\t\t\t\t<div class=\"text-center\">
-\t\t\t\t\t\t\t<h1 class=\"h4 text-gray-900 mb-4\">Créer Votre compte</h1>
+\t\t\t\t\t\t\t<h1 class=\"h4 text-gray-900 mb-4\">Créer Votre Compte Employee</h1>
 \t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t";
@@ -377,7 +377,7 @@ class __TwigTemplate_94e53bdcb917da52c58712c1958257afeca38f732b06e5d99c0c4858ce5
 \t\t\t\t<div class=\"card-body p-0\">
 \t\t\t\t\t<div class=\"p-5\">
 \t\t\t\t\t\t<div class=\"text-center\">
-\t\t\t\t\t\t\t<h1 class=\"h4 text-gray-900 mb-4\">Créer Votre compte</h1>
+\t\t\t\t\t\t\t<h1 class=\"h4 text-gray-900 mb-4\">Créer Votre Compte Employee</h1>
 \t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t{{form_start(form,{attr:{'novalidate':'novalidate', 'class':\"user\"}})}}

@@ -17,7 +17,7 @@
 				<div class="card-body p-0">
 					<div class="p-5">
 						<div class="text-center">
-							<h1 class="h4 text-gray-900 mb-4">Créer Votre Compte Employee</h1>
+							<h1 class="h4 text-gray-900 mb-4">Créer Votre Compte Utilisateur Fournisseur</h1>
 						</div>
 
 						{{form_start(form,{attr:{'novalidate':'novalidate', 'class':"user"}})}}
@@ -80,14 +80,14 @@
 						</div>
                         	<div class="form-group row">
 							<div class="col-sm-6 mb-3 mb-sm-0">
-								{{ form_widget(form.posteEmploye,{ 'attr': {'class': "form-control form-control-user",
-                                            'placeholder': 'Poste employee'|trans} }) }}
+								{{ form_widget(form.idFournisseur,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Choisir votre Fournisseur'|trans} }) }}
 								<div style="color:red;">
-									{{ form_errors(form.posteEmploye) }}</div>
+									{{ form_errors(form.idFournisseur) }}</div>
 							</div>
 							<div class="col-sm-6">
 								{{ form_widget(form.idrest,{ 'attr': {'class': "form-control form-control-user",
-                                            'placeholder': 'Télèphone Restaurant'|trans} }) }}
+                                            'placeholder': 'Choisir votre Restaurant'|trans} }) }}
 								<div style="color:red;">
 									{{ form_errors(form.idrest) }}</div>
                                 </div>
