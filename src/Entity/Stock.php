@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use App\Entity\Fournisseur;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Validators as MyValidation;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="stock", indexes={@ORM\Index(name="id_stock_fk", columns={"id_fournisseur"})})
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\StockRepository")
+ 
  */
 class Stock
 {
@@ -26,6 +30,10 @@ class Stock
      * @var string
      *
      * @ORM\Column(name="nom_stock", type="string", length=255, nullable=false)
+     * @Assert\Length( 
+     * min =4,
+     * minMessage=" Entrer au moins 4 caracteres"
+     * )
      */
     private $nomStock;
 
@@ -33,6 +41,7 @@ class Stock
      * @var float
      *
      * @ORM\Column(name="prix_unitaire", type="float", precision=10, scale=0, nullable=false)
+     *    @MyValidation\VerifNull
      */
     private $prixUnitaire;
 
@@ -40,13 +49,14 @@ class Stock
      * @var float
      *
      * @ORM\Column(name="quantite", type="float", precision=10, scale=0, nullable=false)
+     *  @MyValidation\VerifNull
      */
     private $quantite;
 
     /**
-     * @var \Fournisseur
-     *
-     * @ORM\ManyToOne(targetEntity="Fournisseur")
+     * @var Fournisseur
+     * 
+     * @ORM\ManyToOne(targetEntity="Fournisseur" )
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_fournisseur", referencedColumnName="id_fournisseur")
      * })
@@ -105,6 +115,7 @@ class Stock
 
         return $this;
     }
+
 
 
 }
