@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamation
+{% endblock %}
+
+{% block content %}
+
+
+	<div class="container d-flex flex-column align-items-center">
+		<h1>Reclamation</h1>
+
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
+					<th style="">Numero Reclamation</th>
+					<td>{{reclamation.numReclamation }}</td>
+				</tr>
+				<tr>
+					<th>Destinataire</th>
+					<td>{{ reclamation.destinataire }}</td>
+				</tr>
+				<tr>
+					<th>Description</th>
+					<td>{{ reclamation.description}}</td>
+				</tr>
+				<tr>
+					<th>Statut Reclamation</th>
+					<td>{{ reclamation.statutReclamation }}</td>
+				</tr>
+				<tr>
+					<th>Date Reclamation</th>
+					<td>{{ reclamation.dateReclamation|date("${m/d/Y}")}}</td>
+				</tr>
+				<tr>
+					<th>Utilisateur</th>
+					<td>{{reclamation.id}}</td>
+				</tr>
+				<tr>
+					<th>Type Reclamation</th>
+					<td>{{ reclamation.idTypeReclamation.nomTypeReclamation}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('AfficheR') }}" class="btn btn-fill-out btn-block">Retour</a>
+	</div>
+{% endblock %}

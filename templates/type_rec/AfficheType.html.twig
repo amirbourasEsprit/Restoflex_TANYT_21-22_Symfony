@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des types de reclamations
+{% endblock %}
+{% block StyleAfterTemplate %}
+	<link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css')}}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
+	<style>
+
+		/* Table actions icons*/
+		table.table td a.view {
+			color: #03A9F4;
+		}
+
+		table.table td a.edit {
+			color: #FFC107;
+		}
+
+		table.table td a.delete {
+			color: #E34724;
+			text-align: center;
+		}
+		.hint-text {
+			float: left;
+			margin-top: 6px;
+			font-size: 95%;
+		}
+	</style>
+{% endblock StyleAfterTemplate %}
+{% block content %}
+	<div class="row justify-content-md-center">
+
+		<div class="col-lg-8">
+			<div class="card o-hidden border-2 shadow-lg my-5">
+				<div class="card-body p-2">
+					<div class="p-5">
+						<div class="text-center">
+							<h1 class="h4 text-gray-900 mb-4">Liste des Types de reclamations</h1>
+						</div>
+						<a href="{{ path ('AjoutTypeRec') }}" class="btn btn-success btn float-right col-sm col-md-4">
+							<span class="icon text-white-50">
+								<i style="float: left;" class="material-icons mr-1">&#xE147;</i>
+							</span>
+							<span class="text">Ajouter Type Reclamation</span>
+						</a>
+
+						<div class="table-responsive-sm mt-5">
+							<div class="row">
+								<div class="col-sm col-md-6">
+									<div id="dataTable_filter" class="dataTables_filter">
+										<input id="myInput" type="text" class="form-control form-control-sm float-right" placeholder="Search" aria-controls="dataTable">
+									</div>
+								</div>
+
+							</div>
+							<br>
+							<table class="table table-hover " id="myTable">
+								<thead class="thead-light ">
+									<tr>
+										<th scope="col">Id Type Reclamation
+										</th>
+										<th scope="col">Nom Type Reclamation
+										</th>
+									</tr>
+								</thead>
+								<tbody id="myTable">
+									{% for r in TypeReclamation  %}
+										<tr>
+											<td>
+												{{r.idTypeReclamation}}
+											</td>
+											<td>
+												{{r.nomTypeReclamation}}
+											</td>
+											<td>
+												<a href="{{path('s',{'idTypeReclamation':r.idTypeReclamation}) }}" class="delete" title="Delete" data-toggle="tooltip">
+													<i class="material-icons">&#xe872;</i>
+												</a>
+											</td>
+
+										</tr>
+									</a>
+								</tbody>
+							</td>
+						</tr>
+					</td>
+				</tbody>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table></div></div></div></div></div>{% endblock %}{% block JsAfterTemplate %}<script>$(document).ready(function () {
+$("#myInput").on("keyup", function () {
+var value = $(this).val().toLowerCase();
+$("#myTable > tbody > tr").filter(function () {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+});
+});
+});</script>{% endblock %}
