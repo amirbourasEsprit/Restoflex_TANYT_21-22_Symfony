@@ -99,11 +99,9 @@
 								</a>
 								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 									<div class="bg-white py-2 collapse-inner rounded">
-										<a class="collapse-item" href="#">Type Réclamations</a>
-										<a class="collapse-item" href="#">Mes Réclamations</a>
-										<a class="collapse-item" href="#">Ajouter Réclamation Employée
-										</a>
-										<a class="collapse-item" href="#">Ajouter Réclamation Fournisseur
+										<a class="collapse-item" href="{{ path('AfficheTypeR')}}">Type Réclamations</a>
+										<a class="collapse-item" href="{{ path('AfficheR')}}">Mes Réclamations</a>
+										<a class="collapse-item" href="{{ path('stat')}}">Statistiques
 										</a>
 
 
@@ -131,12 +129,17 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">
+								<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 									<i class="fas fa-fw fa-exclamation-triangle"></i>
 									<span>Réclamations</span>
 								</a>
-							</li>
+								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+									<div class="bg-white py-2 collapse-inner rounded">
 
+										<a class="collapse-item" href="{{ path('AfficheRC')}}">Mes Réclamations</a>
+									</div>
+								</div>
+							</li>
 						{% endif %}
 					{% endif %}
 
@@ -167,10 +170,16 @@
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link" href="#">
+								<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 									<i class="fas fa-fw fa-exclamation-triangle"></i>
 									<span>Réclamations</span>
 								</a>
+								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+									<div class="bg-white py-2 collapse-inner rounded">
+
+										<a class="collapse-item" href="{{ path('AfficheRF')}}">Mes Réclamations</a>
+									</div>
+								</div>
 							</li>
 						{% endif %}
 					{% endif %}
@@ -185,11 +194,11 @@
 					</div>
 
 					{#<!-- Sidebar Message -->
-																									            <div class="sidebar-card">
-																									                <img class="sidebar-card-illustration mb-2" src="{{asset('back-office/img/undraw_rocket.svg')}}" alt="">
-																									                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-																									                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-																									            </div>#}
+																														            <div class="sidebar-card">
+																														                <img class="sidebar-card-illustration mb-2" src="{{asset('back-office/img/undraw_rocket.svg')}}" alt="">
+																														                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+																														                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+																														            </div>#}
 
 				</ul>
 			{% endblock %}
@@ -317,7 +326,7 @@
 												</div>
 												<div class="font-weight-bold">
 													<div class="text-truncate">Hi there! I am wondering if you can help me with a
-																																																																				                                            problem I've been having.</div>
+																																																																																		                                            problem I've been having.</div>
 													<div class="small text-gray-500">Emily Fowler · 58m</div>
 												</div>
 											</a>
@@ -328,7 +337,7 @@
 												</div>
 												<div>
 													<div class="text-truncate">I have the photos that you ordered last month, how
-																																																																				                                            would you like them sent to you?</div>
+																																																																																		                                            would you like them sent to you?</div>
 													<div class="small text-gray-500">Jae Chun · 1d</div>
 												</div>
 											</a>
@@ -339,7 +348,7 @@
 												</div>
 												<div>
 													<div class="text-truncate">Last month's report looks great, I am very happy with
-																																																																				                                            the progress so far, keep up the good work!</div>
+																																																																																		                                            the progress so far, keep up the good work!</div>
 													<div class="small text-gray-500">Morgan Alvarez · 2d</div>
 												</div>
 											</a>
@@ -350,7 +359,7 @@
 												</div>
 												<div>
 													<div class="text-truncate">Am I a good boy? The reason I ask is because someone
-																																																																				                                            told me that people say this to all dogs, even if they aren't good...</div>
+																																																																																		                                            told me that people say this to all dogs, even if they aren't good...</div>
 													<div class="small text-gray-500">Chicken the Dog · 2w</div>
 												</div>
 											</a>
@@ -729,10 +738,10 @@
 											</div>
 											<p>Add some quality, svg illustrations to your project courtesy of
 												<a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-																																																															                                        constantly updated collection of beautiful svg images that you can use
-																																																															                                        completely free and without attribution!</p>
+																																																																												                                        constantly updated collection of beautiful svg images that you can use
+																																																																												                                        completely free and without attribution!</p>
 											<a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-																																																										                                        unDraw &rarr;</a>
+																																																																						                                        unDraw &rarr;</a>
 										</div>
 									</div>
 
@@ -743,10 +752,10 @@
 										</div>
 										<div class="card-body">
 											<p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-																																																										                                        CSS bloat and poor page performance. Custom CSS classes are used to create
-																																																										                                        custom components and custom utility classes.</p>
+																																																																						                                        CSS bloat and poor page performance. Custom CSS classes are used to create
+																																																																						                                        custom components and custom utility classes.</p>
 											<p class="mb-0">Before working with this theme, you should become familiar with the
-																																																										                                        Bootstrap framework, especially the utility classes.</p>
+																																																																						                                        Bootstrap framework, especially the utility classes.</p>
 										</div>
 									</div>
 

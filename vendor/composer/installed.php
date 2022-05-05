@@ -19,6 +19,15 @@
             'reference' => NULL,
             'dev_requirement' => false,
         ),
+        'cmen/google-charts-bundle' => array(
+            'pretty_version' => '5.0.0',
+            'version' => '5.0.0.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../cmen/google-charts-bundle',
+            'aliases' => array(),
+            'reference' => '9b5a70e4f62558a008377ab402e497c95f2482e7',
+            'dev_requirement' => false,
+        ),
         'doctrine/annotations' => array(
             'pretty_version' => '1.13.2',
             'version' => '1.13.2.0',
@@ -608,6 +617,15 @@
             'reference' => '430d14c01836b77c28092883d195a43ce413ee32',
             'dev_requirement' => false,
         ),
+        'swiftmailer/swiftmailer' => array(
+            'pretty_version' => 'v6.3.0',
+            'version' => '6.3.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../swiftmailer/swiftmailer',
+            'aliases' => array(),
+            'reference' => '8a5d5072dca8f48460fce2f4131fcc495eec654c',
+            'dev_requirement' => false,
+        ),
         'symfony/asset' => array(
             'pretty_version' => 'v4.4.40',
             'version' => '4.4.40.0',
@@ -1173,6 +1191,15 @@
             'install_path' => __DIR__ . '/../symfony/stopwatch',
             'aliases' => array(),
             'reference' => '7f4f5a8122f7530d688cc9edf2f8c9261552fa2d',
+            'dev_requirement' => false,
+        ),
+        'symfony/swiftmailer-bundle' => array(
+            'pretty_version' => 'v3.5.4',
+            'version' => '3.5.4.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfony/swiftmailer-bundle',
+            'aliases' => array(),
+            'reference' => '9daab339f226ac958192bf89836cb3378cc0e652',
             'dev_requirement' => false,
         ),
         'symfony/translation' => array(

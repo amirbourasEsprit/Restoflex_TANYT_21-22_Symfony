@@ -1,47 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reclamation
+{% block title %}Détails Réclamation
 {% endblock %}
+
+{% block StyleAfterTemplate %}
+	<link href="{{asset('back-office/css/details.css')}} " rel="stylesheet">
+	<link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css')}}" rel="stylesheet"/>
+
+{% endblock StyleAfterTemplate %}
+
 
 {% block content %}
 
 
-	<div class="container d-flex flex-column align-items-center">
-		<h1>Reclamation</h1>
+	<div class="row justify-content-md-center">
 
-		<table class="table table-bordered">
-			<tbody>
-				<tr>
-					<th style="">Numero Reclamation</th>
-					<td>{{reclamation.numReclamation }}</td>
-				</tr>
-				<tr>
-					<th>Destinataire</th>
-					<td>{{ reclamation.destinataire }}</td>
-				</tr>
-				<tr>
-					<th>Description</th>
-					<td>{{ reclamation.description}}</td>
-				</tr>
-				<tr>
-					<th>Statut Reclamation</th>
-					<td>{{ reclamation.statutReclamation }}</td>
-				</tr>
-				<tr>
-					<th>Date Reclamation</th>
-					<td>{{ reclamation.dateReclamation|date("${m/d/Y}")}}</td>
-				</tr>
-				<tr>
-					<th>Utilisateur</th>
-					<td>{{reclamation.id}}</td>
-				</tr>
-				<tr>
-					<th>Type Reclamation</th>
-					<td>{{ reclamation.idTypeReclamation.nomTypeReclamation}}</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="col-lg-10">
+			<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card-body p-0">
+					<div class="p-5">
 
-		<a href="{{ path('AfficheR') }}" class="btn btn-fill-out btn-block">Retour</a>
-	</div>
-{% endblock %}
+						<div class="detail-content">
+							<div class="title">Détails Réclamation
+
+							</div>
+							<div class="details-Box">
+								<table>
+									<tr>
+										<th>Destinataire</th>
+										<td>{{ reclamation.destinataire }}</td>
+									</tr>
+									<tr>
+										<th>Description</th>
+										<td>{{ reclamation.description}}</td>
+									</tr>
+									<tr>
+										<th>Statut Reclamation</th>
+										<td>{{ reclamation.statutReclamation }}</td>
+									</tr>
+									<tr>
+										<th>Date Reclamation</th>
+										<td>{{ reclamation.dateReclamation|date("m/d/Y")}}</td>
+									</tr>
+									<tr>
+										<th>Utilisateur</th>
+										<td>{{reclamation.id}}</td>
+									</tr>
+									<tr>
+										<th>Type Reclamation</th>
+										<td>{{ reclamation.idTypeReclamation.nomTypeReclamation}}</td>
+									</tr>
+								</table>
+							</div>
+
+							<div class="d-grid gap-2 col-6 mx-auto">
+								<button type="submit" class="btn btn-primary btn-user btn-block">
+									Retour
+								</button>
+							</div>
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	{% endblock %}

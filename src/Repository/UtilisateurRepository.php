@@ -104,7 +104,6 @@ class UtilisateurRepository extends ServiceEntityRepository
             }
 
 
-              //afficher les reclamations envoyees au gerant
         public function FindGerant(){
 
          
@@ -117,4 +116,11 @@ class UtilisateurRepository extends ServiceEntityRepository
                 ->getQuery()->getResult();
                 return $queryBuilder;
             }
+    public function get_email($id)
+    {
+
+        $entityManager=$this->getEntityManager();
+        $query = $entityManager->createQuery('SELECT u FROM App\Entity\Utilisateur u WHERE (u.id = :idp) ')->setParameter('idp', $id);
+        return $query->getOneOrNullResult();
+    }
 }

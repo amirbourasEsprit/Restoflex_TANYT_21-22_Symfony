@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerON3XsyA/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerWQnpNOd/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -26,6 +26,8 @@ $classes[] = 'Symfony\Bundle\SecurityBundle\SecurityBundle';
 $classes[] = 'Twig\Extra\TwigExtraBundle\TwigExtraBundle';
 $classes[] = 'Gregwar\CaptchaBundle\GregwarCaptchaBundle';
 $classes[] = 'SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle';
+$classes[] = 'Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle';
+$classes[] = 'CMEN\GoogleChartsBundle\CMENGoogleChartsBundle';
 $classes[] = 'Symfony\Component\HttpClient\TraceableHttpClient';
 $classes[] = 'Symfony\Contracts\HttpClient\HttpClientInterface';
 $classes[] = 'Symfony\Component\HttpClient\HttpClient';
@@ -52,6 +54,8 @@ $classes[] = 'App\Controller\utilisateur\RegisterEmployesController';
 $classes[] = 'App\Controller\utilisateur\RegisterFournisseurController';
 $classes[] = 'App\Form\ChangePasswordFormType';
 $classes[] = 'App\Form\ReclamationType';
+$classes[] = 'App\Form\ReclamationType1';
+$classes[] = 'App\Form\ReclamationType2';
 $classes[] = 'App\Form\RegisterEmployesType';
 $classes[] = 'App\Form\RegisterFournisseurType';
 $classes[] = 'App\Form\ResetPasswordRequestFormType';
@@ -357,6 +361,7 @@ $classes[] = 'Symfony\Component\HttpClient\DataCollector\HttpClientDataCollector
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\DataCollector\DoctrineDataCollector';
 $classes[] = 'Doctrine\Bundle\MigrationsBundle\Collector\MigrationsCollector';
 $classes[] = 'Doctrine\Bundle\MigrationsBundle\Collector\MigrationsFlattener';
+$classes[] = 'Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector';
 $classes[] = 'Symfony\Component\Mailer\DataCollector\MessageDataCollector';
 $classes[] = 'Symfony\Component\HttpKernel\DataCollector\ConfigDataCollector';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\ProfilerListener';
@@ -469,6 +474,17 @@ $classes[] = 'Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStor
 $classes[] = 'Symfony\Component\HttpFoundation\Session\Storage\MetadataBag';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\SessionListener';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\StreamedResponseListener';
+$classes[] = 'Symfony\Bundle\SwiftmailerBundle\Command\DebugCommand';
+$classes[] = 'Symfony\Bundle\SwiftmailerBundle\Command\NewEmailCommand';
+$classes[] = 'Symfony\Bundle\SwiftmailerBundle\Command\SendEmailCommand';
+$classes[] = 'Symfony\Bundle\SwiftmailerBundle\EventListener\EmailSenderListener';
+$classes[] = 'Swift_Mailer';
+$classes[] = 'Swift_Plugins_MessageLogger';
+$classes[] = 'Swift_Events_SimpleEventDispatcher';
+$classes[] = 'Swift_Transport';
+$classes[] = 'Symfony\Bundle\SwiftmailerBundle\DependencyInjection\SwiftmailerTransportFactory';
+$classes[] = 'Swift_Transport_SpoolTransport';
+$classes[] = 'Swift_MemorySpool';
 $classes[] = 'SymfonyCasts\Bundle\ResetPassword\Util\ResetPasswordCleaner';
 $classes[] = 'Symfony\Component\Translation\Extractor\ChainExtractor';
 $classes[] = 'Symfony\Component\Translation\Extractor\PhpExtractor';
@@ -516,6 +532,12 @@ $classes[] = 'Symfony\Bridge\Twig\Extension\SecurityExtension';
 $classes[] = 'Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension';
 $classes[] = 'Symfony\Component\VarDumper\Dumper\HtmlDumper';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension';
+$classes[] = 'CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension';
+$classes[] = 'CMEN\GoogleChartsBundle\Output\Javascript\ChartOutput';
+$classes[] = 'CMEN\GoogleChartsBundle\Output\Javascript\OptionsOutput';
+$classes[] = 'CMEN\GoogleChartsBundle\Output\Javascript\DateOutput';
+$classes[] = 'CMEN\GoogleChartsBundle\Output\Javascript\DataOutput';
+$classes[] = 'CMEN\GoogleChartsBundle\Output\Javascript\EventsOutput';
 $classes[] = 'Symfony\Bridge\Twig\AppVariable';
 $classes[] = 'Twig\RuntimeLoader\ContainerRuntimeLoader';
 $classes[] = 'Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor';

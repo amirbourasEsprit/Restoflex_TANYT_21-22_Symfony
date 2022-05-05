@@ -44,7 +44,26 @@ class ReclamationRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
+    public function ReclamationRecu($nom)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.destinataire = :val')
+            ->setParameter('val', $nom)
+            ->getQuery()
+            ->getResult();
 
+    }
+
+    public function modifier_statut($id){
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $q = $qb->update('App\Entity\Reclamation', 'u')
+            ->set('u.statutReclamation', ':stat')
+            ->where('u.numReclamation = :id')
+            ->setParameter('id', $id)
+            ->setParameter('stat', "traité")
+            ->getQuery();
+        $p = $q->execute();
+    }
     // /**
     //  * @return Reclamation[] Returns an array of Reclamation objects
     //  */
@@ -83,6 +102,18 @@ class ReclamationRepository extends ServiceEntityRepository
             ->getQuery()->getResult();
             return $queryBuilder;
         }
+    function traite()
+    {
+        $entityManager=$this->getEntityManager();
+        $query=$entityManager->createQuery('SELECT count(a) from App\Entity\Reclamation a WHERE (a.statutReclamation LIKE :type) ')->setParameter('type', 'traité');
+        return $query->getSingleScalarResult();
+    }
+    function ntraite()
+    {
+        $entityManager=$this->getEntityManager();
+        $query=$entityManager->createQuery('SELECT count(a) from App\Entity\Reclamation a WHERE (a.statutReclamation LIKE :type) ')->setParameter('type', 'en cours');
+        return $query->getSingleScalarResult();
+    }
  }
 
 
