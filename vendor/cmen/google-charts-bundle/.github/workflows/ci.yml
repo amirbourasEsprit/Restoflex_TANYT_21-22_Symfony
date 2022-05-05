@@ -1,0 +1,61 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  code_style:
+    runs-on: [ubuntu-latest]
+
+    name: Code style
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install PHP dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run PHP CS Fixer
+        run: ./vendor/bin/php-cs-fixer fix --diff --dry-run --verbose --stop-on-violation
+
+  code_analyze:
+    runs-on: [ubuntu-latest]
+
+    name: Code analyze
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install PHP dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan analyse
+
+  tests:
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-versions: ['7.4', '8.0', '8.1']
+
+    runs-on: ${{ matrix.operating-system }}
+
+    name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: xml, dom, mbstring
+          coverage: xdebug
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install PHP dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run test suite
+        run: ./vendor/bin/phpunit

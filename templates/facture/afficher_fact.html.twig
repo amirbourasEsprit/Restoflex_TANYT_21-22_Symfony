@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Factures
+{% endblock %}
+{% block StyleAfterTemplate %}
+	<link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css')}}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
+
+	<style>
+
+		/* Table actions icons*/
+		table.table td a.view {
+			color: #03A9F4;
+		}
+
+		table.table td a.edit {
+			color: #FFC107;
+		}
+
+		table.table td a.delete {
+			color: #E34724;
+			text-align: center;
+		}
+		.hint-text {
+			float: left;
+			margin-top: 6px;
+			font-size: 95%;
+		}
+	</style>
+{% endblock StyleAfterTemplate %}
+{% block content %}
+
+
+	<div class="row justify-content-md-center">
+
+		<div class="col-lg-8">
+			<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card-body p-0">
+					<div class="p-5">
+						<div class="text-center">
+							<h1 class="h4 text-gray-900 mb-4">Liste des Factures</h1>
+						</div>
+
+						<a href="{{ path('statFact') }}" class="btn btn-success btn float-right col-sm col-md-3">
+							<span class="icon text-white-50">
+								<i style="float: left;" class="material-icons mr-2">&#xe26b;</i>
+							</span>
+							<span class="text">Statistique</span>
+						</a>
+						<div class="table-responsive-sm mt-4">
+							<div
+								class="row">
+								{# <div class="col-sm col-md-6">
+																																																																																																																																																																																									<div id="dataTable_filter" class="dataTables_filter">
+																																																																																																																																																																																										<input id="myInput" type="text" class="form-control form-control-sm float-right" placeholder="Search" aria-controls="dataTable">
+																																																																																																																																																																																									</div>
+																																																																																																																																																																																								</div> #}
+
+								<form method="post" action="{{path('Search')}}">
+
+									<input type="text" name="search" placeholder="Etat"><input type="submit" value="Chercher">
+								</form>
+
+							</div>
+							<br>
+							<table class="table table-hover " id="myTable">
+								<thead class="thead-light ">
+									<tr>
+										<th scope="col">
+											N° Facture
+										</th>
+										<th scope="col">
+											Date
+										</th>
+										<th scope="col">
+											Etat
+										</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody id="myTable">
+									{% for f in factures %}
+										{% if f.idRest.idRest==app.user.idRest.idRest %}
+											{% if f.idFournisseur.idFournisseur==app.user.idFournisseur.idFournisseur %}
+												<tr>
+													<td>{{ f.numFacture }}</td>
+													<td>{{ f.dateFacture |date("d/m/Y")}}</td>
+													<td>{{ f.statut }}</td>
+													<td>
+														<a href="{{ path('deleteFact', {'numFacture': f.numFacture}) }}" class="delete" title="Delete" data-toggle="tooltip">
+															<i class="material-icons">&#xe872;</i>
+														</a>
+														<a href="{{ path('updateFact', {'numFacture': f.numFacture}) }}" class="edit" title="Update" data-toggle="tooltip">
+															<i class="material-icons">&#xe3c9;</i>
+														</a>
+														<a href="{{ path('detailsFact', {'numFacture': f.numFacture}) }}" class="view" title="Details" data-toggle="tooltip">
+															<i class="material-icons">&#xeac9;</i>
+														</a>
+													</td>
+												</tr>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+
+						<br>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	{% endblock %}
+	{% block JsAfterTemplate %}
+		<script>
+			$(document).ready(function () {
+$("#myInput").on("keyup", function () {
+var value = $(this).val().toLowerCase();
+$("#myTable > tbody > tr").filter(function () {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+});
+});
+});
+		</script>
+	{% endblock %}

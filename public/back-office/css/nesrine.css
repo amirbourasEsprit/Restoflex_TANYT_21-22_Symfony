@@ -1,0 +1,54 @@
+.detail-content {
+    margin: 50px;
+    width: fit-content;
+}
+
+.details-Box {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #2B54CC;
+    border-radius: 5px;
+    padding: 25px 50px;
+    margin: 50px;
+    width: fit-content;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-Box table tr td {
+    padding: 15px;
+    color: #000000;
+}
+
+.title {
+    color: #2B54CC;
+    font-size: 20px;
+}
+
+.title span {
+    color: #000000;
+}
+
+.btn-container {
+    width: 100%;
+    text-align: center;
+}
+
+.btn-container .downloadBtn {
+    display: inline-block;
+    color: #ffffff;
+    background-color: #0096FF;
+    padding: 5px;
+    cursor: pointer;
+
+}
+
+.downloadBtn .icon {
+    display: inline;
+}
+
+.downloadBtn p {
+    display: inline;
+}

@@ -1,0 +1,232 @@
+body {
+    position: relative;
+    color: $body;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $heading-font;
+    line-height: 1.5;
+}
+
+a {
+    color: $brand-primary;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    &:hover,
+    &:focus,
+    &:active {
+        color: darken($brand-primary, 30%);
+        text-decoration: none;
+    }
+}
+
+.link-muted {
+    color: $gray;
+}
+
+.link-reverse {
+    color: $white;
+    &:hover {
+        color: $white;
+        opacity: 0.7;
+    }
+}
+
+.my-lg {
+    margin-top: 5em !important;
+    margin-bottom: 5em !important;
+}
+
+.py-lg {
+    padding-top: 5em !important;
+    padding-bottom: 5em !important;
+}
+
+.mt-lg {
+    margin-top: 5em !important;
+}
+
+.mb-lg {
+    margin-bottom: 5em !important;
+}
+
+.pt-lg {
+    padding-top: 5em !important;
+}
+
+.pb-lg {
+    padding-bottom: 5em !important;
+}
+
+.mb-4 {
+    margin-bottom: 2rem!important;
+}
+
+@include media-breakpoint-up(md) {
+    .my-md-lg {
+        margin-top: 5em !important;
+        margin-bottom: 5em !important;
+    }
+}
+
+.display-5 {
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.bg-light {
+    background-color: $gray-lightest !important;
+}
+
+.bg-white {
+    background-color: $white !important;
+}
+
+.bg-primary {
+    background-color: $brand-primary !important;
+}
+
+.bg-gradient {
+    background-image: linear-gradient(-152deg, #6937EA 0%, #377FEA 65%);
+}
+
+.light-text {
+    color: darken($gray-lighter, 20%);
+}
+
+.text-inverse {
+    color: $white;
+}
+
+.form-control::placeholder {
+    color: $gray-light;
+    opacity: 0.5;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: $gray-light;
+    opacity: 0.5;
+}
+
+.text-muted {
+    color: lighten($body, 40%) !important;
+}
+
+
+/*FONT*/
+
+.sans-serif-font {
+    font-family: $sans-serif-font !important;
+}
+
+.thin-font {
+    font-weight: 300 !important;
+}
+
+
+/*font awesome*/
+
+.fa-valign {
+    vertical-align: middle;
+}
+
+
+/*-----------------------------------
+ * Section
+ *-----------------------------------*/
+
+.section {
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+.section-title {
+    margin: 2em auto;
+}
+
+
+/*-----------------------------------
+ * OWL CAROUSEL
+ *-----------------------------------*/
+
+
+/**
+ * Owl Carousel v2.2.1
+ * Copyright 2013-2017 David Deutsch
+ * Licensed under  ()
+ */
+
+
+/*
+ * 	Default theme - Owl Carousel CSS File
+ */
+
+.owl-theme .owl-nav {
+    margin-top: 10px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.owl-theme .owl-nav [class*='owl-'] {
+    color: #FFF;
+    font-size: 14px;
+    margin: 5px;
+    padding: 4px 7px;
+    background: #D6D6D6;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.owl-theme .owl-nav [class*='owl-']:hover {
+    background: #869791;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.owl-theme .owl-nav .disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.owl-theme .owl-nav.disabled+.owl-dots {
+    margin-top: 10px;
+}
+
+.owl-theme .owl-dots {
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.owl-theme .owl-dots .owl-dot {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+    width: 10px;
+    height: 10px;
+    margin: 5px 7px;
+    background: #D6D6D6;
+    display: block;
+    -webkit-backface-visibility: visible;
+    transition: opacity 200ms ease;
+    border-radius: 30px;
+}
+
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+    background: #869791;
+}
+
+.owl-carousel .owl-item .citation img {
+    width: 75px;
+    display: inline;
+}

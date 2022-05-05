@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Restaurant
+{% endblock %}
+
+{% block content %}
+
+	<!-- Nested Row within Card Body -->
+	<div class="row justify-content-md-center">
+
+		<div class="col-lg-6">
+			<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card-body p-0">
+					<div class="p-5">
+						<div class="text-center">
+							<h1 class="h4 text-gray-900 mb-4">Ajouter un Restaurant</h1>
+						</div>
+
+						{{form_start(form,{attr:{'novalidate':'novalidate', 'class':"user"}})}}
+						<div class="form-group row">
+							<div class="col-sm-6 mb-3 mb-sm-0">
+
+								{{ form_widget(form.nom,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Nom Restaurant'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.nom) }}</div>
+							</div>
+							<div class="col-sm-6">
+								{{ form_widget(form.specialite,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Spécialité Restaurant'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.specialite) }}</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-6 mb-3 mb-sm-0">
+								{{ form_widget(form.adresse,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Adresse Restaurant'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.adresse) }}</div>
+							</div>
+							<div class="col-sm-6">
+								{{ form_widget(form.email,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Email Restaurant'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.email) }}</div>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-sm-6 mb-3 mb-sm-0">
+								{{ form_widget(form.numTel,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Téléphone Restaurant'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.numTel) }}</div>
+							</div>
+						</div>
+						<div class="form-group row">
+
+							<div class="col-sm-6 mb-3 mb-sm-0">
+								{{ form_widget(form.captcha,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder':'Tapez le Code'|trans} }) }}
+								<div style="color:red;">
+									{{ form_errors(form.captcha) }}</div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="d-grid gap-2 col-6 mx-auto">
+						<button type="submit" class="btn btn-primary btn-user btn-block">
+							Modifier Restaurant
+						</button>
+					</div>
+
+					{{form_end(form)}}
+
+					<hr>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>{% endblock %}
