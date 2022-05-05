@@ -1,0 +1,49 @@
+<?php //App%255CEntity%255CTypeReclamation%2524nomTypeReclamation
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\Length'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Length')),
+        clone ($p['App\\Validators\\VerifNull'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('App\\Validators\\VerifNull')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'nom_type_reclamation',
+            ],
+            'type' => [
+                'string',
+            ],
+            'length' => [
+                255,
+            ],
+            'precision' => [
+                null,
+            ],
+            'scale' => [
+                null,
+            ],
+            'minMessage' => [
+                1 => ' Entrer au moins 4 caracteres',
+            ],
+            'min' => [
+                1 => 4,
+            ],
+            'groups' => [
+                1 => [
+                    'Default',
+                ],
+                [
+                    'Default',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+        $o[2],
+    ],
+    []
+); }];
