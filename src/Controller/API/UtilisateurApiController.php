@@ -35,6 +35,8 @@ class UtilisateurApiController extends AbstractController
     $dateNaissance= $request->query->get("dateNaissance");
     $adresse= $request->query->get("adresse");
     $posteEmploye= $request->query->get("posteEmploye");
+    $idRest= $request->query->get("idRest");
+   
    
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
         return new Response ("email invalid");
@@ -56,14 +58,14 @@ class UtilisateurApiController extends AbstractController
     $user->setStatusCompte('non_verifier');
     $user->setRoles(array('ROLE_EMPLOYEE'));
     $user->setPosteEmploye($posteEmploye);
+    $rest=$this->getDoctrine()->getRepository(Restaurant::class)->find($idRest);
+    $user->setIdRest($rest);
     $role = new Role();
     $role->setIdRole(2);
     $u = $this->getDoctrine()->getRepository(Role::class)->find($role);
     $user->setIdRole($u);
     try{
         $em=$this->getDoctrine()->getManager();
-        $rest=$em->getRepository(Restaurant::class)->find(2);
-        $user->setIdRest($rest);
         
         $em->persist($user);
         $em->flush();
@@ -88,6 +90,9 @@ class UtilisateurApiController extends AbstractController
     $numTel= $request->query->get("numTel");
     $dateNaissance= $request->query->get("dateNaissance");
     $adresse= $request->query->get("adresse");
+    $idFournisseur= $request->query->get("idFournisseur");
+    $idRest= $request->query->get("idRest");
+    
     
    
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -109,17 +114,16 @@ class UtilisateurApiController extends AbstractController
     $user->setSoldeConge(30);
     $user->setStatusCompte('non_verifier');
     $user->setRoles(array('ROLE_EMPLOYEE'));
+    $rest=$this->getDoctrine()->getRepository(Restaurant::class)->find($idRest);
+    $user->setIdRest($rest);
+    $four=$this->getDoctrine()->getRepository(Fournisseur::class)->find($idFournisseur);
+    $user->setIdFournisseur($four);
     $role = new Role();
     $role->setIdRole(3);
     $u = $this->getDoctrine()->getRepository(Role::class)->find($role);
     $user->setIdRole($u);
     try{
         $em=$this->getDoctrine()->getManager();
-        $rest=$em->getRepository(Restaurant::class)->find(2);
-        $user->setIdRest($rest);
-        $four=$em->getRepository(Fournisseur::class)->find(1);
-        $user->setIdFournisseur($four);
-
         $em->persist($user);
         $em->flush();
         return new JsonResponse("Account is created",200);
@@ -195,4 +199,20 @@ class UtilisateurApiController extends AbstractController
         return new Response("user not found");
     }
   }
+  /**
+   * @Route("user/getPasswordbyMail" , name="app_get_getPasswordbyMail")
+   */
+  public function getPasswordbyMail(Request $request){
+
+    $email=$request->get('email');
+    $user=$this->getDoctrine()->getManager()->getRepository(Utilisateur::class)->findOneBy(['email'=>$email]);
+    if($user){
+        $password=$user->getpassword();
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($password);
+        return new JsonResponse($formatted); 
+
+    }
+    return new Response("user not found");
+}
 }
