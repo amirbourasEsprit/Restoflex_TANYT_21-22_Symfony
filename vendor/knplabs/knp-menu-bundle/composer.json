@@ -1,0 +1,43 @@
+{
+    "name": "knplabs/knp-menu-bundle",
+    "description": "This bundle provides an integration of the KnpMenu library",
+    "keywords": ["menu"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Knplabs",
+            "homepage": "http://knplabs.com"
+        },
+        {
+            "name": "Christophe Coevoet",
+            "email": "stof@notk.org"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/KnpLabs/KnpMenuBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": "^7.2 || ^8.0",
+        "knplabs/knp-menu": "^3.1",
+        "symfony/framework-bundle": "^3.4 | ^4.4 | ^5.0 | ^6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5 | ^9.5",
+        "symfony/expression-language": "^3.4 | ^4.4 | ^5.0 | ^6.0",
+        "symfony/phpunit-bridge": "^5.2 | ^6.0",
+        "symfony/templating": "^3.4 | ^4.4 | ^5.0 | ^6.0"
+    },
+    "autoload": {
+        "psr-4": { "Knp\\Bundle\\MenuBundle\\": "src" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Knp\\Bundle\\MenuBundle\\Tests\\": "tests" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.x-dev"
+        }
+    }
+}

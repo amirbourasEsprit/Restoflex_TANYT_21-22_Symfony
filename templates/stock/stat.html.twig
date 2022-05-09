@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Load Flashy default CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <title>
+        {% block title %}SB Admin 2 - Dashboard
+        {% endblock %}
+    </title>
+
+    <!-- Custom fonts for this template-->
+    {% block css%}
+        <link href="{{asset('back-office/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+        <link
+                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+        <!-- Custom styles for this template-->
+        <link href="{{asset('back-office/css/sb-admin-2.min.css')}} " rel="stylesheet">
+    {% endblock %}
+
+    {% block StyleAfterTemplate %}{% endblock StyleAfterTemplate %}
+</head>
+{% block layout %}{% endblock layout %}
+<body
+
+        id="page-top">
+<!-- Flashy depends on jQuery -->
+<script src="//code.jquery.com/jquery.js"></script>
+<!-- Load Flashy default JavaScript -->
+<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+<!-- Include Flashy default partial -->
+{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+    {%block sidebar %}
+        <!-- Sidebar -->
+        <ul
+                class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Restoflex<sup>TANYT</sup>
+                </div>
+            </a>
+
+            <!-- Divider -->
+            <hr
+                    class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-chart-pie"></i>
+                    <span>Tableau de board</span>
+                </a>
+
+            </li>
+
+
+            <hr
+                    class="sidebar-divider">
+
+            {# side bar pour le gérant#}
+
+            <!-- Nav Item - Charts -->
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                {% if app.user.idRole.nomRole=="Gérant"%}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('listEmployes') }}">
+                            <i class="fas fa-fw fa-users"></i>
+                            <span>Employes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-fw fa-dolly"></i>
+                            <span>Fournisseurs</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-fw fa-box-open"></i>
+                            <span>Commandes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-fw fa-calendar-check"></i>
+                            <span>Congés</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            <i class="fas fa-fw fa-exclamation-triangle"></i>
+                            <span>Réclamations</span>
+                        </a>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="#">Type Réclamations</a>
+                                <a class="collapse-item" href="#">Mes Réclamations</a>
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            {% endif %}
+
+            {# side bar pour l'employee#}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                {% if app.user.idRole.nomRole=="Employée"%}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-fw fa-box-open"></i>
+                            <span>Commandes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-fw fa-calendar-check"></i>
+                            <span>Congés</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-fw fa-exclamation-triangle"></i>
+                            <span>Réclamations</span>
+                        </a>
+                    </li>
+
+                {% endif %}
+            {% endif %}
+
+            {# side bar pour le utilisateur fournisseur#}
+
+            <!-- Nav Item - Charts -->
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                {% if app.user.idRole.nomRole=="Utilisateur_fournisseur"%}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-fw fa-box-open"></i>
+                            <span>Commandes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-fw fa-dolly"></i>
+                            <span>Stock</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-fw fa-file-invoice-dollar"></i>
+                            <span>Factures</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-fw fa-exclamation-triangle"></i>
+                            <span>Réclamations</span>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endif %}
+
+            <!-- Divider -->
+            <hr
+                    class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            {#<!-- Sidebar Message -->
+										            <div class="sidebar-card">
+										                <img class="sidebar-card-illustration mb-2" src="{{asset('back-office/img/undraw_rocket.svg')}}" alt="">
+										                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+										                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+										            </div>#}
+
+        </ul>
+    {% endblock %}
+
+
+{% block body %}
+
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h1 class="tg-filterbale-nav option-set">Statistique Stock </h1>
+                        <a href="{{path('AStock')}}">Retour</a>
+                        <div id="div_chart"></div>
+
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                            {{ gc_draw(piechart, 'div_chart') }}
+                        </script>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+</div>

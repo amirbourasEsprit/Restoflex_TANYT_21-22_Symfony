@@ -1,0 +1,44 @@
+<?php //App%255CEntity%255CConge
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Table'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Table')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Index'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Index')),
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+        clone $p['Doctrine\\ORM\\Mapping\\Entity'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'conge',
+                'id_conge_fk',
+                'id_utilisateur_cong_fk',
+            ],
+            'indexes' => [
+                [
+                    $o[1],
+                    $o[2],
+                ],
+            ],
+            'columns' => [
+                1 => [
+                    'id_type_conge',
+                ],
+                [
+                    'id_utilisateur',
+                ],
+            ],
+            'repositoryClass' => [
+                4 => 'App\\Repository\\CongeRepository',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[3],
+        $o[4],
+    ],
+    []
+); }];

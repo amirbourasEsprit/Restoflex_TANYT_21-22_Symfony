@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des fournisseurs{% endblock %}
+{% block StyleAfterTemplate %}
+    <link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
+    <style>
+
+        /* Table actions icons*/
+        table.table td a.view {
+            color: #03A9F4;
+        }
+
+        table.table td a.edit {
+            color: #FFC107;
+        }
+
+        table.table td a.delete {
+            color: #E34724;
+            text-align: center;
+        }
+        .hint-text {
+            float: left;
+            margin-top: 6px;
+            font-size: 95%;
+        }
+    </style>
+{% endblock StyleAfterTemplate %}
+
+{% block content %}
+<div class="row justify-content-md-center">
+
+   {#  <div class="col-lg-6">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">#}
+                <div class="p-5">
+                 <div class="text-center"><h1 class="h4 text-gray-900 mb-4">Liste des fournisseurs</h1>
+                </div>
+                <a href="http://localhost/Pidev_symfony_TANYT/public/index.php/AjouterFournisseur" class="btn btn-success btn float-right col-sm col-md-3">
+                  <span class="icon text-white-50">
+                    <i style="float: left;" class="material-icons mr-2">&#xE147;</i>
+                  </span>
+                  <span class="text">Ajouter des fournisseurs</span>
+                </a>
+
+                    <div class="table-responsive-sm mt-4">
+
+                        <br>
+                        <table class="table table-hover " id="myTable">
+                            <thead class="thead-light ">
+                                <tr>
+                                   {#} <th scope="col">Nom</th>
+
+                                    #}
+                                    <th scope="col"> Nom Fournisseur</th>
+                                    <th scope="col">Matricule Fiscale</th>
+                                    <th scope="col">Domaine Fournisseur</th>
+                                    <th scope="col">Tel Fournisseur</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Adreesse</th>
+                                    <th scope="col" >logo</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+
+                                <tr>
+
+
+                                        <td>{{f.nomFournisseur}}</td>
+                                        <td>{{f.matriculeFiscale}}</td>
+                                        <td>{{f.domaineFournisseur}}</td>
+                                        <td>{{f.numTelFournisseur}}</td>
+                                        <td>{{f.emailFournisseur}}</td>
+                                        <td>{{f.adresseFournisseur}}</td>
+                                     {# <td>{{f.logo}}</td> #}
+                                      <td> <img src="{{ asset('/uploads/images/')~ f.logo }}" style="width: 60px height=60px"></td>
+
+                                        {#  product.brochureFilename #}
+
+
+
+                                    <td>
+                                        <a href="{{ path('Sfournisseur',{'idFournisseur':f.idFournisseur}) }}"class="delete" title="Delete" data-toggle="tooltip"><i
+                                                class="material-icons">&#xe872;</i></a>
+                                    </td>
+                                    <td>
+                                    <a class="btn btn-success" href="{{ path('Ufournisseur',{'idFournisseur':f.idFournisseur}) }}">Modifier</a></td>
+
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+          {#</div>
+        </div>
+    </div>#}
+
+
+{% endblock %}
+
+{% block JsAfterTemplate %}
+
+{% endblock %}
