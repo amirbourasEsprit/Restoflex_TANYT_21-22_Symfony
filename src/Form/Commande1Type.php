@@ -29,7 +29,7 @@ class Commande1Type extends AbstractType
 
                     return  $Fournisseur->getNomFournisseur() ;}
             ))
-            ->add('idUtilisateur', EntityType::class, array(
+            ->add('id', EntityType::class, array(
                 'class' => 'App\Entity\Utilisateur',
                 'choice_label' => function ($Utilisateur){
 
