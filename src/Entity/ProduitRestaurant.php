@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="produit_restaurant", indexes={@ORM\Index(name="id_res_produit_fk", columns={"id_rest"})})
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="App\Repository\ProduitRestaurantRepository")
  */
 class ProduitRestaurant
 {
@@ -29,6 +28,13 @@ class ProduitRestaurant
      */
     private $nomPdt;
 
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="categ", type="string", length=255, nullable=false)
+     */
+    private $categ;
+
     /**
      * @var float
      *
@@ -36,12 +42,7 @@ class ProduitRestaurant
      */
     private $quantitePdt;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="categ", type="string", length=255, nullable=false)
-     */
-    private $categ;
+     
 
     /**
      * @var \Restaurant
@@ -52,6 +53,16 @@ class ProduitRestaurant
      * })
      */
     private $idRest;
+
+     /**
+      * @var \Categorie
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", inversedBy="Produits")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_categorie", referencedColumnName="id_categorie")
+     * })
+     */
+    private $categorie;
+  
 
     public function getIdPdtrest(): ?int
     {
@@ -94,6 +105,18 @@ class ProduitRestaurant
         return $this;
     }
 
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
     public function getIdRest(): ?Restaurant
     {
         return $this->idRest;
@@ -104,6 +127,12 @@ class ProduitRestaurant
         $this->idRest = $idRest;
 
         return $this;
+    }
+    /**
+     * @return string
+     */
+    public function __toString() {
+    	return "idPdtrest: {$this->idPdtrest}";
     }
 
 

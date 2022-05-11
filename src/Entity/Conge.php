@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component \Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,16 +23,21 @@ class Conge
     private $idConge;
 
     /**
+     * 
      * @var \DateTime
-     *
+     *@Assert\GreaterThanOrEqual("28-04-2022")
      * @ORM\Column(name="date_deb", type="date", nullable=false)
+     *@Assert\NotBlank(message="le champs date est obligatoire  ")
+     * 
      */
     private $dateDeb;
-
+   
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_fin", type="date", nullable=false)
+     * @Assert\NotBlank(message="le champs date est obligatoire")
+     * @Assert\GreaterThanOrEqual(propertyPath="date_deb",message="La date du fin doit être supérieure à la date début")
      */
     private $dateFin;
 
@@ -48,13 +53,13 @@ class Conge
      *
      * @ORM\Column(name="etat", type="string", length=255, nullable=false, options={"default"="'en cours'"})
      */
-    private $etat = '\'en cours\'';
+    private $etat = "en cours";
 
     /**
      * @var \Utilisateur
      *
      * @ORM\ManyToOne(targetEntity="Utilisateur")
-     * @ORM\JoinColumns({
+     *  @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_utilisateur", referencedColumnName="id_utilisateur")
      * })
      */
@@ -67,8 +72,12 @@ class Conge
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_type_conge", referencedColumnName="id_type_conge")
      * })
+     * @Assert\NotBlank(message="le statut doit etre non vide")
      */
     private $idTypeConge;
+
+   
+
 
     public function getIdConge(): ?int
     {
@@ -122,7 +131,9 @@ class Conge
 
         return $this;
     }
-
+/**
+ * @return Utilisateur
+ */
     public function getIdUtilisateur(): ?Utilisateur
     {
         return $this->idUtilisateur;
@@ -134,7 +145,9 @@ class Conge
 
         return $this;
     }
-
+/**
+ * @return TypeConge
+ */
     public function getIdTypeConge(): ?TypeConge
     {
         return $this->idTypeConge;
@@ -147,5 +160,8 @@ class Conge
         return $this;
     }
 
+   
 
+
+    
 }

@@ -5,6 +5,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
         clone ($p['Doctrine\\ORM\\Mapping\\JoinColumns'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\JoinColumns')),
         clone ($p['Doctrine\\ORM\\Mapping\\JoinColumn'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\JoinColumn')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\NotBlank'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotBlank')),
     ],
     null,
     [
@@ -23,11 +24,20 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'referencedColumnName' => [
                 2 => 'id_type_conge',
             ],
+            'message' => [
+                3 => 'le statut doit etre non vide',
+            ],
+            'groups' => [
+                3 => [
+                    'Default',
+                ],
+            ],
         ],
     ],
     [
         $o[0],
         $o[1],
+        $o[3],
     ],
     []
 ); }];

@@ -2,7 +2,8 @@
 
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
-        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\Length'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Length')),
     ],
     null,
     [
@@ -22,10 +23,28 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'scale' => [
                 null,
             ],
+            'maxMessage' => [
+                1 => 'Le titre d\'un Event doit comporter au moins {{ limit }} caractères',
+            ],
+            'minMessage' => [
+                1 => 'Le titre doit comporter au moins {{ limit }} caractères',
+            ],
+            'max' => [
+                1 => 100,
+            ],
+            'min' => [
+                1 => 1,
+            ],
+            'groups' => [
+                1 => [
+                    'Default',
+                ],
+            ],
         ],
     ],
     [
         $o[0],
+        $o[1],
     ],
     []
 ); }];

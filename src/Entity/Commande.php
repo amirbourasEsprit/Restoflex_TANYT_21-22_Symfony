@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Commande
  *
  * @ORM\Table(name="commande", indexes={@ORM\Index(name="id_prod_cmd_fk", columns={"id_produit"}), @ORM\Index(name="id_fournisseur", columns={"id_fournisseur"}), @ORM\Index(name="id_utilisateur_fk", columns={"id_utilisateur"})})
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="App\Repository\CommandeRepository")
  */
 class Commande
 {
@@ -26,8 +26,15 @@ class Commande
      * @var string
      *
      * @ORM\Column(name="statut", type="string", length=255, nullable=false)
+           * @Assert\Length(
+     * min=1,
+     * max=100,
+     * minMessage = "Le titre doit comporter au moins {{ limit }} caractères",
+     * maxMessage = "Le titre d'un Event doit comporter au moins {{ limit }} caractères",
+     * )
      */
-    private $statut;
+
+    private $statut = 'En Cours';
 
     /**
      * @var \DateTime
@@ -47,6 +54,13 @@ class Commande
      * @var float
      *
      * @ORM\Column(name="quantite", type="float", precision=10, scale=0, nullable=false)
+      * @Assert\Length(
+     * min=1,
+     * max=100,
+     * minMessage = "Le titre doit comporter au moins {{ limit }} caractères",
+     * maxMessage = "Le titre d'un Event doit comporter au moins {{ limit }} caractères",
+     * )
+     * @Assert\NotBlank(message="la quantité doit etre non vide")
      */
     private $quantite;
 
@@ -78,7 +92,7 @@ class Commande
      *   @ORM\JoinColumn(name="id_utilisateur", referencedColumnName="id_utilisateur")
      * })
      */
-    private $idUtilisateur;
+    private $id;
 
     public function getIdCmd(): ?int
     {
@@ -159,15 +173,26 @@ class Commande
 
     public function getIdUtilisateur(): ?Utilisateur
     {
-        return $this->idUtilisateur;
+        return $this->id;
     }
 
-    public function setIdUtilisateur(?Utilisateur $idUtilisateur): self
+    public function setIdUtilisateur(?Utilisateur $id): self
     {
-        $this->idUtilisateur = $idUtilisateur;
+        $this->id = $id;
 
         return $this;
     }
 
+    public function getid(): ?Utilisateur
+    {
+        return $this->id;
+    }
+
+    public function setid(?Utilisateur $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
 }

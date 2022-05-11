@@ -45,6 +45,17 @@ class StockRepository extends ServiceEntityRepository
         }
     }
 
+    public function find_Nb_Stock_Par_Nom($nom)
+    {
+
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT DISTINCT  count(s.nomStock) FROM   App\Entity\Stock s  where s.nomStock = :nom   '
+        );
+        $query->setParameter('nom', $nom);
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Stock[] Returns an array of Stock objects
     //  */

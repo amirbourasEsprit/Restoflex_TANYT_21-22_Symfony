@@ -2,11 +2,16 @@
 
 namespace App\Repository;
 
+
+use App\Entity\Stock;
 use App\Entity\Facture;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
+use App\Entity\Commande;
 use Doctrine\ORM\ORMException;
+use App\Entity\ProduitRestaurant;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+
 
 /**
  * @method Facture|null find($id, $lockMode = null, $lockVersion = null)
@@ -16,6 +21,8 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class FactureRepository extends ServiceEntityRepository
 {
+
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Facture::class);
@@ -51,10 +58,10 @@ class FactureRepository extends ServiceEntityRepository
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
+            ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -65,12 +72,44 @@ class FactureRepository extends ServiceEntityRepository
     /*
     public function findOneBySomeField($value): ?Facture
     {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
     */
+
+   
+    public function chercherRestaurantQB($numFacture,$idRest)
+    {
+        return $this->createQueryBuilder('f')
+            ->join('f.restaurant', 'r')
+            ->addSelect('r.nom,r.adresse')
+            ->where('r.idRest=:idRest')
+            ->andWhere('f.numFacture=:numFacture')
+            ->setParameter('idRest',$idRest)
+            ->setParameter('numFacture',$numFacture)
+            ->getQuery()->getResult();
+    }
+
+    public function listeFactureByFrs($idFournisseur)
+    {
+        return $this->createQueryBuilder('f')
+            ->where('fr.idFournisseur=:idFournisseur')
+            ->setParameter('idFournisseur',$idFournisseur)
+            ->getQuery()->getResult();
+    }
+
+    
+    public function calculerTotalDQL($idCmd)
+    {
+        $em=$this->getEntityManager(); 
+        $query=$em->createQuery('select  c.quantite*s.prixUnitaire as total from App\Entity\Commande c , App\Entity\Stock s,
+        App\Entity\ProduitRestaurant p WHERE c.idFournisseur=s.idFournisseur AND c.idProduit=p.idPdtrest AND p.nomPdt=s.nomStock
+         AND c.idCmd=:idCmd')
+        ->setParameter('idCmd',$idCmd);
+        return $query->getResult();
+    }
 }

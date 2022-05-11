@@ -67,10 +67,10 @@ class Fournisseur extends \App\Entity\Fournisseur implements \Doctrine\ORM\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'idFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'nomFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'matriculeFiscale', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'domaineFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'numTelFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'emailFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'adresseFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'logo'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'idFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'nomFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'matriculeFiscale', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'domaineFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'numTelFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'emailFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'adresseFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'logo', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'imageFile'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'idFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'nomFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'matriculeFiscale', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'domaineFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'numTelFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'emailFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'adresseFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'logo'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'idFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'nomFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'matriculeFiscale', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'domaineFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'numTelFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'emailFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'adresseFournisseur', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'logo', '' . "\0" . 'App\\Entity\\Fournisseur' . "\0" . 'imageFile'];
     }
 
     /**
@@ -327,7 +327,7 @@ class Fournisseur extends \App\Entity\Fournisseur implements \Doctrine\ORM\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getLogo(): ?string
+    public function getLogo()
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLogo', []);
@@ -338,12 +338,34 @@ class Fournisseur extends \App\Entity\Fournisseur implements \Doctrine\ORM\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setLogo(?string $logo): \App\Entity\Fournisseur
+    public function setLogo($logo)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLogo', [$logo]);
 
         return parent::setLogo($logo);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setImageFile(\Symfony\Component\HttpFoundation\File\File $image = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageFile', [$image]);
+
+        return parent::setImageFile($image);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getImageFile()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageFile', []);
+
+        return parent::getImageFile();
     }
 
 }

@@ -73,4 +73,52 @@ class UtilisateurRepository extends ServiceEntityRepository
         ;
     }
     */
+      //affiche l'utilisateur employee qui envoie reclamation
+      public function FindEmploye(){
+
+         
+        $queryBuilder=$this->createQueryBuilder('u')
+            ->select('r','ro')
+            ->leftJoin('App\Entity\Reclamation', 'r', 'WITH', 'u = r.id')
+            ->leftJoin('App\Entity\Role', 'ro', 'WITH', 'u.idRole = ro.idRole')
+            ->where('ro.nomRole = :value ')
+            ->setParameter('value', 'Employée')
+            ->getQuery()->getResult();
+            return $queryBuilder;
+        }
+
+         //affiche l'utilisateur four qui envoie reclamation
+        public function FindFournisseur(){
+
+         
+            $queryBuilder=$this->createQueryBuilder('u')
+                ->select('r','ro')
+                ->leftJoin('App\Entity\Reclamation', 'r', 'WITH', 'u = r.id')
+                ->leftJoin('App\Entity\Role', 'ro', 'WITH', 'u.idRole = ro.idRole')
+                ->where('ro.nomRole = :value ')
+                ->setParameter('value', 'Utilisateur_fournisseur')
+                ->getQuery()->getResult();
+                return $queryBuilder;
+            }
+
+
+        public function FindGerant(){
+
+         
+            $queryBuilder=$this->createQueryBuilder('u')
+                ->select('r','ro')
+                ->leftJoin('App\Entity\Reclamation', 'r', 'WITH', 'u = r.id')
+                ->leftJoin('App\Entity\Role', 'ro', 'WITH', 'u.idRole = ro.idRole')
+                ->where('ro.nomRole = :value ')
+                ->setParameter('value', 'Gérant')
+                ->getQuery()->getResult();
+                return $queryBuilder;
+            }
+    public function get_email($id)
+    {
+
+        $entityManager=$this->getEntityManager();
+        $query = $entityManager->createQuery('SELECT u FROM App\Entity\Utilisateur u WHERE (u.id = :idp) ')->setParameter('idp', $id);
+        return $query->getOneOrNullResult();
+    }
 }

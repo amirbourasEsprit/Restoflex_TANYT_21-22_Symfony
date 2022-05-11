@@ -45,6 +45,12 @@ class FournisseurRepository extends ServiceEntityRepository
         }
     }
 
+    public function OrderByNom (){
+$em=$this->getEntityManager();
+$query=$em->createQuery(' select N from App\Entity\Fournisseur N order by N.nomFournisseur  Asc');
+return $query->getResult();
+    }
+
     // /**
     //  * @return Fournisseur[] Returns an array of Fournisseur objects
     //  */
@@ -73,4 +79,5 @@ class FournisseurRepository extends ServiceEntityRepository
         ;
     }
     */
+
 }

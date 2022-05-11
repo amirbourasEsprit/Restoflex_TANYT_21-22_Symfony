@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Categorie
  *
  * @ORM\Table(name="categorie")
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="App\Repository\CategorieRepository")
  */
 class Categorie
 {
@@ -29,6 +29,19 @@ class Categorie
      */
     private $nomCategorie;
 
+  
+   
+
+    /**
+     * @ORM\OneToMany(targetEntity=ProduitRestaurant::class, mappedBy="categorie")
+     */
+   private $Produits;
+
+    public function __construct()
+    {
+     
+    }
+
     public function getIdCategorie(): ?int
     {
         return $this->idCategorie;
@@ -45,6 +58,47 @@ class Categorie
 
         return $this;
     }
+    //  /**
+    //   * @ORM\OneToMany(targetEntity=ProduitRestaurant::class, mappedBy="categorie")
+    // */
+    //  private $produits;
+
+    /**
+     * @return Collection<int, ProduitRestaurant>
+     */
+ public function getProduits(): Collection
+    {
+    return $this->Produits;
+    }
+
+    public function addProduit(ProduitRestaurant $produit): self
+    {
+        if (!$this->Produits->contains($produit)) {
+           $this->Produits[] = $produit;
+           $produit->setCategorie($this);
+        }
+
+       return $this;
+    }
+
+    public function removeProduit(ProduitRestaurant $produit): self
+    {
+        if ($this->Produits->removeElement($produit)) {
+            // set the owning side to null (unless already changed)
+            if ($produit->getCategorie() === $this) {
+                $produit->setCategorie(null);
+            }
+        }
+
+        return $this;
+    }
+     /**
+     * @return string
+     */
+    public function __toString() {
+    	return "idCategorie: {$this->idCategorie}";
+    }
 
 
+  
 }

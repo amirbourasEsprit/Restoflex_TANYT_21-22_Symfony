@@ -23,7 +23,7 @@ public function Get_User() :Utilisateur
     if($this->security->getUser())
 {
 
-    $id = $this->security->getUser()->getUsername();
+    $id = $this->security->getUser()->getid();
 
     $entityManager = $this->getDoctrine()->getManager();
     $user = $entityManager->getRepository(Utilisateur::class)->find($id);

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,6 +30,11 @@ class Facture
      */
     private $dateFacture;
 
+    public function __construct()
+{
+    $this->dateFacture = new \DateTime('@'.strtotime('now'));
+}
+
     /**
      * @var float
      *
@@ -46,7 +52,7 @@ class Facture
     /**
      * @var \Restaurant
      *
-     * @ORM\ManyToOne(targetEntity="Restaurant")
+     * @ORM\ManyToOne(targetEntity="Restaurant", inversedBy="factures")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_rest", referencedColumnName="id_rest")
      * })
@@ -56,7 +62,7 @@ class Facture
     /**
      * @var \Fournisseur
      *
-     * @ORM\ManyToOne(targetEntity="Fournisseur")
+     * @ORM\ManyToOne(targetEntity="Fournisseur", inversedBy="factures")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_fournisseur", referencedColumnName="id_fournisseur")
      * })
@@ -126,6 +132,10 @@ class Facture
         $this->idFournisseur = $idFournisseur;
 
         return $this;
+    }
+    public function __toString() :string
+    {
+        return $this->total;
     }
 
 

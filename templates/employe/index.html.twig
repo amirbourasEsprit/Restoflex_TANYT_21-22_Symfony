@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des rôles
+{% block title %}Mes Employées
 {% endblock %}
 {% block StyleAfterTemplate %}
 	<link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css')}}" rel="stylesheet"/>
@@ -28,33 +28,45 @@
 	</style>
 {% endblock StyleAfterTemplate %}
 {% block content %}
+
+  
+
+
 	<div class="row justify-content-md-center">
 
-		<div class="col-lg-6">
+		<div class="col-lg-11">
 			<div class="card o-hidden border-0 shadow-lg my-5">
 				<div class="card-body p-0">
 					<div class="p-5">
 						<div class="text-center">
-							<h1 class="h4 text-gray-900 mb-4">Liste des Employes</h1>
+							<h1 class="h4 text-gray-900 mb-4">Mes Employées</h1>
 						</div>
-					
+
 						<div class="table-responsive-sm mt-4">
-							<div class="row">
-								<div class="col-sm col-md-6">
-									<div id="dataTable_filter" class="dataTables_filter">
-										<input id="myInput" type="text" class="form-control form-control-sm float-right" placeholder="Search" aria-controls="dataTable">
+							<div class="d-none d-sm-inline-block form-inline navbar-search">
+								<div class="input-group" id="dataTable_filter">
+									<input id="myInput" type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+									<div class="input-group-append">
+										<div class="btn btn-primary">
+											<i class="fas fa-search fa-sm"></i>
+										</div>
 									</div>
 								</div>
-
 							</div>
+							<br>
 							<br>
 							<table class="table table-hover " id="myTable">
 								<thead class="thead-light ">
 									<tr>
 										<th scope="col">Nom</th>
-										<th scope="col">Prenom</th>
-										<th scope="col">email</th>
+										<th scope="col">Prénom</th>
+										<th scope="col">Email</th>
 										<th scope="col">Numero</th>
+										<th scope="col">Date de naissance</th>
+										<th scope="col">Adresse</th>
+										<th scope="col">Solde congé</th>
+										<th scope="col">Poste Employée</th>
+										<th scope="col">Statut</th>
 										<th scope="col">Action</th>
 
 									</tr>
@@ -70,35 +82,63 @@
 													<td>{{ employe.prenom }}</td>
 													<td>{{ employe.email }}</td>
 													<td>{{ employe.numTel }}</td>
+													<td>{{ employe.dateNaissance |date('d-m-Y') }}</td>
+													<td>{{ employe.adresse}}</td>
+													<td>{{ employe.soldeConge }}</td>
+													<td>{{ employe.posteEmploye }}</td>
+													<td>
+														{% if employe.statusCompte == "non_verifier" %}
+															{% set status_color = "badge badge-danger" %}
+														{% else %}
+															{% set status_color = "badge badge-success" %}
+														{% endif %}
+														<span class="{{status_color}}">{{employe.statusCompte | upper}}</span>
+													</td>
 
 
 													<td>
-														<a href="#" class="delete" title="Delete" data-toggle="tooltip">
-															<i class="material-icons">&#xe872;</i>
+														<a href="{{ path('update', {'id':employe.id }) }}" class="view" title="View" data-toggle="tooltip">
+															<i class="material-icons">&#xE417;</i>
 														</a>
+														<a href="" class="delete" data-toggle="modal" data-target="#deleteModal-{{ employe.id }}">
+															<i class="material-icons">&#xE872;</i>
+														</a>
+														<div class="modal fade" id="deleteModal-{{ employe.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+															<div class="modal-dialog" role="document">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h5 class="modal-title" id="deleteModalLabel">Voulez vous supprimer ?</h5>
+																		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																			<span aria-hidden="true">&times;</span>
+																		</button>
+																	</div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+																		<form action="{{ path('supprimer_utilisateur_employee', {'id':employe.id }) }}" method="POST">
+																			<input class="btn btn-danger" type="submit" value="Supprimer">
+																		</form>
+																	</div>
+																</div>
+															</div>
+														</div>
 													</td>
 												</tr>
 											{% endif %}
 										{% endif %}
-
-
 									{% endfor %}
 								</tbody>
 							</tbody>
 						</table>
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-
-
-{% endblock %}
-{% block JsAfterTemplate %}
-	<script>
-		$(document).ready(function () {
+<!-- End of Main Content -->{% endblock %}{% block JsAfterTemplate %}
+<script>
+	$(document).ready(function () {
 $("#myInput").on("keyup", function () {
 var value = $(this).val().toLowerCase();
 $("#myTable > tbody > tr").filter(function () {
@@ -106,5 +146,10 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 });
 });
 });
-	</script>
+</script>
+
+
+
+
+
 {% endblock %}

@@ -15,11 +15,15 @@ class AjoutRoleController extends AbstractController
     /**
      * @Route("/role", name="role")
      */
-    public function listerRole(RoleRepository $repo)
-    {
-       $role=$repo->findAll();
+    public function listerRole(RoleRepository $repo ,Request $request)
+    {   $role=new Role();
+        $form = $this->createForm(RoleType::class, $role);
+        $form->handleRequest($request);
+        $role=$repo->findAll();
        return $this->render('role/index.html.twig',[
-           "roles"=>$role
+           "roles"=>$role,
+           'form' => $form->createView(),
+           
            
        ]);
 
@@ -27,7 +31,7 @@ class AjoutRoleController extends AbstractController
     /**
      * @Route("/ajout/role",name="ajout_role")
      */
-    public function AjouterRole(Request $request)
+    public function ajout_role(Request $request)
     {
         $role=new Role();
         $form = $this->createForm(RoleType::class, $role);
@@ -45,6 +49,18 @@ class AjoutRoleController extends AbstractController
         ]);
 
         
+    }
+    /**
+    * @Route("/supprimer/{idRole}", name="supprimer_role")
+    */
+    public function supprimer(RoleRepository $repository, $idRole)
+    {   
+        $User = $repository->find($idRole);
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($User);
+        $em->flush();
+        return $this->redirectToRoute('role');
+
     }
   
   

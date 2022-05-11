@@ -22,6 +22,10 @@
       <parameter key="TwigExtraBundle">Twig\Extra\TwigExtraBundle\TwigExtraBundle</parameter>
       <parameter key="GregwarCaptchaBundle">Gregwar\CaptchaBundle\GregwarCaptchaBundle</parameter>
       <parameter key="SymfonyCastsResetPasswordBundle">SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle</parameter>
+      <parameter key="SwiftmailerBundle">Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle</parameter>
+      <parameter key="CMENGoogleChartsBundle">CMEN\GoogleChartsBundle\CMENGoogleChartsBundle</parameter>
+      <parameter key="MercurySeriesFlashyBundle">MercurySeries\FlashyBundle\MercurySeriesFlashyBundle</parameter>
+      <parameter key="EndroidQrCodeBundle">Endroid\QrCodeBundle\EndroidQrCodeBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -76,11 +80,28 @@
         <parameter key="path">C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\symfonycasts\reset-password-bundle\src</parameter>
         <parameter key="namespace">SymfonyCasts\Bundle\ResetPassword</parameter>
       </parameter>
+      <parameter key="SwiftmailerBundle" type="collection">
+        <parameter key="path">C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\symfony\swiftmailer-bundle</parameter>
+        <parameter key="namespace">Symfony\Bundle\SwiftmailerBundle</parameter>
+      </parameter>
+      <parameter key="CMENGoogleChartsBundle" type="collection">
+        <parameter key="path">C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\cmen\google-charts-bundle</parameter>
+        <parameter key="namespace">CMEN\GoogleChartsBundle</parameter>
+      </parameter>
+      <parameter key="MercurySeriesFlashyBundle" type="collection">
+        <parameter key="path">C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\mercuryseries\flashy-bundle\src</parameter>
+        <parameter key="namespace">MercurySeries\FlashyBundle</parameter>
+      </parameter>
+      <parameter key="EndroidQrCodeBundle" type="collection">
+        <parameter key="path">C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\endroid\qr-code-bundle\src</parameter>
+        <parameter key="namespace">Endroid\QrCodeBundle</parameter>
+      </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">srcApp_KernelDevDebugContainer</parameter>
     <parameter key="container.dumper.inline_class_loader">true</parameter>
     <parameter key="container.dumper.inline_factories">true</parameter>
+    <parameter key="images_directory">C:\xampp\htdocs\Pidev_symfony_TANYT/public/uploads/images</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -296,6 +317,21 @@
     <parameter key="gregwar_captcha.config.gc_freq">100</parameter>
     <parameter key="gregwar_captcha.config.expiration">60</parameter>
     <parameter key="gregwar_captcha.config.whitelist_key">captcha_whitelist_key</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.name">dynamic</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">C:\xampp\htdocs\Pidev_symfony_TANYT\var\cache\dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
+    <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
+    <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
+    <parameter key="swiftmailer.mailer.default.delivery.enabled">true</parameter>
+    <parameter key="swiftmailer.spool.enabled">true</parameter>
+    <parameter key="swiftmailer.delivery.enabled">true</parameter>
+    <parameter key="swiftmailer.single_address">null</parameter>
+    <parameter key="swiftmailer.mailers" type="collection">
+      <parameter key="default">swiftmailer.mailer.default</parameter>
+    </parameter>
+    <parameter key="swiftmailer.default_mailer">default</parameter>
+    <parameter key="cmen_google_charts.version">current</parameter>
+    <parameter key="cmen_google_charts.language"></parameter>
     <parameter key="maker.compatible_check.doctrine.supports_attributes">true</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
@@ -366,6 +402,10 @@
         <parameter>doctrine_migrations</parameter>
         <parameter>@DoctrineMigrations/Collector/migrations.html.twig</parameter>
       </parameter>
+      <parameter key="swiftmailer.data_collector" type="collection">
+        <parameter>swiftmailer</parameter>
+        <parameter>@Swiftmailer/Collector/swiftmailer.html.twig</parameter>
+      </parameter>
       <parameter key="data_collector.dump" type="collection">
         <parameter>dump</parameter>
         <parameter>@Debug/Profiler/dump.html.twig</parameter>
@@ -386,11 +426,88 @@
     <service id="kernel" class="App\Kernel" public="true" synthetic="true">
       <tag name="routing.route_loader"/>
     </service>
+    <service id="App\Controller\API\UtilisateurApiController" class="App\Controller\API\UtilisateurApiController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\API\UtilisateurApiController"/>
+      </call>
+    </service>
+    <service id="App\Controller\CategorieController" class="App\Controller\CategorieController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\CategorieController"/>
+      </call>
+    </service>
+    <service id="App\Controller\CommandeController" class="App\Controller\CommandeController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\CommandeController"/>
+      </call>
+    </service>
+    <service id="App\Controller\CongeController" class="App\Controller\CongeController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\CongeController"/>
+      </call>
+    </service>
+    <service id="App\Controller\FactureController" class="App\Controller\FactureController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\FactureController"/>
+      </call>
+    </service>
+    <service id="App\Controller\FourniiseurApiController" class="App\Controller\FourniiseurApiController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\FourniiseurApiController"/>
+      </call>
+    </service>
+    <service id="App\Controller\FournisseurController" class="App\Controller\FournisseurController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\FournisseurController"/>
+      </call>
+    </service>
     <service id="App\Controller\LandingPageController" class="App\Controller\LandingPageController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\LandingPageController"/>
+      </call>
+    </service>
+    <service id="App\Controller\ProduitRestaurantController" class="App\Controller\ProduitRestaurantController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\ProduitRestaurantController"/>
+      </call>
+    </service>
+    <service id="App\Controller\ReclamationTas\ReclamationController" class="App\Controller\ReclamationTas\ReclamationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\ReclamationTas\ReclamationController"/>
+      </call>
+    </service>
+    <service id="App\Controller\ReclamationTas\ReclamationEmpController" class="App\Controller\ReclamationTas\ReclamationEmpController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\ReclamationTas\ReclamationEmpController"/>
+      </call>
+    </service>
+    <service id="App\Controller\ReclamationTas\ReclamationFController" class="App\Controller\ReclamationTas\ReclamationFController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\ReclamationTas\ReclamationFController"/>
       </call>
     </service>
     <service id="App\Controller\ResetPasswordController" class="App\Controller\ResetPasswordController" public="true" autowire="true" autoconfigure="true">
@@ -402,11 +519,32 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\ResetPasswordController"/>
       </call>
     </service>
+    <service id="App\Controller\RestaurantController" class="App\Controller\RestaurantController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\RestaurantController"/>
+      </call>
+    </service>
+    <service id="App\Controller\SearchController" class="App\Controller\SearchController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\SearchController"/>
+      </call>
+    </service>
     <service id="App\Controller\SecurityController" class="App\Controller\SecurityController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\SecurityController"/>
+      </call>
+    </service>
+    <service id="App\Controller\StockController" class="App\Controller\StockController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\StockController"/>
       </call>
     </service>
     <service id="App\Controller\TestController" class="App\Controller\TestController" public="true" autowire="true" autoconfigure="true">
@@ -416,11 +554,18 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\TestController"/>
       </call>
     </service>
-    <service id="App\Controller\restaurant\AjoutRestaurantController" class="App\Controller\restaurant\AjoutRestaurantController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\TypeCongeController" class="App\Controller\TypeCongeController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
-        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\restaurant\AjoutRestaurantController"/>
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\TypeCongeController"/>
+      </call>
+    </service>
+    <service id="App\Controller\adminRestoflex\AdminApplicationController" class="App\Controller\adminRestoflex\AdminApplicationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\adminRestoflex\AdminApplicationController"/>
       </call>
     </service>
     <service id="App\Controller\role\AjoutRoleController" class="App\Controller\role\AjoutRoleController" public="true" autowire="true" autoconfigure="true">
@@ -430,11 +575,25 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\role\AjoutRoleController"/>
       </call>
     </service>
+    <service id="App\Controller\typeReclamation\TypeRecController" class="App\Controller\typeReclamation\TypeRecController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\typeReclamation\TypeRecController"/>
+      </call>
+    </service>
     <service id="App\Controller\utilisateur\EmployeController" class="App\Controller\utilisateur\EmployeController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\utilisateur\EmployeController"/>
+      </call>
+    </service>
+    <service id="App\Controller\utilisateur\FournisseurController" class="App\Controller\utilisateur\FournisseurController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\utilisateur\FournisseurController"/>
       </call>
     </service>
     <service id="App\Controller\utilisateur\RegisterEmployesController" class="App\Controller\utilisateur\RegisterEmployesController" public="true" autowire="true" autoconfigure="true">
@@ -453,7 +612,40 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\utilisateur\RegisterFournisseurController"/>
       </call>
     </service>
+    <service id="App\Form\CategorieType" class="App\Form\CategorieType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\Commande1Type" class="App\Form\Commande1Type" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\CommandeType" class="App\Form\CommandeType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\CongeType" class="App\Form\CongeType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\EditEmployeeType" class="App\Form\EditEmployeeType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\FactureType" class="App\Form\FactureType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\FournisseurType" class="App\Form\FournisseurType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\ProduitRestaurantType" class="App\Form\ProduitRestaurantType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\ReclamationType" class="App\Form\ReclamationType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\ReclamationType1" class="App\Form\ReclamationType1" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\ReclamationType2" class="App\Form\ReclamationType2" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\RegisterEmployesType" class="App\Form\RegisterEmployesType" autowire="true" autoconfigure="true">
@@ -469,6 +661,18 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Form\RoleType" class="App\Form\RoleType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\SearchType" class="App\Form\SearchType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\StockType" class="App\Form\StockType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\TypeCongeType" class="App\Form\TypeCongeType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\TypeReclamationType" class="App\Form\TypeReclamationType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true">
@@ -527,6 +731,7 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Services\FileUploader" class="App\Services\FileUploader" autowire="true" autoconfigure="true"/>
     <service id="App\Services\GetUser" class="App\Services\GetUser" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -541,6 +746,9 @@
       <call method="setContainer">
         <argument type="service" id=".service_locator.vdmMuyE.App\Services\MaLocalisation"/>
       </call>
+    </service>
+    <service id="App\Services\QrcodeService" class="App\Services\QrcodeService" autowire="true" autoconfigure="true">
+      <argument type="service" id="Endroid\QrCode\Builder\Builder"/>
     </service>
     <service id="App\Validators\VerifCin" class="App\Validators\VerifCin" autowire="true" autoconfigure="true"/>
     <service id="App\Validators\VerifCinValidator" class="App\Validators\VerifCinValidator" autowire="true" autoconfigure="true">
@@ -679,6 +887,7 @@
         <argument key="form.type.entity" type="service" id="form.type.entity" on-invalid="ignore_uninitialized"/>
         <argument key="security.token_storage" type="service" id="security.token_storage" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_expression_language" type="service" id="cache.security_expression_language" on-invalid="ignore_uninitialized"/>
+        <argument key="swiftmailer.email_sender.listener" type="service" id="swiftmailer.email_sender.listener" on-invalid="ignore_uninitialized"/>
         <argument key=".debug.http_client" type="service" id=".debug.http_client" on-invalid="ignore_uninitialized"/>
       </argument>
       <argument type="collection">
@@ -738,6 +947,9 @@
           <argument>setToken</argument>
         </argument>
         <argument key="cache.security_expression_language" type="collection">
+          <argument>reset</argument>
+        </argument>
+        <argument key="swiftmailer.email_sender.listener" type="collection">
           <argument>reset</argument>
         </argument>
         <argument key=".debug.http_client" type="collection">
@@ -985,12 +1197,27 @@
         <argument></argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\CategorieType</argument>
         <argument>App\Form\ChangePasswordFormType</argument>
+        <argument>App\Form\Commande1Type</argument>
+        <argument>App\Form\CommandeType</argument>
+        <argument>App\Form\CongeType</argument>
+        <argument>App\Form\EditEmployeeType</argument>
+        <argument>App\Form\FactureType</argument>
+        <argument>App\Form\FournisseurType</argument>
+        <argument>App\Form\ProduitRestaurantType</argument>
+        <argument>App\Form\ReclamationType</argument>
+        <argument>App\Form\ReclamationType1</argument>
+        <argument>App\Form\ReclamationType2</argument>
         <argument>App\Form\RegisterEmployesType</argument>
         <argument>App\Form\RegisterFournisseurType</argument>
         <argument>App\Form\ResetPasswordRequestFormType</argument>
         <argument>App\Form\RestaurantType</argument>
         <argument>App\Form\RoleType</argument>
+        <argument>App\Form\SearchType</argument>
+        <argument>App\Form\StockType</argument>
+        <argument>App\Form\TypeCongeType</argument>
+        <argument>App\Form\TypeReclamationType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -1325,7 +1552,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.AT.l7IK"/>
+      <argument type="service" id=".service_locator.LiJxAfu"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1445,6 +1672,11 @@
       <argument></argument>
       <argument type="service" id="assets.empty_version_strategy"/>
       <argument type="service" id="assets.context"/>
+    </service>
+    <service id="psr18.http_client" class="Symfony\Component\HttpClient\Psr18Client">
+      <argument type="service" id=".debug.http_client"/>
+      <argument>null</argument>
+      <argument>null</argument>
     </service>
     <service id="mailer.mailer" class="Symfony\Component\Mailer\Mailer">
       <argument type="service" id="mailer.transports"/>
@@ -1979,6 +2211,14 @@
           <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/TwigExtraBundle/translations</argument>
           <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/GregwarCaptchaBundle/translations</argument>
           <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/SymfonyCastsResetPasswordBundle/translations</argument>
+          <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\symfony\swiftmailer-bundle/translations</argument>
+          <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/SwiftmailerBundle/translations</argument>
+          <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\cmen\google-charts-bundle/translations</argument>
+          <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/CMENGoogleChartsBundle/translations</argument>
+          <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\mercuryseries\flashy-bundle\src/translations</argument>
+          <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/MercurySeriesFlashyBundle/translations</argument>
+          <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\endroid\qr-code-bundle\src/translations</argument>
+          <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/EndroidQrCodeBundle/translations</argument>
           <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
@@ -2013,6 +2253,14 @@
             <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/TwigExtraBundle/translations</argument>
             <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/GregwarCaptchaBundle/translations</argument>
             <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/SymfonyCastsResetPasswordBundle/translations</argument>
+            <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\symfony\swiftmailer-bundle/translations</argument>
+            <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/SwiftmailerBundle/translations</argument>
+            <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\cmen\google-charts-bundle/translations</argument>
+            <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/CMENGoogleChartsBundle/translations</argument>
+            <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\mercuryseries\flashy-bundle\src/translations</argument>
+            <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/MercurySeriesFlashyBundle/translations</argument>
+            <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\endroid\qr-code-bundle\src/translations</argument>
+            <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/EndroidQrCodeBundle/translations</argument>
             <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\src/Resources/translations</argument>
           </argument>
         </argument>
@@ -2275,6 +2523,9 @@
       </call>
       <call method="add">
         <argument type="service" id="doctrine_migrations.migrations_collector"/>
+      </call>
+      <call method="add">
+        <argument type="service" id="swiftmailer.data_collector"/>
       </call>
       <call method="add">
         <argument type="service" id="data_collector.dump"/>
@@ -2870,6 +3121,38 @@
         </argument>
         <argument>0</argument>
       </call>
+      <call method="addListener">
+        <argument>kernel.exception</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
+          <argument>onException</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.terminate</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
+          <argument>onTerminate</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>console.error</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
+          <argument>onException</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>console.terminate</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
+          <argument>onTerminate</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
     </service>
     <service id="debug.controller_resolver" class="Symfony\Component\HttpKernel\Controller\TraceableControllerResolver" public="false">
       <tag name="monolog.logger" channel="request"/>
@@ -3387,6 +3670,12 @@
       <call method="addExtension">
         <argument type="service" id="doctrine.twig.doctrine_extension"/>
       </call>
+      <call method="addExtension">
+        <argument type="service" id="CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="Endroid\QrCodeBundle\Twig\QrCodeExtension"/>
+      </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="twig.app_variable"/>
@@ -3512,6 +3801,22 @@
         <argument>!GregwarCaptcha</argument>
       </call>
       <call method="addPath">
+        <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
+        <argument>Swiftmailer</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
+        <argument>!Swiftmailer</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\mercuryseries\flashy-bundle\src/Resources/views</argument>
+        <argument>MercurySeriesFlashy</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\Pidev_symfony_TANYT\vendor\mercuryseries\flashy-bundle\src/Resources/views</argument>
+        <argument>!MercurySeriesFlashy</argument>
+      </call>
+      <call method="addPath">
         <argument>C:\xampp\htdocs\Pidev_symfony_TANYT/templates</argument>
       </call>
       <call method="addPath">
@@ -3606,7 +3911,7 @@
       <argument>,</argument>
     </service>
     <service id="twig.runtime_loader" class="Twig\RuntimeLoader\ContainerRuntimeLoader" public="false">
-      <argument type="service" id=".service_locator.7YWluy."/>
+      <argument type="service" id=".service_locator.ZoarNAe"/>
     </service>
     <service id="twig.error_renderer.html" class="Symfony\Bridge\Twig\ErrorRenderer\TwigErrorRenderer" public="false">
       <argument type="service" id="twig"/>
@@ -5370,35 +5675,319 @@
       <argument>3600</argument>
       <argument>3600</argument>
     </service>
+    <service id=".4_Swift_Transport_Esmtp_Auth_NTLMAuthenticator~prJOeQk" class="Swift_Transport_Esmtp_Auth_NTLMAuthenticator" public="false"/>
+    <service id=".3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~prJOeQk" class="Swift_Transport_Esmtp_Auth_PlainAuthenticator" public="false"/>
+    <service id=".2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~prJOeQk" class="Swift_Transport_Esmtp_Auth_LoginAuthenticator" public="false"/>
+    <service id=".1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~prJOeQk" class="Swift_Transport_Esmtp_Auth_CramMd5Authenticator" public="false"/>
+    <service id="swiftmailer.mailer.abstract" class="Swift_Mailer" public="true" abstract="true">
+      <argument type="service" id="swiftmailer.mailer.default.transport.spool"/>
+    </service>
+    <service id="swiftmailer.transport.smtp.configurator.abstract" class="Symfony\Bundle\SwiftmailerBundle\DependencyInjection\SmtpTransportConfigurator" public="false" abstract="true"/>
+    <service id="swiftmailer.transport.sendmail.abstract" class="Swift_Transport_SendmailTransport" public="false" abstract="true"/>
+    <service id="swiftmailer.transport.null.abstract" class="Swift_Transport_NullTransport" public="false" abstract="true"/>
+    <service id="swiftmailer.transport.failover" class="Swift_Transport_FailoverTransport" public="false"/>
+    <service id="swiftmailer.transport.buffer.abstract" class="Swift_Transport_StreamBuffer" public="false" abstract="true">
+      <argument type="service" id="swiftmailer.transport.replacementfactory"/>
+    </service>
+    <service id="swiftmailer.transport.authhandler.abstract" class="Swift_Transport_Esmtp_AuthHandler" public="false" abstract="true">
+      <argument type="collection">
+        <argument type="service" id=".1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~prJOeQk"/>
+        <argument type="service" id=".2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~prJOeQk"/>
+        <argument type="service" id=".3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~prJOeQk"/>
+        <argument type="service" id=".4_Swift_Transport_Esmtp_Auth_NTLMAuthenticator~prJOeQk"/>
+      </argument>
+    </service>
+    <service id="swiftmailer.transport.eventdispatcher.abstract" class="Swift_Events_SimpleEventDispatcher" public="false" abstract="true"/>
+    <service id="swiftmailer.transport.replacementfactory" class="Swift_StreamFilters_StringReplacementFilterFactory" public="false"/>
+    <service id="swiftmailer.plugin.redirecting.abstract" class="Swift_Plugins_RedirectingPlugin" public="false" abstract="true"/>
+    <service id="swiftmailer.plugin.antiflood.abstract" class="Swift_Plugins_AntiFloodPlugin" public="false" abstract="true"/>
+    <service id="swiftmailer.plugin.impersonate.abstract" class="Swift_Plugins_ImpersonatePlugin" public="false" abstract="true"/>
+    <service id="swiftmailer.plugin.messagelogger.abstract" class="Swift_Plugins_MessageLogger" abstract="true"/>
+    <service id="swiftmailer.transport.smtp.abstract" class="Swift_Transport_EsmtpTransport" public="false" abstract="true"/>
+    <service id="swiftmailer.transport.spool.abstract" class="Swift_Transport_SpoolTransport" public="false" abstract="true"/>
+    <service id="swiftmailer.spool.file.abstract" class="Swift_FileSpool" public="false" abstract="true">
+      <argument></argument>
+    </service>
+    <service id="swiftmailer.spool.memory.abstract" class="Swift_MemorySpool" public="false" abstract="true"/>
+    <service id="swiftmailer.email_sender.listener" class="Symfony\Bundle\SwiftmailerBundle\EventListener\EmailSenderListener">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="kernel.reset" method="reset"/>
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="monolog.logger" on-invalid="null"/>
+    </service>
+    <service id="swiftmailer.data_collector" class="Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector" public="false">
+      <tag name="data_collector" template="@Swiftmailer/Collector/swiftmailer.html.twig" id="swiftmailer" priority="245"/>
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="swiftmailer.command.debug" class="Symfony\Bundle\SwiftmailerBundle\Command\DebugCommand">
+      <tag name="console.command" command="debug:swiftmailer"/>
+      <call method="setName">
+        <argument>debug:swiftmailer</argument>
+      </call>
+    </service>
+    <service id="swiftmailer.command.new_email" class="Symfony\Bundle\SwiftmailerBundle\Command\NewEmailCommand">
+      <tag name="console.command" command="swiftmailer:email:send"/>
+      <call method="setName">
+        <argument>swiftmailer:email:send</argument>
+      </call>
+    </service>
+    <service id="swiftmailer.command.send_email" class="Symfony\Bundle\SwiftmailerBundle\Command\SendEmailCommand">
+      <tag name="console.command" command="swiftmailer:spool:send"/>
+      <call method="setName">
+        <argument>swiftmailer:spool:send</argument>
+      </call>
+    </service>
+    <service id="swiftmailer.mailer.default.transport.eventdispatcher" class="Swift_Events_SimpleEventDispatcher" public="false"/>
+    <service id="swiftmailer.mailer.default.transport.dynamic" class="Swift_Transport">
+      <argument type="collection">
+        <argument key="transport">smtp</argument>
+        <argument key="url">%env(MAILER_URL)%</argument>
+        <argument key="username">null</argument>
+        <argument key="password">null</argument>
+        <argument key="host">localhost</argument>
+        <argument key="port">null</argument>
+        <argument key="timeout">30</argument>
+        <argument key="source_ip">null</argument>
+        <argument key="local_domain">null</argument>
+        <argument key="encryption">null</argument>
+        <argument key="auth_mode">null</argument>
+        <argument key="command">/usr/sbin/sendmail -bs</argument>
+        <argument key="stream_options" type="collection"/>
+      </argument>
+      <argument type="service" id="router.request_context" on-invalid="null"/>
+      <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
+      <factory class="Symfony\Bundle\SwiftmailerBundle\DependencyInjection\SwiftmailerTransportFactory" method="createTransport"/>
+    </service>
+    <service id="swiftmailer.mailer.default" class="Swift_Mailer" public="true">
+      <argument type="service" id="swiftmailer.mailer.default.transport.spool"/>
+    </service>
+    <service id="swiftmailer.mailer.default.spool.memory" class="Swift_MemorySpool" public="false"/>
+    <service id="swiftmailer.mailer.default.transport.spool" class="Swift_Transport_SpoolTransport" public="false">
+      <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
+      <argument type="service" id="swiftmailer.mailer.default.spool.memory"/>
+      <call method="registerPlugin">
+        <argument type="service" id="swiftmailer.mailer.default.plugin.messagelogger"/>
+      </call>
+    </service>
+    <service id="swiftmailer.mailer.default.plugin.messagelogger" class="Swift_Plugins_MessageLogger" public="true">
+      <tag name="swiftmailer.default.plugin"/>
+    </service>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\DateOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\DateOutput" public="false"/>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\OptionsOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\OptionsOutput" public="false">
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\DateOutput"/>
+    </service>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\DataOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\DataOutput" public="false">
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\DateOutput"/>
+    </service>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\EventsOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\EventsOutput" public="false"/>
+    <service id="CMEN\GoogleChartsBundle\Output\Javascript\ChartOutput" class="CMEN\GoogleChartsBundle\Output\Javascript\ChartOutput" public="false">
+      <argument>current</argument>
+      <argument></argument>
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\OptionsOutput"/>
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\DataOutput"/>
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\EventsOutput"/>
+    </service>
+    <service id="CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension" class="CMEN\GoogleChartsBundle\Twig\GoogleChartsExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument type="service" id="CMEN\GoogleChartsBundle\Output\Javascript\ChartOutput"/>
+    </service>
+    <service id="mercuryseries_flashy.flashy_notifier" class="MercurySeries\FlashyBundle\FlashyNotifier" public="true">
+      <argument type="service" id="mercuryseries_flashy.symfony_session_store"/>
+      <argument>mercuryseries_flashy_notification</argument>
+    </service>
+    <service id="mercuryseries_flashy.symfony_session_store" class="MercurySeries\FlashyBundle\SymfonySessionStore" public="false">
+      <argument type="service" id="session"/>
+    </service>
+    <service id="Endroid\QrCodeBundle\Controller\GenerateController" class="Endroid\QrCodeBundle\Controller\GenerateController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <argument type="service" id="Endroid\QrCode\Builder\BuilderRegistry"/>
+    </service>
+    <service id="Endroid\QrCode\Writer\BinaryWriter" class="Endroid\QrCode\Writer\BinaryWriter" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Writer\DebugWriter" class="Endroid\QrCode\Writer\DebugWriter" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Writer\EpsWriter" class="Endroid\QrCode\Writer\EpsWriter" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Writer\PdfWriter" class="Endroid\QrCode\Writer\PdfWriter" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Writer\PngWriter" class="Endroid\QrCode\Writer\PngWriter" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Writer\SvgWriter" class="Endroid\QrCode\Writer\SvgWriter" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Builder\Builder" class="Endroid\QrCode\Builder\Builder" public="false" autowire="true" autoconfigure="true"/>
+    <service id="Endroid\QrCode\Builder\BuilderRegistry" class="Endroid\QrCode\Builder\BuilderRegistry" public="false" autowire="true" autoconfigure="true">
+      <call method="addBuilder">
+        <argument>default</argument>
+        <argument type="service">
+          <service class="Endroid\QrCode\Builder\Builder" public="true" autowire="true">
+            <call method="writer">
+              <argument type="service" id="Endroid\QrCode\Writer\PngWriter"/>
+            </call>
+            <call method="size">
+              <argument>300</argument>
+            </call>
+            <call method="margin">
+              <argument>10</argument>
+            </call>
+            <call method="encoding">
+              <argument type="service">
+                <service class="Endroid\QrCode\Encoding\Encoding">
+                  <argument>UTF-8</argument>
+                </service>
+              </argument>
+            </call>
+            <call method="errorCorrectionLevel">
+              <argument type="service">
+                <service class="Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow"/>
+              </argument>
+            </call>
+            <call method="roundBlockSizeMode">
+              <argument type="service">
+                <service class="Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin"/>
+              </argument>
+            </call>
+            <call method="validateResult">
+              <argument>false</argument>
+            </call>
+          </service>
+        </argument>
+      </call>
+    </service>
+    <service id="Endroid\QrCodeBundle\Twig\QrCodeExtension" class="Endroid\QrCodeBundle\Twig\QrCodeExtension" public="false" autowire="true" autoconfigure="true">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="Endroid\QrCodeBundle\Twig\QrCodeRuntime" class="Endroid\QrCodeBundle\Twig\QrCodeRuntime" public="false" autowire="true" autoconfigure="true">
+      <tag name="twig.runtime"/>
+      <argument type="service" id="Endroid\QrCode\Builder\BuilderRegistry"/>
+      <argument type="service" id="router.default"/>
+    </service>
+    <service id="endroid_qr_code.default_builder" class="Endroid\QrCode\Builder\Builder" public="true" autowire="true">
+      <call method="writer">
+        <argument type="service" id="Endroid\QrCode\Writer\PngWriter"/>
+      </call>
+      <call method="size">
+        <argument>300</argument>
+      </call>
+      <call method="margin">
+        <argument>10</argument>
+      </call>
+      <call method="encoding">
+        <argument type="service">
+          <service class="Endroid\QrCode\Encoding\Encoding">
+            <argument>UTF-8</argument>
+          </service>
+        </argument>
+      </call>
+      <call method="errorCorrectionLevel">
+        <argument type="service">
+          <service class="Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow"/>
+        </argument>
+      </call>
+      <call method="roundBlockSizeMode">
+        <argument type="service">
+          <service class="Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin"/>
+        </argument>
+      </call>
+      <call method="validateResult">
+        <argument>false</argument>
+      </call>
+    </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\API\UtilisateurApiController" class="App\Controller\API\UtilisateurApiController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\API\UtilisateurApiController" class="App\Controller\API\UtilisateurApiController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\API\UtilisateurApiController" class="App\Controller\API\UtilisateurApiController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CategorieController" class="App\Controller\CategorieController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CategorieController" class="App\Controller\CategorieController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CategorieController" class="App\Controller\CategorieController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CommandeController" class="App\Controller\CommandeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CommandeController" class="App\Controller\CommandeController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CommandeController" class="App\Controller\CommandeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CongeController" class="App\Controller\CongeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CongeController" class="App\Controller\CongeController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CongeController" class="App\Controller\CongeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\FactureController" class="App\Controller\FactureController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FactureController" class="App\Controller\FactureController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\FactureController" class="App\Controller\FactureController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\FourniiseurApiController" class="App\Controller\FourniiseurApiController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FourniiseurApiController" class="App\Controller\FourniiseurApiController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\FourniiseurApiController" class="App\Controller\FourniiseurApiController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\FournisseurController" class="App\Controller\FournisseurController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FournisseurController" class="App\Controller\FournisseurController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\FournisseurController" class="App\Controller\FournisseurController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LandingPageController" class="App\Controller\LandingPageController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LandingPageController" class="App\Controller\LandingPageController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LandingPageController" class="App\Controller\LandingPageController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProduitRestaurantController" class="App\Controller\ProduitRestaurantController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProduitRestaurantController" class="App\Controller\ProduitRestaurantController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ProduitRestaurantController" class="App\Controller\ProduitRestaurantController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReclamationTas\ReclamationController" class="App\Controller\ReclamationTas\ReclamationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReclamationTas\ReclamationController" class="App\Controller\ReclamationTas\ReclamationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ReclamationTas\ReclamationController" class="App\Controller\ReclamationTas\ReclamationController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReclamationTas\ReclamationEmpController" class="App\Controller\ReclamationTas\ReclamationEmpController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReclamationTas\ReclamationEmpController" class="App\Controller\ReclamationTas\ReclamationEmpController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ReclamationTas\ReclamationEmpController" class="App\Controller\ReclamationTas\ReclamationEmpController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReclamationTas\ReclamationFController" class="App\Controller\ReclamationTas\ReclamationFController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReclamationTas\ReclamationFController" class="App\Controller\ReclamationTas\ReclamationFController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ReclamationTas\ReclamationFController" class="App\Controller\ReclamationTas\ReclamationFController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ResetPasswordController" class="App\Controller\ResetPasswordController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ResetPasswordController" class="App\Controller\ResetPasswordController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ResetPasswordController" class="App\Controller\ResetPasswordController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RestaurantController" class="App\Controller\RestaurantController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RestaurantController" class="App\Controller\RestaurantController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\RestaurantController" class="App\Controller\RestaurantController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SearchController" class="App\Controller\SearchController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SearchController" class="App\Controller\SearchController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\SearchController" class="App\Controller\SearchController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\StockController" class="App\Controller\StockController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\StockController" class="App\Controller\StockController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\StockController" class="App\Controller\StockController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TestController" class="App\Controller\TestController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TestController" class="App\Controller\TestController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\TestController" class="App\Controller\TestController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\restaurant\AjoutRestaurantController" class="App\Controller\restaurant\AjoutRestaurantController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\restaurant\AjoutRestaurantController" class="App\Controller\restaurant\AjoutRestaurantController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\restaurant\AjoutRestaurantController" class="App\Controller\restaurant\AjoutRestaurantController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TypeCongeController" class="App\Controller\TypeCongeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TypeCongeController" class="App\Controller\TypeCongeController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\TypeCongeController" class="App\Controller\TypeCongeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\adminRestoflex\AdminApplicationController" class="App\Controller\adminRestoflex\AdminApplicationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\adminRestoflex\AdminApplicationController" class="App\Controller\adminRestoflex\AdminApplicationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\adminRestoflex\AdminApplicationController" class="App\Controller\adminRestoflex\AdminApplicationController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\role\AjoutRoleController" class="App\Controller\role\AjoutRoleController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\role\AjoutRoleController" class="App\Controller\role\AjoutRoleController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\role\AjoutRoleController" class="App\Controller\role\AjoutRoleController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\typeReclamation\TypeRecController" class="App\Controller\typeReclamation\TypeRecController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\typeReclamation\TypeRecController" class="App\Controller\typeReclamation\TypeRecController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\typeReclamation\TypeRecController" class="App\Controller\typeReclamation\TypeRecController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\utilisateur\EmployeController" class="App\Controller\utilisateur\EmployeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\utilisateur\EmployeController" class="App\Controller\utilisateur\EmployeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\utilisateur\EmployeController" class="App\Controller\utilisateur\EmployeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\utilisateur\FournisseurController" class="App\Controller\utilisateur\FournisseurController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\utilisateur\FournisseurController" class="App\Controller\utilisateur\FournisseurController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\utilisateur\FournisseurController" class="App\Controller\utilisateur\FournisseurController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\utilisateur\RegisterEmployesController" class="App\Controller\utilisateur\RegisterEmployesController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\utilisateur\RegisterEmployesController" class="App\Controller\utilisateur\RegisterEmployesController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\utilisateur\RegisterEmployesController" class="App\Controller\utilisateur\RegisterEmployesController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\utilisateur\RegisterFournisseurController" class="App\Controller\utilisateur\RegisterFournisseurController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\utilisateur\RegisterFournisseurController" class="App\Controller\utilisateur\RegisterFournisseurController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\utilisateur\RegisterFournisseurController" class="App\Controller\utilisateur\RegisterFournisseurController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CategorieType" class="App\Form\CategorieType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CategorieType" class="App\Form\CategorieType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\Commande1Type" class="App\Form\Commande1Type" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\Commande1Type" class="App\Form\Commande1Type" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CommandeType" class="App\Form\CommandeType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CommandeType" class="App\Form\CommandeType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CongeType" class="App\Form\CongeType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CongeType" class="App\Form\CongeType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EditEmployeeType" class="App\Form\EditEmployeeType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\EditEmployeeType" class="App\Form\EditEmployeeType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FactureType" class="App\Form\FactureType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\FactureType" class="App\Form\FactureType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FournisseurType" class="App\Form\FournisseurType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\FournisseurType" class="App\Form\FournisseurType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ProduitRestaurantType" class="App\Form\ProduitRestaurantType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ProduitRestaurantType" class="App\Form\ProduitRestaurantType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ReclamationType" class="App\Form\ReclamationType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ReclamationType" class="App\Form\ReclamationType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ReclamationType1" class="App\Form\ReclamationType1" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ReclamationType1" class="App\Form\ReclamationType1" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ReclamationType2" class="App\Form\ReclamationType2" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ReclamationType2" class="App\Form\ReclamationType2" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegisterEmployesType" class="App\Form\RegisterEmployesType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RegisterEmployesType" class="App\Form\RegisterEmployesType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegisterFournisseurType" class="App\Form\RegisterFournisseurType" autowire="true" abstract="true"/>
@@ -5409,6 +5998,14 @@
     <service id=".abstract.instanceof.App\Form\RestaurantType" class="App\Form\RestaurantType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RoleType" class="App\Form\RoleType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RoleType" class="App\Form\RoleType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SearchType" class="App\Form\SearchType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SearchType" class="App\Form\SearchType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\StockType" class="App\Form\StockType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\StockType" class="App\Form\StockType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TypeCongeType" class="App\Form\TypeCongeType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\TypeCongeType" class="App\Form\TypeCongeType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TypeReclamationType" class="App\Form\TypeReclamationType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\TypeReclamationType" class="App\Form\TypeReclamationType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CategorieRepository" class="App\Repository\CategorieRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommandeRepository" class="App\Repository\CommandeRepository" autowire="true" abstract="true"/>
@@ -5453,6 +6050,10 @@
     <service id=".abstract.instanceof.App\Validators\VerifPasswordValidator" class="App\Validators\VerifPasswordValidator" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Validator\ConstraintValidatorInterface.0.App\Validators\VerifTelValidator" class="App\Validators\VerifTelValidator" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Validators\VerifTelValidator" class="App\Validators\VerifTelValidator" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Twig\Extension\ExtensionInterface.0.Endroid\QrCodeBundle\Twig\QrCodeExtension" class="Endroid\QrCodeBundle\Twig\QrCodeExtension" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.Endroid\QrCodeBundle\Twig\QrCodeExtension" class="Endroid\QrCodeBundle\Twig\QrCodeExtension" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Twig\Extension\RuntimeExtensionInterface.0.Endroid\QrCodeBundle\Twig\QrCodeRuntime" class="Endroid\QrCodeBundle\Twig\QrCodeRuntime" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.Endroid\QrCodeBundle\Twig\QrCodeRuntime" class="Endroid\QrCodeBundle\Twig\QrCodeRuntime" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.CmORmuK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5734,6 +6335,186 @@
         <argument>make:migration</argument>
       </call>
     </service>
+    <service id=".service_locator.ccM2MGC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="passwordEncoder" type="service_closure" id="security.user_password_encoder.generic"/>
+      </argument>
+    </service>
+    <service id=".service_locator.6Ht_qlL" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="encoder" type="service_closure" id="security.user_password_encoder.generic"/>
+        <argument key="repository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.qce5O_D" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="Repository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
+        <argument key="normalizable" type="service_closure" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.b1NC3V0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="encoder" type="service_closure" id="security.user_password_encoder.generic"/>
+        <argument key="normalizable" type="service_closure" id="serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.x8FmIZ0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.RdXN6Y1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="categorie" type="service_closure" id=".errored..service_locator.RdXN6Y1.App\Entity\Categorie"/>
+      </argument>
+    </service>
+    <service id=".service_locator.pCoFPhJ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="categorie" type="service_closure" id=".errored..service_locator.pCoFPhJ.App\Entity\Categorie"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.H30dJTF" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\CommandeRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.BYMd5nT" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="getUser" type="service_closure" id="App\Services\GetUser"/>
+      </argument>
+    </service>
+    <service id=".service_locator.e1rdezy" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="commande" type="service_closure" id=".errored..service_locator.e1rdezy.App\Entity\Commande"/>
+      </argument>
+    </service>
+    <service id=".service_locator.i.r6b_4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="commande" type="service_closure" id=".errored..service_locator.i.r6b_4.App\Entity\Commande"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="getUser" type="service_closure" id="App\Services\GetUser"/>
+      </argument>
+    </service>
+    <service id=".service_locator.nO_ICba" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="commande" type="service_closure" id=".errored..service_locator.nO_ICba.App\Entity\Commande"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Mq42R5e" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="flashy" type="service_closure" id="mercuryseries_flashy.flashy_notifier"/>
+      </argument>
+    </service>
+    <service id=".service_locator.xXsVTlj" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="flashy" type="service_closure" id="mercuryseries_flashy.flashy_notifier"/>
+        <argument key="id" type="service_closure" id=".errored..service_locator.xXsVTlj.App\Entity\Conge"/>
+      </argument>
+    </service>
+    <service id=".service_locator.cwcBR7u" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="flashy" type="service_closure" id="mercuryseries_flashy.flashy_notifier"/>
+        <argument key="mailer" type="service_closure" id="swiftmailer.mailer.default"/>
+        <argument key="repository" type="service_closure" id="App\Repository\CongeRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ZJsWLcv" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="flashy" type="service_closure" id="mercuryseries_flashy.flashy_notifier"/>
+        <argument key="repository" type="service_closure" id="App\Repository\CongeRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Mn3p92N" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\CongeRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.H8xF7Bi" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\CommandeRepository"/>
+        <argument key="repo1" type="service_closure" id="App\Repository\FactureRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ERKVXl3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\FactureRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.QhCAtBr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\FactureRepository"/>
+        <argument key="user" type="service_closure" id="App\Services\GetUser"/>
+      </argument>
+    </service>
+    <service id=".service_locator..aa7CVV" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="flashy" type="service_closure" id="mercuryseries_flashy.flashy_notifier"/>
+        <argument key="rep" type="service_closure" id="App\Repository\FournisseurRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jt5xxCQ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="rep" type="service_closure" id="App\Repository\FournisseurRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.W9CUgqm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="produitRestaurant" type="service_closure" id=".errored..service_locator.W9CUgqm.App\Entity\ProduitRestaurant"/>
+      </argument>
+    </service>
+    <service id=".service_locator.oSK6hCn" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="produitRestaurant" type="service_closure" id=".errored..service_locator.oSK6hCn.App\Entity\ProduitRestaurant"/>
+      </argument>
+    </service>
+    <service id=".service_locator.T3yXDV0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repoUti" type="service_closure" id="App\Repository\UtilisateurRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\ReclamationRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.HftxPFb" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="getUser" type="service_closure" id="App\Services\GetUser"/>
+      </argument>
+    </service>
+    <service id=".service_locator.NZCbHGE" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="getUser" type="service_closure" id="App\Services\GetUser"/>
+        <argument key="mailer" type="service_closure" id="swiftmailer.mailer.default"/>
+      </argument>
+    </service>
     <service id=".service_locator.tejTvi1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5748,10 +6529,43 @@
         <argument key="userPasswordEncoder" type="service_closure" id="security.user_password_encoder.generic"/>
       </argument>
     </service>
+    <service id=".service_locator.d41TOyJ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\RestaurantRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.s5ZjQOM" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="qrcodeService" type="service_closure" id="App\Services\QrcodeService"/>
+      </argument>
+    </service>
     <service id=".service_locator.Z9YHLOP" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="utils" type="service_closure" id="security.authentication_utils"/>
+      </argument>
+    </service>
+    <service id=".service_locator.TTmyCEt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="flashy" type="service_closure" id="mercuryseries_flashy.flashy_notifier"/>
+        <argument key="rep" type="service_closure" id="App\Repository\StockRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.HQxJVRv" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="flashy" type="service_closure" id="mercuryseries_flashy.flashy_notifier"/>
+        <argument key="getUser" type="service_closure" id="App\Services\GetUser"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Jfhm4Zd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="flashy" type="service_closure" id="mercuryseries_flashy.flashy_notifier"/>
+        <argument key="id" type="service_closure" id=".errored..service_locator.Jfhm4Zd.App\Entity\TypeConge"/>
       </argument>
     </service>
     <service id=".service_locator.QrD46LN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5760,25 +6574,171 @@
         <argument key="repo" type="service_closure" id="App\Repository\RoleRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.NsN8_gd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\RoleRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ZwDlruq" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.Zl1Tas8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="maLocalisation" type="service_closure" id="App\Services\MaLocalisation"/>
       </argument>
     </service>
-    <service id=".service_locator.RD5YYZx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator._LoCEYe" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\API\UtilisateurApiController::editAction" type="service_closure" id=".service_locator.ccM2MGC"/>
+        <argument key="App\Controller\API\UtilisateurApiController::forgetPasswordCheck" type="service_closure" id=".service_locator.qce5O_D"/>
+        <argument key="App\Controller\API\UtilisateurApiController::modifyEntPassword" type="service_closure" id=".service_locator.b1NC3V0"/>
+        <argument key="App\Controller\API\UtilisateurApiController::signupEmpAction" type="service_closure" id=".service_locator.ccM2MGC"/>
+        <argument key="App\Controller\API\UtilisateurApiController::signupFourAction" type="service_closure" id=".service_locator.ccM2MGC"/>
+        <argument key="App\Controller\API\UtilisateurApiController::singinAction" type="service_closure" id=".service_locator.6Ht_qlL"/>
+        <argument key="App\Controller\CategorieController::delete" type="service_closure" id=".service_locator.pCoFPhJ"/>
+        <argument key="App\Controller\CategorieController::edit" type="service_closure" id=".service_locator.pCoFPhJ"/>
+        <argument key="App\Controller\CategorieController::index" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\CategorieController::new" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\CategorieController::show" type="service_closure" id=".service_locator.RdXN6Y1"/>
+        <argument key="App\Controller\CommandeController::afficherCommandeF" type="service_closure" id=".service_locator.H30dJTF"/>
+        <argument key="App\Controller\CommandeController::delete" type="service_closure" id=".service_locator.nO_ICba"/>
+        <argument key="App\Controller\CommandeController::edit" type="service_closure" id=".service_locator.i.r6b_4"/>
+        <argument key="App\Controller\CommandeController::index" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\CommandeController::new" type="service_closure" id=".service_locator.BYMd5nT"/>
+        <argument key="App\Controller\CommandeController::show" type="service_closure" id=".service_locator.e1rdezy"/>
+        <argument key="App\Controller\CongeController::AccepterConge" type="service_closure" id=".service_locator.cwcBR7u"/>
+        <argument key="App\Controller\CongeController::AjouterConge" type="service_closure" id=".service_locator.Mq42R5e"/>
+        <argument key="App\Controller\CongeController::ModifierConge" type="service_closure" id=".service_locator.Mq42R5e"/>
+        <argument key="App\Controller\CongeController::RefuserConge" type="service_closure" id=".service_locator.ZJsWLcv"/>
+        <argument key="App\Controller\CongeController::SupprimerConge" type="service_closure" id=".service_locator.xXsVTlj"/>
+        <argument key="App\Controller\CongeController::solde" type="service_closure" id=".service_locator.Mn3p92N"/>
+        <argument key="App\Controller\FactureController::afficherFacture" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FactureController::ajouterFacture" type="service_closure" id=".service_locator.H8xF7Bi"/>
+        <argument key="App\Controller\FactureController::calulT" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FactureController::modifierFacture" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FactureController::rechercheByDate" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FactureController::showDetailsFact" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FactureController::showPDFFact" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FactureController::statistiqueFact" type="service_closure" id=".service_locator.QhCAtBr"/>
+        <argument key="App\Controller\FactureController::supprimerFacture" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FournisseurController::FunctionName" type="service_closure" id=".service_locator.Mq42R5e"/>
+        <argument key="App\Controller\FournisseurController::OrderByNomA" type="service_closure" id=".service_locator.jt5xxCQ"/>
+        <argument key="App\Controller\FournisseurController::Supprimer" type="service_closure" id=".service_locator..aa7CVV"/>
+        <argument key="App\Controller\FournisseurController::Update" type="service_closure" id=".service_locator..aa7CVV"/>
+        <argument key="App\Controller\ProduitRestaurantController::delete" type="service_closure" id=".service_locator.oSK6hCn"/>
+        <argument key="App\Controller\ProduitRestaurantController::edit" type="service_closure" id=".service_locator.oSK6hCn"/>
+        <argument key="App\Controller\ProduitRestaurantController::index" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\ProduitRestaurantController::new" type="service_closure" id=".service_locator.BYMd5nT"/>
+        <argument key="App\Controller\ProduitRestaurantController::show" type="service_closure" id=".service_locator.W9CUgqm"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationController::AfficherReclamation" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationController::AfficherReclamationRecu" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationController::AjouterRECclient" type="service_closure" id=".service_locator.HftxPFb"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationController::AjouterRECfournisseur" type="service_closure" id=".service_locator.HftxPFb"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationController::EditStatut" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationEmpController::AfficherReclamation" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationEmpController::AfficherReclamationRecu" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationEmpController::AjouterRecG" type="service_closure" id=".service_locator.NZCbHGE"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationFController::AfficherReclamation" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationFController::AfficherReclamationRecu" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationFController::AjouterRecG" type="service_closure" id=".service_locator.NZCbHGE"/>
         <argument key="App\Controller\ResetPasswordController::request" type="service_closure" id=".service_locator.tejTvi1"/>
         <argument key="App\Controller\ResetPasswordController::reset" type="service_closure" id=".service_locator.IHMIEEW"/>
+        <argument key="App\Controller\RestaurantController::afficherRestaurant" type="service_closure" id=".service_locator.d41TOyJ"/>
+        <argument key="App\Controller\RestaurantController::modifierRestaurant" type="service_closure" id=".service_locator.d41TOyJ"/>
+        <argument key="App\Controller\RestaurantController::supprimerRestaurant" type="service_closure" id=".service_locator.d41TOyJ"/>
+        <argument key="App\Controller\SearchController::index" type="service_closure" id=".service_locator.s5ZjQOM"/>
         <argument key="App\Controller\SecurityController::connexion" type="service_closure" id=".service_locator.Z9YHLOP"/>
+        <argument key="App\Controller\StockController::Add" type="service_closure" id=".service_locator.HQxJVRv"/>
+        <argument key="App\Controller\StockController::Supprimer" type="service_closure" id=".service_locator.TTmyCEt"/>
+        <argument key="App\Controller\StockController::UpdateS" type="service_closure" id=".service_locator.TTmyCEt"/>
+        <argument key="App\Controller\TypeCongeController::AjouterTypeConge" type="service_closure" id=".service_locator.Mq42R5e"/>
+        <argument key="App\Controller\TypeCongeController::ModifierTypeConge" type="service_closure" id=".service_locator.Mq42R5e"/>
+        <argument key="App\Controller\TypeCongeController::SupprimerTypeConge" type="service_closure" id=".service_locator.Jfhm4Zd"/>
         <argument key="App\Controller\role\AjoutRoleController::listerRole" type="service_closure" id=".service_locator.QrD46LN"/>
+        <argument key="App\Controller\role\AjoutRoleController::supprimer" type="service_closure" id=".service_locator.NsN8_gd"/>
+        <argument key="App\Controller\utilisateur\EmployeController::supprimer" type="service_closure" id=".service_locator.ZwDlruq"/>
+        <argument key="App\Controller\utilisateur\EmployeController::update" type="service_closure" id=".service_locator.ZwDlruq"/>
+        <argument key="App\Controller\utilisateur\EmployeController::verifier" type="service_closure" id=".service_locator.ZwDlruq"/>
+        <argument key="App\Controller\utilisateur\FournisseurController::supprimer" type="service_closure" id=".service_locator.ZwDlruq"/>
         <argument key="App\Controller\utilisateur\RegisterEmployesController::AjouterEmployee" type="service_closure" id=".service_locator.Zl1Tas8"/>
         <argument key="App\Controller\utilisateur\RegisterFournisseurController::AjouterEmployee" type="service_closure" id=".service_locator.Zl1Tas8"/>
+        <argument key="App\Controller\API\UtilisateurApiController:editAction" type="service_closure" id=".service_locator.ccM2MGC"/>
+        <argument key="App\Controller\API\UtilisateurApiController:forgetPasswordCheck" type="service_closure" id=".service_locator.qce5O_D"/>
+        <argument key="App\Controller\API\UtilisateurApiController:modifyEntPassword" type="service_closure" id=".service_locator.b1NC3V0"/>
+        <argument key="App\Controller\API\UtilisateurApiController:signupEmpAction" type="service_closure" id=".service_locator.ccM2MGC"/>
+        <argument key="App\Controller\API\UtilisateurApiController:signupFourAction" type="service_closure" id=".service_locator.ccM2MGC"/>
+        <argument key="App\Controller\API\UtilisateurApiController:singinAction" type="service_closure" id=".service_locator.6Ht_qlL"/>
+        <argument key="App\Controller\CategorieController:delete" type="service_closure" id=".service_locator.pCoFPhJ"/>
+        <argument key="App\Controller\CategorieController:edit" type="service_closure" id=".service_locator.pCoFPhJ"/>
+        <argument key="App\Controller\CategorieController:index" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\CategorieController:new" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\CategorieController:show" type="service_closure" id=".service_locator.RdXN6Y1"/>
+        <argument key="App\Controller\CommandeController:afficherCommandeF" type="service_closure" id=".service_locator.H30dJTF"/>
+        <argument key="App\Controller\CommandeController:delete" type="service_closure" id=".service_locator.nO_ICba"/>
+        <argument key="App\Controller\CommandeController:edit" type="service_closure" id=".service_locator.i.r6b_4"/>
+        <argument key="App\Controller\CommandeController:index" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\CommandeController:new" type="service_closure" id=".service_locator.BYMd5nT"/>
+        <argument key="App\Controller\CommandeController:show" type="service_closure" id=".service_locator.e1rdezy"/>
+        <argument key="App\Controller\CongeController:AccepterConge" type="service_closure" id=".service_locator.cwcBR7u"/>
+        <argument key="App\Controller\CongeController:AjouterConge" type="service_closure" id=".service_locator.Mq42R5e"/>
+        <argument key="App\Controller\CongeController:ModifierConge" type="service_closure" id=".service_locator.Mq42R5e"/>
+        <argument key="App\Controller\CongeController:RefuserConge" type="service_closure" id=".service_locator.ZJsWLcv"/>
+        <argument key="App\Controller\CongeController:SupprimerConge" type="service_closure" id=".service_locator.xXsVTlj"/>
+        <argument key="App\Controller\CongeController:solde" type="service_closure" id=".service_locator.Mn3p92N"/>
+        <argument key="App\Controller\FactureController:afficherFacture" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FactureController:ajouterFacture" type="service_closure" id=".service_locator.H8xF7Bi"/>
+        <argument key="App\Controller\FactureController:calulT" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FactureController:modifierFacture" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FactureController:rechercheByDate" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FactureController:showDetailsFact" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FactureController:showPDFFact" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FactureController:statistiqueFact" type="service_closure" id=".service_locator.QhCAtBr"/>
+        <argument key="App\Controller\FactureController:supprimerFacture" type="service_closure" id=".service_locator.ERKVXl3"/>
+        <argument key="App\Controller\FournisseurController:FunctionName" type="service_closure" id=".service_locator.Mq42R5e"/>
+        <argument key="App\Controller\FournisseurController:OrderByNomA" type="service_closure" id=".service_locator.jt5xxCQ"/>
+        <argument key="App\Controller\FournisseurController:Supprimer" type="service_closure" id=".service_locator..aa7CVV"/>
+        <argument key="App\Controller\FournisseurController:Update" type="service_closure" id=".service_locator..aa7CVV"/>
+        <argument key="App\Controller\ProduitRestaurantController:delete" type="service_closure" id=".service_locator.oSK6hCn"/>
+        <argument key="App\Controller\ProduitRestaurantController:edit" type="service_closure" id=".service_locator.oSK6hCn"/>
+        <argument key="App\Controller\ProduitRestaurantController:index" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\ProduitRestaurantController:new" type="service_closure" id=".service_locator.BYMd5nT"/>
+        <argument key="App\Controller\ProduitRestaurantController:show" type="service_closure" id=".service_locator.W9CUgqm"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationController:AfficherReclamation" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationController:AfficherReclamationRecu" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationController:AjouterRECclient" type="service_closure" id=".service_locator.HftxPFb"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationController:AjouterRECfournisseur" type="service_closure" id=".service_locator.HftxPFb"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationController:EditStatut" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationEmpController:AfficherReclamation" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationEmpController:AfficherReclamationRecu" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationEmpController:AjouterRecG" type="service_closure" id=".service_locator.NZCbHGE"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationFController:AfficherReclamation" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationFController:AfficherReclamationRecu" type="service_closure" id=".service_locator.T3yXDV0"/>
+        <argument key="App\Controller\ReclamationTas\ReclamationFController:AjouterRecG" type="service_closure" id=".service_locator.NZCbHGE"/>
         <argument key="App\Controller\ResetPasswordController:request" type="service_closure" id=".service_locator.tejTvi1"/>
         <argument key="App\Controller\ResetPasswordController:reset" type="service_closure" id=".service_locator.IHMIEEW"/>
+        <argument key="App\Controller\RestaurantController:afficherRestaurant" type="service_closure" id=".service_locator.d41TOyJ"/>
+        <argument key="App\Controller\RestaurantController:modifierRestaurant" type="service_closure" id=".service_locator.d41TOyJ"/>
+        <argument key="App\Controller\RestaurantController:supprimerRestaurant" type="service_closure" id=".service_locator.d41TOyJ"/>
+        <argument key="App\Controller\SearchController:index" type="service_closure" id=".service_locator.s5ZjQOM"/>
         <argument key="App\Controller\SecurityController:connexion" type="service_closure" id=".service_locator.Z9YHLOP"/>
+        <argument key="App\Controller\StockController:Add" type="service_closure" id=".service_locator.HQxJVRv"/>
+        <argument key="App\Controller\StockController:Supprimer" type="service_closure" id=".service_locator.TTmyCEt"/>
+        <argument key="App\Controller\StockController:UpdateS" type="service_closure" id=".service_locator.TTmyCEt"/>
+        <argument key="App\Controller\TypeCongeController:AjouterTypeConge" type="service_closure" id=".service_locator.Mq42R5e"/>
+        <argument key="App\Controller\TypeCongeController:ModifierTypeConge" type="service_closure" id=".service_locator.Mq42R5e"/>
+        <argument key="App\Controller\TypeCongeController:SupprimerTypeConge" type="service_closure" id=".service_locator.Jfhm4Zd"/>
         <argument key="App\Controller\role\AjoutRoleController:listerRole" type="service_closure" id=".service_locator.QrD46LN"/>
+        <argument key="App\Controller\role\AjoutRoleController:supprimer" type="service_closure" id=".service_locator.NsN8_gd"/>
+        <argument key="App\Controller\utilisateur\EmployeController:supprimer" type="service_closure" id=".service_locator.ZwDlruq"/>
+        <argument key="App\Controller\utilisateur\EmployeController:update" type="service_closure" id=".service_locator.ZwDlruq"/>
+        <argument key="App\Controller\utilisateur\EmployeController:verifier" type="service_closure" id=".service_locator.ZwDlruq"/>
+        <argument key="App\Controller\utilisateur\FournisseurController:supprimer" type="service_closure" id=".service_locator.ZwDlruq"/>
         <argument key="App\Controller\utilisateur\RegisterEmployesController:AjouterEmployee" type="service_closure" id=".service_locator.Zl1Tas8"/>
         <argument key="App\Controller\utilisateur\RegisterFournisseurController:AjouterEmployee" type="service_closure" id=".service_locator.Zl1Tas8"/>
       </argument>
@@ -5847,15 +6807,30 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.AT.l7IK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.LiJxAfu" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\CategorieType" type="service_closure" id="App\Form\CategorieType"/>
         <argument key="App\Form\ChangePasswordFormType" type="service_closure" id="App\Form\ChangePasswordFormType"/>
+        <argument key="App\Form\Commande1Type" type="service_closure" id="App\Form\Commande1Type"/>
+        <argument key="App\Form\CommandeType" type="service_closure" id="App\Form\CommandeType"/>
+        <argument key="App\Form\CongeType" type="service_closure" id="App\Form\CongeType"/>
+        <argument key="App\Form\EditEmployeeType" type="service_closure" id="App\Form\EditEmployeeType"/>
+        <argument key="App\Form\FactureType" type="service_closure" id="App\Form\FactureType"/>
+        <argument key="App\Form\FournisseurType" type="service_closure" id="App\Form\FournisseurType"/>
+        <argument key="App\Form\ProduitRestaurantType" type="service_closure" id="App\Form\ProduitRestaurantType"/>
+        <argument key="App\Form\ReclamationType" type="service_closure" id="App\Form\ReclamationType"/>
+        <argument key="App\Form\ReclamationType1" type="service_closure" id="App\Form\ReclamationType1"/>
+        <argument key="App\Form\ReclamationType2" type="service_closure" id="App\Form\ReclamationType2"/>
         <argument key="App\Form\RegisterEmployesType" type="service_closure" id="App\Form\RegisterEmployesType"/>
         <argument key="App\Form\RegisterFournisseurType" type="service_closure" id="App\Form\RegisterFournisseurType"/>
         <argument key="App\Form\ResetPasswordRequestFormType" type="service_closure" id="App\Form\ResetPasswordRequestFormType"/>
         <argument key="App\Form\RestaurantType" type="service_closure" id="App\Form\RestaurantType"/>
         <argument key="App\Form\RoleType" type="service_closure" id="App\Form\RoleType"/>
+        <argument key="App\Form\SearchType" type="service_closure" id="App\Form\SearchType"/>
+        <argument key="App\Form\StockType" type="service_closure" id="App\Form\StockType"/>
+        <argument key="App\Form\TypeCongeType" type="service_closure" id="App\Form\TypeCongeType"/>
+        <argument key="App\Form\TypeReclamationType" type="service_closure" id="App\Form\TypeReclamationType"/>
         <argument key="Gregwar\CaptchaBundle\Type\CaptchaType" type="service_closure" id="gregwar_captcha.type"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
@@ -6093,9 +7068,75 @@
         <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\API\UtilisateurApiController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\API\UtilisateurApiController"/>
+      <argument>App\Controller\API\UtilisateurApiController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\CategorieController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\CategorieController"/>
+      <argument>App\Controller\CategorieController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\CommandeController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\CommandeController"/>
+      <argument>App\Controller\CommandeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\CongeController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\CongeController"/>
+      <argument>App\Controller\CongeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\FactureController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\FactureController"/>
+      <argument>App\Controller\FactureController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\FourniiseurApiController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\FourniiseurApiController"/>
+      <argument>App\Controller\FourniiseurApiController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\FournisseurController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\FournisseurController"/>
+      <argument>App\Controller\FournisseurController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
     <service id=".service_locator.vdmMuyE.App\Controller\LandingPageController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\LandingPageController"/>
       <argument>App\Controller\LandingPageController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\ProduitRestaurantController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\ProduitRestaurantController"/>
+      <argument>App\Controller\ProduitRestaurantController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\ReclamationTas\ReclamationController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\ReclamationTas\ReclamationController"/>
+      <argument>App\Controller\ReclamationTas\ReclamationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\ReclamationTas\ReclamationEmpController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\ReclamationTas\ReclamationEmpController"/>
+      <argument>App\Controller\ReclamationTas\ReclamationEmpController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\ReclamationTas\ReclamationFController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\ReclamationTas\ReclamationFController"/>
+      <argument>App\Controller\ReclamationTas\ReclamationFController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
@@ -6105,9 +7146,27 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\RestaurantController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\RestaurantController"/>
+      <argument>App\Controller\RestaurantController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\SearchController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\SearchController"/>
+      <argument>App\Controller\SearchController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
     <service id=".service_locator.vdmMuyE.App\Controller\SecurityController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\SecurityController"/>
       <argument>App\Controller\SecurityController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\StockController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\StockController"/>
+      <argument>App\Controller\StockController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
@@ -6117,9 +7176,15 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
-    <service id=".service_locator.vdmMuyE.App\Controller\restaurant\AjoutRestaurantController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\restaurant\AjoutRestaurantController"/>
-      <argument>App\Controller\restaurant\AjoutRestaurantController</argument>
+    <service id=".service_locator.vdmMuyE.App\Controller\TypeCongeController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\TypeCongeController"/>
+      <argument>App\Controller\TypeCongeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\adminRestoflex\AdminApplicationController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\adminRestoflex\AdminApplicationController"/>
+      <argument>App\Controller\adminRestoflex\AdminApplicationController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
@@ -6129,9 +7194,21 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\typeReclamation\TypeRecController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\typeReclamation\TypeRecController"/>
+      <argument>App\Controller\typeReclamation\TypeRecController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
     <service id=".service_locator.vdmMuyE.App\Controller\utilisateur\EmployeController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\utilisateur\EmployeController"/>
       <argument>App\Controller\utilisateur\EmployeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\utilisateur\FournisseurController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\utilisateur\FournisseurController"/>
+      <argument>App\Controller\utilisateur\FournisseurController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
@@ -6305,12 +7382,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.RD5YYZx"/>
+      <argument type="service" id=".service_locator._LoCEYe"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.RD5YYZx"/>
+      <argument type="service" id=".service_locator._LoCEYe"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6320,8 +7397,17 @@
       </call>
       <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
     </service>
+    <service id=".errored..service_locator.RdXN6Y1.App\Entity\Categorie" class="App\Entity\Categorie"/>
+    <service id=".errored..service_locator.pCoFPhJ.App\Entity\Categorie" class="App\Entity\Categorie"/>
+    <service id=".errored..service_locator.e1rdezy.App\Entity\Commande" class="App\Entity\Commande"/>
+    <service id=".errored..service_locator.i.r6b_4.App\Entity\Commande" class="App\Entity\Commande"/>
+    <service id=".errored..service_locator.nO_ICba.App\Entity\Commande" class="App\Entity\Commande"/>
+    <service id=".errored..service_locator.xXsVTlj.App\Entity\Conge" class="App\Entity\Conge"/>
+    <service id=".errored..service_locator.W9CUgqm.App\Entity\ProduitRestaurant" class="App\Entity\ProduitRestaurant"/>
+    <service id=".errored..service_locator.oSK6hCn.App\Entity\ProduitRestaurant" class="App\Entity\ProduitRestaurant"/>
+    <service id=".errored..service_locator.Jfhm4Zd.App\Entity\TypeConge" class="App\Entity\TypeConge"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
-      <argument type="service" id=".service_locator.ZPfUYoS"/>
+      <argument type="service" id=".service_locator.wZZRjZR"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -6388,6 +7474,9 @@
         <argument key="doctrine:migrations:version">doctrine_migrations.version_command</argument>
         <argument key="security:encode-password">security.command.user_password_encoder</argument>
         <argument key="reset-password:remove-expired">SymfonyCasts\Bundle\ResetPassword\Command\ResetPasswordRemoveExpiredCommand</argument>
+        <argument key="debug:swiftmailer">swiftmailer.command.debug</argument>
+        <argument key="swiftmailer:email:send">swiftmailer.command.new_email</argument>
+        <argument key="swiftmailer:spool:send">swiftmailer.command.send_email</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:controller">maker.auto_command.make_controller</argument>
@@ -6413,7 +7502,7 @@
         <argument key="make:migration">maker.auto_command.make_migration</argument>
       </argument>
     </service>
-    <service id=".service_locator.ZPfUYoS" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.wZZRjZR" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand" type="service_closure" id="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand"/>
@@ -6499,6 +7588,9 @@
         <argument key="maker.auto_command.make_voter" type="service_closure" id="maker.auto_command.make_voter"/>
         <argument key="monolog.command.server_log" type="service_closure" id="monolog.command.server_log"/>
         <argument key="security.command.user_password_encoder" type="service_closure" id="security.command.user_password_encoder"/>
+        <argument key="swiftmailer.command.debug" type="service_closure" id="swiftmailer.command.debug"/>
+        <argument key="swiftmailer.command.new_email" type="service_closure" id="swiftmailer.command.new_email"/>
+        <argument key="swiftmailer.command.send_email" type="service_closure" id="swiftmailer.command.send_email"/>
         <argument key="twig.command.debug" type="service_closure" id="twig.command.debug"/>
         <argument key="twig.command.lint" type="service_closure" id="twig.command.lint"/>
         <argument key="var_dumper.command.server_dump" type="service_closure" id="var_dumper.command.server_dump"/>
@@ -6563,9 +7655,10 @@
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
-    <service id=".service_locator.7YWluy." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.ZoarNAe" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="Endroid\QrCodeBundle\Twig\QrCodeRuntime" type="service_closure" id="Endroid\QrCodeBundle\Twig\QrCodeRuntime"/>
         <argument key="Symfony\Bridge\Twig\Extension\CsrfRuntime" type="service_closure" id="twig.runtime.security_csrf"/>
         <argument key="Symfony\Bridge\Twig\Extension\HttpKernelRuntime" type="service_closure" id="twig.runtime.httpkernel"/>
         <argument key="Symfony\Component\Form\FormRenderer" type="service_closure" id="twig.form.renderer"/>
@@ -6621,7 +7714,8 @@
     <service id="form.choice_list_factory" alias="form.choice_list_factory.cached" public="false"/>
     <service id="Symfony\Component\Asset\Packages" alias="assets.packages" public="false"/>
     <service id="Symfony\Contracts\HttpClient\HttpClientInterface" alias=".debug.http_client"/>
-    <service id="mailer" alias="mailer.mailer"/>
+    <service id="Psr\Http\Client\ClientInterface" alias="psr18.http_client"/>
+    <service id="mailer" alias="swiftmailer.mailer.default" public="true"/>
     <service id="Symfony\Component\Mailer\MailerInterface" alias="mailer.mailer"/>
     <service id="Symfony\Component\Mailer\Transport\TransportInterface" alias="mailer.default_transport"/>
     <service id="Symfony\Component\Validator\Validator\ValidatorInterface" alias="debug.validator" public="false"/>
@@ -6702,9 +7796,25 @@
     <service id="security.user_checker.main" alias="security.user_checker" public="false"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
     <service id="SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface" alias="symfonycasts.reset_password.helper"/>
+    <service id="swiftmailer.mailer.default.transport" alias="swiftmailer.mailer.default.transport.spool"/>
+    <service id="swiftmailer.mailer.default.spool" alias="swiftmailer.mailer.default.spool.memory"/>
+    <service id="swiftmailer.mailer.default.transport.real" alias="swiftmailer.mailer.default.transport.dynamic" public="true"/>
+    <service id="swiftmailer.spool" alias="swiftmailer.mailer.default.spool.memory"/>
+    <service id="swiftmailer.transport.real" alias="swiftmailer.mailer.default.transport.dynamic"/>
+    <service id="Swift_Spool" alias="swiftmailer.mailer.default.spool.memory" public="false"/>
+    <service id="swiftmailer.plugin.messagelogger" alias="swiftmailer.mailer.default.plugin.messagelogger"/>
+    <service id="swiftmailer.mailer" alias="swiftmailer.mailer.default"/>
+    <service id="swiftmailer.transport" alias="swiftmailer.mailer.default.transport.spool" public="true"/>
+    <service id="Swift_Mailer" alias="swiftmailer.mailer.default" public="false"/>
+    <service id="Swift_Transport" alias="swiftmailer.mailer.default.transport.spool" public="false"/>
+    <service id="mercuryseries_flashy.session_store" alias="mercuryseries_flashy.symfony_session_store" public="false"/>
+    <service id="MercurySeries\FlashyBundle\FlashyNotifier" alias="mercuryseries_flashy.flashy_notifier" public="false"/>
+    <service id="Endroid\QrCode\Builder\BuilderInterface" alias="Endroid\QrCode\Builder\Builder" public="false"/>
+    <service id="Endroid\QrCode\Builder\BuilderRegistryInterface" alias="Endroid\QrCode\Builder\BuilderRegistry" public="false"/>
+    <service id="Endroid\QrCode\Builder\BuilderInterface $defaultQrCodeBuilder" alias="endroid_qr_code.default_builder" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.RD5YYZx"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator._LoCEYe"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
@@ -6719,7 +7829,7 @@
     <service id="Psr\Log\LoggerInterface $doctrineLogger" alias="monolog.logger.doctrine"/>
     <service id="Psr\Log\LoggerInterface $securityLogger" alias="monolog.logger.security"/>
     <service id=".service_locator.vCZtrFV" alias=".service_locator.dCjaNZJ" public="false"/>
-    <service id=".service_locator.xMqGPuz" alias=".service_locator.AT.l7IK" public="false"/>
+    <service id=".service_locator.isQl7U9" alias=".service_locator.LiJxAfu" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="translator.data_collector.inner" alias="translator.default" public="false"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>

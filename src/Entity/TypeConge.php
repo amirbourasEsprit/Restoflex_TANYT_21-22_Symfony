@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component \Validator\Constraints as Assert;
+
 
 /**
  * TypeConge
@@ -19,6 +21,7 @@ class TypeConge
      * @ORM\Column(name="id_type_conge", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\OneToMany(targetEntity="Conge")
      */
     private $idTypeConge;
 
@@ -26,6 +29,7 @@ class TypeConge
      * @var string
      *
      * @ORM\Column(name="nom_type_conge", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="Le Champ Nom est obligatoire")
      */
     private $nomTypeConge;
 
@@ -45,6 +49,9 @@ class TypeConge
 
         return $this;
     }
-
+    public function __toString() :string
+    {
+        return $this->nomTypeConge;
+    }
 
 }

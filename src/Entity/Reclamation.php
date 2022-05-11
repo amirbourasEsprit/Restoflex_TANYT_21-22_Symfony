@@ -52,12 +52,7 @@ class Reclamation
     /**
      * @var string
      *
-     * @ORM\Column(name="statut_reclamation", type="string", length=255, nullable=false)
-     * @Assert\Length(
-     * min =4,
-     * minMessage=" Entrer au moins 4 caracteres"
-     * )  
-     * @MyValidation\VerifNull
+     * @ORM\Column(name="statut_reclamation", type="string", length=255, nullable=false) 
      */
     private $statutReclamation;
 
@@ -76,7 +71,7 @@ class Reclamation
      *   @ORM\JoinColumn(name="id_utilisateur", referencedColumnName="id_utilisateur")
      * })
      */
-    private $idUtilisateur;
+    private $id;
     /**
      * @var \TypeReclamation
      *
@@ -140,15 +135,15 @@ class Reclamation
         return $this;
     }
 
-    public function getIdUtilisateur(): ?Utilisateur
+    public function getid(): ?Utilisateur
     {
-        return $this->idUtilisateur;
+        return $this->id;
         
     }
 
-    public function setIdUtilisateur(?Utilisateur $idUtilisateur): self
+    public function setid(?Utilisateur $id): self
     {
-        $this->idUtilisateur = $idUtilisateur;
+        $this->id = $id;
 
         return $this;
     }

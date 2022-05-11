@@ -95,7 +95,7 @@ class Utilisateur implements UserInterface
      * @var int|null
      *
      * @ORM\Column(name="salaire", type="integer", nullable=true, options={"default"="NULL"})
-     * 
+     * @MyValidation\VerifNull(groups={"modify"})
      */
     private $salaire = NULL;
 
@@ -103,7 +103,7 @@ class Utilisateur implements UserInterface
      * @var int|null
      *
      * @ORM\Column(name="solde_conge", type="integer", nullable=true, options={"default"="30"})
-     * 
+     * @MyValidation\VerifNull(groups={"modify"})
      */
     private $soldeConge = 30;
 
@@ -111,6 +111,7 @@ class Utilisateur implements UserInterface
      * @var string|null
      *
      * @ORM\Column(name="poste_employe", type="string", length=255, nullable=true, options={"default"="NULL"})
+     * @MyValidation\VerifNull(groups={"modify"})
      */
     private $posteEmploye = NULL;
 
@@ -157,9 +158,9 @@ class Utilisateur implements UserInterface
      */
     private $idFournisseur;
 
-    public function getIdUtilisateur(): ?int
+    public function getid(): ?int
     {
-        return $this->idUtilisateur;
+        return $this->id;
     }
 
     public function getNom(): ?string
@@ -381,6 +382,11 @@ class Utilisateur implements UserInterface
 
         return $this;
     }
+    public function __toString() :string
+    {
+        return $this->nom;
+    }
+
 
 
 }

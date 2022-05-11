@@ -7,7 +7,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Doctrine\\ORM\\Mapping\\Index'],
         clone $p['Doctrine\\ORM\\Mapping\\Index'],
         clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
-        clone $p['Doctrine\\ORM\\Mapping\\Entity'],
     ],
     null,
     [
@@ -36,15 +35,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'id_utilisateur',
                 ],
             ],
-            'repositoryClass' => [
-                5 => 'App\\Repository\\CommandeRepository',
-            ],
         ],
     ],
     [
         $o[0],
         $o[4],
-        $o[5],
     ],
     []
 ); }];

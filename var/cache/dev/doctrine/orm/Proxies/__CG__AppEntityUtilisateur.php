@@ -180,12 +180,16 @@ class Utilisateur extends \App\Entity\Utilisateur implements \Doctrine\ORM\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getIdUtilisateur(): ?int
+    public function getid(): ?int
     {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getid();
+        }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdUtilisateur', []);
 
-        return parent::getIdUtilisateur();
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getid', []);
+
+        return parent::getid();
     }
 
     /**
@@ -582,6 +586,17 @@ class Utilisateur extends \App\Entity\Utilisateur implements \Doctrine\ORM\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsername', [$email]);
 
         return parent::setUsername($email);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function __toString(): string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', []);
+
+        return parent::__toString();
     }
 
 }

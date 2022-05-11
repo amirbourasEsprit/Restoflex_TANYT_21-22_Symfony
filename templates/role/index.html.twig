@@ -1,100 +1,158 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des rôles{% endblock %}
+{% block title %}Liste des rôles
+{% endblock %}
 {% block StyleAfterTemplate %}
-  <link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css')}}" rel="stylesheet" />
-  <link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
-  <style>
-      
-        /* Table actions icons*/
-      table.table td a.view {
-          color: #03A9F4;
-      }
+	<link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css')}}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
+	<style>
 
-      table.table td a.edit {
-          color: #FFC107;
-      }
+		/* Table actions icons*/
+		table.table td a.view {
+			color: #03A9F4;
+		}
 
-      table.table td a.delete {
-          color: #E34724;
-           text-align: center;
-      }
-      .hint-text {
-          float: left;
-          margin-top: 6px;
-          font-size: 95%;
-      }
-  </style>
+		table.table td a.edit {
+			color: #FFC107;
+		}
+
+		table.table td a.delete {
+			color: #E34724;
+			text-align: center;
+		}
+		.hint-text {
+			float: left;
+			margin-top: 6px;
+			font-size: 95%;
+		}
+	</style>
 {% endblock StyleAfterTemplate %}
 {% block content %}
-<div class="row justify-content-md-center">
+	<div class="row justify-content-md-center">
 
-    <div class="col-lg-6">
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-                <div class="p-5">
-                 <div class="text-center"><h1 class="h4 text-gray-900 mb-4">Liste des Roles</h1>
-                </div>
-                <a href="{{path('ajout_role') }}" class="btn btn-success btn float-right col-sm col-md-3">
-                  <span class="icon text-white-50">
-                    <i style="float: left;" class="material-icons mr-2">&#xE147;</i>
-                  </span>
-                  <span class="text">Ajouter des rôles</span>
-                </a>
-              
-                    <div class="table-responsive-sm mt-4">
-                        <div class="row">
-                            <div class="col-sm col-md-6">
-                                <div id="dataTable_filter" class="dataTables_filter">
-                                    <input id="myInput" type="text"
-                                            class="form-control form-control-sm float-right" placeholder="Search"
-                                            aria-controls="dataTable">
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <br>
-                        <table class="table table-hover " id="myTable">
-                            <thead class="thead-light ">
-                                <tr>
-                                    <th scope="col">Nom</th>
+		<div class="col-lg-6">
+			<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card-body p-0">
+					<div class="p-5">
+						<div class="text-center">
+							<h1 class="h4 text-gray-900 mb-4">Liste des Roles</h1>
+						</div>
+						<a href="" class="btn btn-success btn float-right col-sm col-md-3" data-toggle="modal" data-target="#uploadModal">
+							<span class="icon text-white-50">
+								<i style="float: left;" class="material-icons mr-2">&#xE147;</i>
+							</span>
+							<span class="text">Ajouter rôle</span>
+						</a>
 
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="myTable">
-                                {% for role in roles %}
-                                <tr>
-                                    <td>{{ role.nomRole }}</td>
+						<div class="table-responsive-sm mt-4">
+							<div class="d-none d-sm-inline-block form-inline navbar-search">
+								<div class="input-group" id="dataTable_filter">
+									<input id="myInput" type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+									<div class="input-group-append">
+										<div class="btn btn-primary">
+											<i class="fas fa-search fa-sm"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br>
+							<br>
+							<table class="table table-hover " id="myTable">
+								<thead class="thead-light ">
+									<tr>
+										<th scope="col">Nom</th>
 
-                                    <td>
-                                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-                                                class="material-icons">&#xe872;</i></a>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody id="myTable">
+									{% for role in roles %}
+										<tr>
+											<td>{{ role.nomRole }}</td>
 
+											<td>
+												<a href="" class="delete" data-toggle="modal" data-target="#deleteModal-{{ role.idRole }}">
+													<i class="material-icons">&#xE872;</i>
+												</a>
+												<div class="modal fade" id="deleteModal-{{ role.idRole }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+													<div class="modal-dialog" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="deleteModalLabel">Voulez vous supprimer ?</h5>
+																<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+																</button>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+																<form action="{{ path ('supprimer_role', {'idRole':role.idRole }) }}" method="POST">
+																	<input class="btn btn-danger" type="submit" value="Supprimer">
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+							<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="p-2">
+											<form action="{{path ('ajout_role')}}" method="POST" enctype="multipart/form-data">
+												{{form_start(form,{attr:{'novalidate':'novalidate', 'class':"user form-inline justify-content-center"}})}}
+												<div class="form-group form-inline justify-content-center">
+													<div class="col-sm-6">
+														{{ form_widget(form.nomRole,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Nom Rôle'|trans} }) }}
 
-{% endblock %}
-{% block JsAfterTemplate %}
+														<div style="color:red;">
+															{{ form_errors(form.nomRole) }}</div>
+
+														<br>
+														<div class="col-sm-6">
+															{{ form_widget(form.captcha,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder':'Tapez le Code'|trans} }) }}
+														</div>
+														<div style="color:red;">
+															{{ form_errors(form.captcha) }}</div>
+
+													</div>
+												</div>
+											</div>
+											<hr>
+											<div class="d-grid gap-2 col-4 mx-auto">
+												<button type="submit" class="btn btn-success btn-sm">
+													Ajouter
+												</button>
+												<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Annuler</button>
+											</div>
+
+											{{form_end(form)}}
+
+											<hr>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /.modal -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}{% block JsAfterTemplate %}
 <script>
-  $(document).ready(function(){
-    $("#myInput").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $("#myTable > tbody > tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
-</script>
-{% endblock %}
+	$(document).ready(function () {
+$("#myInput").on("keyup", function () {
+var value = $(this).val().toLowerCase();
+$("#myTable > tbody > tr").filter(function () {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+});
+});
+});
+</script>{% endblock %}

@@ -4,13 +4,13 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Validators as MyValidation;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * Fournisseur
- * @Vich\Uploadable
  * @ORM\Table(name="fournisseur")
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\FournisseurRepository")
@@ -26,6 +26,7 @@ class Fournisseur
      * @ORM\Column(name="id_fournisseur", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("post:read")
      */
     private $idFournisseur;
 
@@ -37,6 +38,7 @@ class Fournisseur
      * min =4,
      * minMessage=" Entrer au moins 4 caracteres"
      * )
+     *  @Groups("post:read")
      */
     private $nomFournisseur;
 
@@ -45,6 +47,7 @@ class Fournisseur
      *
      * @ORM\Column(name="matricule_fiscale", type="string", length=255, nullable=false)
      *  @MyValidation\VerifNull
+     *  @Groups("post:read")
      */
     private $matriculeFiscale;
 
@@ -53,6 +56,7 @@ class Fournisseur
      *
      * @ORM\Column(name="domaine_fournisseur", type="string", length=255, nullable=false)
      *  @MyValidation\VerifNull
+     *  @Groups("post:read")
      */
     private $domaineFournisseur;
 
@@ -61,7 +65,9 @@ class Fournisseur
      *
      * @ORM\Column(name="num_tel_fournisseur", type="string", length=255, nullable=false)
      *  @MyValidation\VerifTel
+     *  @Groups("post:read")
      */
+
     private $numTelFournisseur;
 
     /**
@@ -69,6 +75,7 @@ class Fournisseur
      *
      * @ORM\Column(name="email_fournisseur", type="string", length=255, nullable=false)
      *   @MyValidation\VerifEmail
+     * @Groups("post:read")
      */
     private $emailFournisseur;
 
@@ -83,23 +90,25 @@ class Fournisseur
     /**
      * @var string|null
      *
-     * 
+     *@Groups("post:read")
      * @ORM\Column(name="logo", type="string", length=255, nullable=true, options={"default"="NULL"})
-     *  @MyValidation\VerifNull
      */
     //private $logo = 'NULL';
     private $logo;
+
+
+
     /**
-     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+
      * @var File
      */
     private $imageFile;
+    //contenu binaire de l'image file and it's not perssisted into the database
+    //The imageFile property must define a @Vich\UploadableField annotation that configures both the "mapping" to use
+    // (product_images in this case) and the entity property that stores the image name (logo in this case).
 
 
-    /**
-     * @ORM\Column(type="datetime",nullable=true)
-     */
-    private $updatedAt;
+
 
     public function getIdFournisseur(): ?int
     {
@@ -207,21 +216,6 @@ class Fournisseur
         return $this->imageFile;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getUpdatedAt(): \DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
 
-    /**
-     * @param \DateTime $updatedAt
-     */
-    public function setUpdatedAt(\DateTime $updatedAt):\DateTimeInterface
-    {
-        $this->updatedAt = $updatedAt;
-        return  $updatedAt;
-    }
 
 }
