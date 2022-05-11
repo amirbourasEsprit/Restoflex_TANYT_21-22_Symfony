@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Congé{% endblock %}
+
+{% block content %}
+
+<!-- Nested Row within Card Body -->
+<div class="row justify-content-md-center">
+
+    <div class="col-lg-6">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Modifier un Congé</h1>
+                    </div>
+
+                    {{form_start(form,{attr:{'novalidate':'novalidate'}})}}
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+
+                            {{ form_widget(form.dateDeb,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Date début'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.dateDeb) }}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ form_widget(form.dateFin,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Date fin'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.dateFin) }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            {{ form_widget(form.idTypeConge,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Type du Congé'|trans} }) }}                        </div>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+
+                            {{ form_widget(form.idUtilisateur,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'identifiant'|trans} }) }}
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                        Modifier Congé
+                    </button>
+                </div>
+
+                {{form_end(form)}}
+
+                <hr>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+{% endblock %}
