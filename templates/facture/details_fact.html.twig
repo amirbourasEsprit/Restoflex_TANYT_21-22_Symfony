@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la Facture
+{% endblock %}
+
+{% block StyleAfterTemplate %}
+	<link href="{{asset('back-office/css/nesrine.css')}} " rel="stylesheet">
+	<link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css')}}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
+
+{% endblock StyleAfterTemplate %}
+
+
+{% block content %}
+
+
+	<div class="row justify-content-md-center">
+
+		<div class="col-lg-7">
+			<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card-body p-0">
+					<div class="p-5">
+
+						<div class="detail-content">
+							<div class="title">Détails concernant la facture n°:
+								<span>{{facture.numFacture}}</span>
+							</div>
+							<div class="details-Box">
+								<table>
+									<tr>
+										<td>Date:</td>
+										<td>{{facture.dateFacture|date("m/d/Y")}}</td>
+									</tr>
+									<tr>
+										<td>Total:</td>
+										<td>{{facture.total}}DT</td>
+									</tr>
+									<tr>
+										<td>Etat:</td>
+										<td>{{facture.statut}}</td>
+									</tr>
+									<tr>
+										<td>Nom du fournisseur:</td>
+										<td>{{facture.idFournisseur.nomFournisseur}}</td>
+									</tr>
+									<tr>
+										<td>Nom du restaurant:</td>
+										<td>{{facture.idRest.nom}}</td>
+									</tr>
+								</table>
+							</div>
+
+							{# <div class="btn-container">
+																																																																																																																																																																																<button class="downloadBtn">
+																																																																																																																																																																																	<div class="icon">
+																																																																																																																																																																																		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewbox="0 0 16 16">
+																																																																																																																																																																																			<path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+																																																																																																																																																																																			<path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+																																																																																																																																																																																		</svg>
+																																																																																																																																																																																	</div>
+																																																																																																																																																																																	<i class="material-icons">&#xeac9;</i>
+																																																																																																																																																																																	<p>Télécharger</p>
+																																																																																																																																																																																</button>
+																																																																																																																																																																															</div> #}
+							{# <div class="d-grid gap-2 col-6 mx-auto">
+																																				<button type="submit" class="btn btn-primary btn-user btn-block">
+																												
+																																					Télécharger
+																																				</button>
+																																				<a href="{{ path('PDFFact', {'numFacture': facture.numFacture}) }}" class="view" title="Details" data-toggle="tooltip">
+																																					<i class="material-icons">&#xf090;</i>
+																																				</a>
+																																			</div> #}
+
+							<a href="{{ path('PDFFact', {'numFacture': facture.numFacture}) }}" class="btn btn-primary btn-user btn-block">
+								<span class="icon text-white-50">
+									<i style="float: left;" class="material-icons mr-2">&#xf090;</i>
+								</span>
+								<span class="text">Télécharger</span>
+							</a>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	{% endblock %}

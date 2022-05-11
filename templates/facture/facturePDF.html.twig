@@ -1,0 +1,89 @@
+{% block StyleAfterTemplate %}
+	<style>
+
+		img {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 50%;
+		}
+
+		.detail-content {
+			margin: 50px;
+			width: 75%;
+		}
+
+		.details-Box {
+			border-width: 2px;
+			border-style: solid;
+			border-color: #2B54CC;
+			border-radius: 5px;
+			padding: 25px;
+			margin: 50px;
+			width: 75%;
+			height: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.details-Box table tr td {
+			padding: 15px;
+			color: #000000;
+		}
+
+		.title {
+			color: #2B54CC;
+			font-size: 20px;
+		}
+
+		.title span {
+			color: #000000;
+		}
+	</style>
+
+{% endblock StyleAfterTemplate %}
+
+
+{% block content %}
+
+
+	<img src='data:image;base64,<?= {{ img64 }};?>'/>
+
+	<div class="detail-content">
+		<div class="title">
+			<h1>Facture n°:
+				<span>{{facture.numFacture}}</span>
+			</h1>
+		</div>
+		<div class="details-Box">
+			<table>
+				<tr>
+					<td>Date:</td>
+					<td>{{facture.dateFacture|date("d/m/Y")}}</td>
+				</tr>
+				<tr>
+					<td>Total:</td>
+					<td>
+						<b>{{facture.total}}DT</b>
+					</td>
+				</tr>
+				<tr>
+					<td>Etat:</td>
+					<td>{{facture.statut}}</td>
+				</tr>
+				<tr>
+					<td>Nom du fournisseur:</td>
+					<td>{{facture.idFournisseur.nomFournisseur}}</td>
+				</tr>
+				<tr>
+					<td>Nom du restaurant:</td>
+					<td>{{facture.idRest.nom}}</td>
+				</tr>
+			</table>
+		</div>
+
+
+	</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Mes Statistiques
+{% endblock %}
+{% block content %}
+
+
+	<!-- Nested Row within Card Body -->
+	<div class="row justify-content-md-center">
+
+		<div class="col-lg-6">
+			<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card-body p-0">
+					<div class="p-5">
+						<div class="text-center">
+							<h1 class="h4 text-gray-900 mb-4">Statistique</h1>
+						</div>
+
+
+						<div id="div_chart">
+							<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+							<script type="text/javascript">
+								{{ gc_draw(piechart, 'div_chart') }}</script>
+						</div>
+
+						<!-- Load jQuery from Google's CDN if needed -->
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	{% endblock %}

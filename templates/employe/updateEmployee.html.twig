@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+{%block title %}
+	Modifier Employée
+{% endblock %}
+{#
+{% block header %}{% endblock %}
+
+{% block sidebar %}{% endblock %}
+{% block navbar %}{% endblock %}
+
+{% block footer %}{% endblock %}
+#}
+{% block StyleAfterTemplate %}
+	<link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css')}}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
+	<style>
+
+		/* Table actions icons*/
+		table.table td a.view {
+			color: #03A9F4;
+		}
+
+		table.table td a.edit {
+			color: #FFC107;
+		}
+
+		table.table td a.delete {
+			color: #E34724;
+			text-align: center;
+		}
+		.hint-text {
+			float: left;
+			margin-top: 6px;
+			font-size: 95%;
+		}
+		.edit {
+			color: #FFC107;
+		}
+	</style>
+{% endblock StyleAfterTemplate %}
+{% block content %}
+
+	<!-- Nested Row within Card Body -->
+
+
+	<div class="container mt-5">
+		<div class="row d-flex justify-content-center">
+			<div class="col-md-7">
+				<div class="card p-3 py-4">
+					<div class="text-center">
+						<img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle">
+					</div>
+					<div class="text-center mt-3">
+						<span class="bg-secondary p-1 px-4 rounded text-white">{{employe.statusCompte|upper}}</span>
+						<h5 class="mt-2 mb-0">{{employe.nom}} {{employe.prenom }}</h5>
+						{% if employe.idRole.nomRole=="Employée" %}
+						<span>Employée</span>
+						{% else %}
+						<span>Fournisseur</span>
+						{% endif %}
+						<div class="px-4 mt-1">
+							<p class="fonts"></p>
+						</div>
+						{% if employe.idRole.nomRole=="Employée" %}
+						 <ul class="social-list">
+                        Salaire: {{employe.salaire}} <br>
+                        Solde congé: {{employe.soldeConge }}<br>
+						Poste: {{employe.posteEmploye}}
+                  	  </ul>
+						{% endif %}
+						
+						<div class="buttons">
+							{% if employe.statusCompte=='verifier'%}
+								<a href="{{ path('verifier', {'id':employe.id }) }}" class="btn btn-outline-primary px-4">Non verifier</a>
+
+							{% endif %}
+							{% if employe.statusCompte=='non_verifier'%}
+								<a href="{{ path('verifier', {'id':employe.id }) }}" class="btn btn-outline-primary px-4">Verifier</a>
+
+							{% endif %}
+							{% if employe.idRole.nomRole=="Employée" %}
+							<a href="" class="btn btn-primary px-4 ms-3" title="Edit" data-toggle="modal" data-target="#uploadModal">
+								Modifier
+							</a>
+							
+						{% endif %}
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="p-2">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					{{form_start(form,{attr:{'novalidate':'novalidate', 'class':"user"}})}}
+					<div class="form-group row">
+						<div class="col-sm-6 mb-3 mb-sm-0">
+
+							{{ form_widget(form.salaire,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Modifier le salaire'|trans} }) }}
+							<div style="color:red;">
+								{{ form_errors(form.salaire) }}</div>
+						</div>
+						<div class="col-sm-6">
+							{{ form_widget(form.soldeConge,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Modifier le solde'|trans} }) }}
+							<div style="color:red;">
+								{{ form_errors(form.soldeConge) }}</div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-6 mb-3 mb-sm-0">
+							{{ form_widget(form.posteEmploye,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Modifier le poste'|trans} }) }}
+							<div style="color:red;">
+								{{ form_errors(form.posteEmploye) }}</div>
+						</div>
+						<div class="col-sm-6">
+							{{ form_widget(form.captcha,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Taper le code'|trans} }) }}
+							<div style="color:red;">
+								{{ form_errors(form.captcha) }}</div>
+						</div>
+					</div>
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-secondary btn btn-success">Modifier</button>
+					<a href="{{ path('listEmployes') }}" class="btn btn-secondary btn btn-danger">Annuler</a>
+				</div>
+				{{form_end(form)}}
+
+
+				<hr>
+
+			</div>
+		</div>
+
+	</div>
+
+{% endblock %}

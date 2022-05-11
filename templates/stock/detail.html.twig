@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des stocks
+{% endblock %}
+{% block StyleAfterTemplate %}
+	<link href="{{ asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css')}}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
+	<style>
+
+		/* Table actions icons*/
+		table.table td a.view {
+			color: #03A9F4;
+		}
+
+		table.table td a.edit {
+			color: #FFC107;
+		}
+
+		table.table td a.delete {
+			color: #E34724;
+			text-align: center;
+		}
+		.hint-text {
+			float: left;
+			margin-top: 6px;
+			font-size: 95%;
+		}
+	</style>
+{% endblock StyleAfterTemplate %}
+
+
+{% block content %}
+	<div class="row justify-content-md-center">
+		<div class="col-lg-11">
+			<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card-body p-0">
+					<div class="p-5">
+						<div class="text-center">
+							<h1 class="h4 text-gray-900 mb-4">Détails Stock</h1>
+						</div>
+
+						<div class="table-responsive-sm mt-4">
+							<div class="d-none d-sm-inline-block form-inline navbar-search">
+								<div class="input-group" id="dataTable_filter">
+									<input id="myInput" type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+									<div class="input-group-append">
+										<div class="btn btn-primary">
+											<i class="fas fa-search fa-sm"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br>
+							<br>
+
+							<table class="table table-hover " id="myTable">
+								<thead class="thead-light ">
+									<tr>
+										<th scope="col">nom stock
+										</th>
+										<th scope="col">
+											prix untitaire</th>
+										<th scope="col">quantite</th>
+										<th scope="col">
+											nom Fournisseur</th>
+										<th scope="col">Action</th>
+										{# <th scope="col"> id fournisseur</th> #}
+									</tr>
+								</thead>
+								<tbody id="myTable">
+									<tr>
+										{#<td> {{s.idStock}}</td> #}
+										<td>
+											{{d.nomStock}}
+										</td>
+										<td>{{d.prixUnitaire}}</td>
+										<td>{{d.quantite}}</td>
+										<td>{{d.idFournisseur.nomFournisseur}}</td>
+										<td>
+											<a href="{{path('Sstock',{'idStock':d.idStock})}}" class="delete" title="Delete" data-toggle="tooltip">
+												<i class="material-icons">&#xe872;</i>
+											</a>
+											<a href="{{path('Ustock',{'idStock':d.idStock})}}" class="edit" title="Edit" data-toggle="tooltip">
+												<i class="material-icons">&#xE254;</i>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+{% block JsAfterTemplate %}{% endblock %}

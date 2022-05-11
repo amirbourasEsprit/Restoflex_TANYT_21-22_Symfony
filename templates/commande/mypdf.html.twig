@@ -1,0 +1,32 @@
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title of the PDF</title>
+</head>
+<table border=1>
+    <thead class="thead-dark">
+    <tr>
+                <th>IdCmd</th>
+         		<th>Statut</th>
+		        <th>DateCmd</th>
+           		<th>DateLivraison</th>
+           		<th>Quantite</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+    {% for commande in c %}
+        <tr>
+         <td>{{ commande.idCmd }}</td>
+    	<td>{{ commande.statut }}</td>
+            		<td>{{ commande.dateCmd ? commande.dateCmd|date('Y-m-d') : '' }}</td>
+               			<td>{{ commande.dateLivraison ? commande.dateLivraison|date('Y-m-d') : '' }}</td>
+                		<td>{{ commande.quantite }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+</body>
+</html>

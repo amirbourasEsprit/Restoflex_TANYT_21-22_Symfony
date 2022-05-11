@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Commande{% endblock %}
+
+{% block content %}
+  
+
+
+
+
+
+
+<div class="row justify-content-md-center">
+
+    <div class="col-lg-6">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Modifier une commande</h1>
+                    </div>
+
+                    {{form_start(form,{attr:{'novalidate':'novalidate', 'class':"user"}})}}
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+
+                            {{ form_widget(form.statut,{ 'attr': {'class': "form-control form-control-user",
+                                           } }) }}
+                            <div style="color:red;"> {{ form_errors(form.statut) }}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ form_widget(form.dateCmd,{ 'attr': {'class': "form-date-control form-control-user",
+                                            'placeholder': 'date commande'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.dateCmd) }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            {{ form_widget(form.dateLivraison,{ 'attr': {'class': "form-date-control form-control-user",
+                                            'placeholder': 'Date livraison'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.dateLivraison) }}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ form_widget(form.quantite,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Quantite'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.quantite) }}</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            {{ form_widget(form.idProduit,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Produit'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.idProduit) }}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ form_widget(form.idFournisseur,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Fournisseur'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.idFournisseur) }}</div>
+                        </div>
+                    </div>
+                     
+                    
+              
+                <hr>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                        Modifier commande
+                    </button>
+                </div>
+
+                {{form_end(form)}}
+
+                <hr>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+
+{% endblock %}

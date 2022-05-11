@@ -1,0 +1,149 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Fournisseurs
+{% endblock %}
+{% block StyleAfterTemplate %}
+	<link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css')}}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
+	<style>
+
+		/* Table actions icons*/
+		table.table td a.view {
+			color: #03A9F4;
+		}
+
+		table.table td a.edit {
+			color: #FFC107;
+		}
+
+		table.table td a.delete {
+			color: #E34724;
+			text-align: center;
+		}
+		.hint-text {
+			float: left;
+			margin-top: 6px;
+			font-size: 95%;
+		}
+	</style>
+{% endblock StyleAfterTemplate %}
+{% block content %}
+	<div class="row justify-content-md-center">
+
+		<div class="col-lg-11">
+			<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card-body p-0">
+					<div class="p-5">
+						<div class="text-center">
+							<h1 class="h4 text-gray-900 mb-4">Mes Fournisseurs</h1>
+						</div>
+					
+						<div class="table-responsive-sm mt-4">
+							<div class="d-none d-sm-inline-block form-inline navbar-search">
+								<div class="input-group" id="dataTable_filter">
+									<input id="myInput" type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+									<div class="input-group-append">
+										<div class="btn btn-primary">
+											<i class="fas fa-search fa-sm"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br>
+							<br>
+							<table class="table table-hover " id="myTable">
+								<thead class="thead-light ">
+									<tr>
+										<th scope="col">Nom Fournisseur</th>
+										<th scope="col">Nom</th>
+										<th scope="col">Prenom</th>
+										<th scope="col">email</th>
+										<th scope="col">Numero</th>
+                                        <th scope="col">Date de Naissance</th>
+                                        <th scope="col">Adresse</th>
+                                        <th scope="col">Statut</th>
+										<th scope="col">Action</th>
+
+									</tr>
+								</thead>
+								<tbody id="myTable">
+									{% for fournisseur in fournisseurs %}
+										{% if fournisseur.idRole.nomRole=='Utilisateur_fournisseur'  %}
+											{% if fournisseur.idRest.idRest==app.user.idRest.idRest  %}
+
+
+												<tr>
+                                                    <td>{{ fournisseur.idFournisseur.nomFournisseur }}</td>
+													<td>{{ fournisseur.nom }}</td>
+													<td>{{ fournisseur.prenom }}</td>
+													<td>{{ fournisseur.email }}</td>
+													<td>{{ fournisseur.numTel }}</td>
+                                                    <td>{{ fournisseur.dateNaissance |date('d-m-Y') }}</td>
+                                                    <td>{{ fournisseur.adresse }}</td>
+                                                    <td>
+													{% if fournisseur.statusCompte == "non_verifier" %}
+													{% set status_color = "badge badge-danger" %}
+													{% else %}
+													{% set status_color = "badge badge-success" %}
+													{% endif %}
+													<span class="{{status_color}}">{{fournisseur.statusCompte| upper}}</span>
+													</td>
+
+
+													<td>
+														<a href="{{ path('update', {'id':fournisseur.id }) }}" class="edit" title="Edit" data-toggle="tooltip">
+															<i class="material-icons">&#xE254;</i>
+														</a>
+														<a href="" class="delete" data-toggle="modal" data-target="#deleteModal-{{ fournisseur.id }}">
+															<i class="material-icons">&#xE872;</i>
+														</a>
+														<div class="modal fade" id="deleteModal-{{ fournisseur.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+															<div class="modal-dialog" role="document">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h5 class="modal-title" id="deleteModalLabel">Voulez vous supprimer ?</h5>
+																		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																			<span aria-hidden="true">&times;</span>
+																		</button>
+																	</div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+																		<form action="{{ path('supprimer_utilisateur_fournisseur', {'id':fournisseur.id }) }}" method="POST">
+																			<input class="btn btn-danger" type="submit" value="Supprimer">
+																		</form>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</td>
+												</tr>
+											{% endif %}
+										{% endif %}
+
+
+									{% endfor %}
+								</tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}
+{% block JsAfterTemplate %}
+	<script>
+		$(document).ready(function () {
+$("#myInput").on("keyup", function () {
+var value = $(this).val().toLowerCase();
+$("#myTable > tbody > tr").filter(function () {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+});
+});
+});
+	</script>
+{% endblock %}

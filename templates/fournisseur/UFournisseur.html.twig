@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Fournisseur{% endblock %}
+
+{% block content %}
+
+<!-- Nested Row within Card Body -->
+<div class="row justify-content-md-center">
+
+    <div class="col-lg-6">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Ajouter un Fournisseur</h1>
+                    </div>
+
+                    {{form_start(form,{attr:{'novalidate':'novalidate', 'class':"fournisseur"}})}}
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+
+                            {{ form_widget(form.nomFournisseur,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Nom Fournisseur'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.nomFournisseur) }}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ form_widget(form.matriculeFiscale,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Matricule Fiscale'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.matriculeFiscale) }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            {{ form_widget(form.domaineFournisseur,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Domaine Fournisseur'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.domaineFournisseur) }}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ form_widget(form.emailFournisseur,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Email Fournisseur'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.emailFournisseur) }}</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            {{ form_widget(form.numTelFournisseur,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Télèphone Fournisseur'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.numTelFournisseur) }}</div>
+                        </div>
+                        
+                    </div>
+                        <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            {{ form_widget(form.adresseFournisseur,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder': 'Adresse Fournisseur'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.adresseFournisseur) }}</div>
+                        </div>
+                        </div>
+                           
+              {#
+                 <div class="form-group row">
+
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            {{ form_widget(form.captcha,{ 'attr': {'class': "form-control form-control-user",
+                                            'placeholder':'Tapez le Code'|trans} }) }}
+                            <div style="color:red;"> {{ form_errors(form.captcha) }}</div>
+                        </div>
+                    </div>
+                </div>
+              #}   
+              
+                <hr>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                        Modifier Fournisseur
+                    </button>
+                </div>
+
+                {{form_end(form)}}
+
+                <hr>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+
+
+{% endblock %}

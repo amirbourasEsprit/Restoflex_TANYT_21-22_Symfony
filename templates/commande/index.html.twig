@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des commandes{% endblock %}
+{% block StyleAfterTemplate %}
+  <link href="{{asset('https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css')}}" rel="stylesheet" />
+  <link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
+  <style>
+      
+        /* Table actions icons*/
+      table.table td a.view {
+          color: #03A9F4;
+      }
+
+      table.table td a.edit {
+          color: #FFC107;
+      }
+
+      table.table td a.delete {
+          color: #E34724;
+           text-align: center;
+      }
+      .hint-text {
+          float: left;
+          margin-top: 6px;
+          font-size: 95%;
+      }
+  </style>
+{% endblock StyleAfterTemplate %}
+{% block content %}
+<div class="row justify-content-md-center">
+
+    <div class="col-lg-8">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="p-5">
+                 <div class="text-center"><h1 class="h4 text-gray-900 mb-4">Liste des commandes</h1>
+                </div>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+						{% if app.user.idRole.nomRole=="emp"%}
+                <a href="{{ path('app_commande_new') }}" class="btn btn-success btn float-right col-sm col-md-5">
+                  <span class="icon text-white-50">
+                    <i style="float: left;" class="material-icons mr-2">&#xE147;</i>
+                  </span>
+                  <span class="text">Ajouter commande</span>
+                </a>
+              {% endif %}
+              {% endif %}
+                    <div class="table-responsive-sm mt-4">
+                        <div class="row">
+                            <div class="col-sm col-md-3">
+                                <div id="dataTable_filter" class="dataTables_filter">
+                                    <input id="myInput" type="text"
+                                            class="form-control form-control-sm float-right" placeholder="Search"
+                                            aria-controls="dataTable">
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <br>
+                        
+                        <table class="table table-hover " id="myTable">
+                            <thead class="thead-light ">
+                                <tr>
+                          
+               			<th>Statut</th>
+     			        <th>DateCmd</th>
+                		<th>DateLivraison</th>
+                		<th>Quantite</th>
+                		<th>actions</th>
+            			</tr>
+        			</thead>
+        			<tbody id="myTable">
+        			{% for commande in commandes %}
+              {% if commande.id.idRest==app.user.idRest  %}
+            			<tr>
+                	
+                		<td>{{ commande.statut }}</td>
+                		<td>{{ commande.dateCmd ? commande.dateCmd|date('Y-m-d') : '' }}</td>
+               			<td>{{ commande.dateLivraison ? commande.dateLivraison|date('Y-m-d') : '' }}</td>
+                		<td>{{ commande.quantite }}</td>
+
+                                    <td>
+                                        <a href="{{ path('app_commande_show', {'idCmd': commande.idCmd}) }}" class="view" title="View" data-toggle="tooltip">
+						<i class="material-icons">&#xE417;</i>
+
+					</a>
+					<a href="{{ path('app_commande_edit', {'idCmd': commande.idCmd}) }}"  class="edit" title="Edit" data-toggle="tooltip">
+						<i class="material-icons">&#xE254;</i>
+					</a>
+
+                                    </td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <a href="{{ path('pdfdata') }}"class="btn btn-primary"style="float:right;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z"/>
+</svg>PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}
+{% block JsAfterTemplate %}
+<script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable > tbody > tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
+{% endblock %}

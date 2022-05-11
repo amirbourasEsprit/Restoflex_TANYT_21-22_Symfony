@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\Reclamation;
+use App\Entity\Utilisateur;
+use App\Entity\TypeReclamation;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Form\AbstractType;
+use App\Repository\ReclamationRepository;
+use App\Repository\UtilisateurRepository;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
+class ReclamationType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+        
+            ->add('destinataire', EntityType::class, [
+                'class' => Utilisateur::class,
+                'choice_label' => 'nom',
+                'query_builder' => function (UtilisateurRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->Where('u.idRole = ?1')
+                        ->setParameter(1, 2);
+            }])
+
+            ->add('description')
+            ->add('dateReclamation',DateType::class, [
+                'widget' => 'single_text',
+            ])
+            ->add('idTypeReclamation', EntityType::class, [
+                'class' => TypeReclamation::class,
+                'choice_label' => 'nomTypeReclamation',
+            ])
+        ;
+        
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Reclamation::class
+        ]);
+    }
+
+}
