@@ -9,7 +9,6 @@ use App\Entity\Utilisateur;
 use App\Entity\Facture;
 use App\Form\FactureType;
 use App\Services\GetUser;
-use Knp\Bundle\SnappyBundle\Snappy;
 use App\Repository\FactureRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -132,7 +131,7 @@ class FactureController extends AbstractController
         $fact = $repo->find($numFacture);
        
         //l'image est située au niveau du dossier public
-        $png = file_get_contents("D:\Nesrine Apps\xxx\htdocs\Pidev_symfony_TANYT\public\back-office\img\logoResto.png");
+        $png = file_get_contents("C:\Nesrine Apps\xxx\htdocs\Pidev_symfony_TANYT\public\back-office\img\logoResto.png");
         $pngbase64 = base64_encode($png);
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('facture/facturePDF.html.twig', [
@@ -156,31 +155,6 @@ class FactureController extends AbstractController
         // $fact = $repo->find($numFacture);
         // return $this->render('facture/facturePDF.html.twig',['facture'=>$fact ]);
         
-    }
-
-    /**
-     * @Route("/genPDFFact/{numFacture}", name="genPDFFact")
-     */
-    public function genererPDFFact($numFacture, FactureRepository $repo,  \Knp\Snappy\Pdf $snappy): Response
-    {
-
-        $snappy = $this->get("knp_snappy.pdf");
-        $snappy->setOption("encoding","UTF-8");
-       
-        $fact = $repo->find($numFacture);
-        $html = $this->renderView('facture/facturePDF.html.twig',['facture'=>$fact
-        ]);
-
-        $filename = "Facture";
-
-        return new PdfResponse(
-            $snappy->getOutputFromHtml($html),
-            200,
-            array('Content-Type' => 'application/pdf' ,
-                  'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"'
-            )
-
-        );
     }
 
 
