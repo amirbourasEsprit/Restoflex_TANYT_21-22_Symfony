@@ -5,6 +5,9 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  *
@@ -19,14 +22,17 @@ class Categorie
      * @ORM\Column(name="id_categorie", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
+     * @Groups("post:read")
+    */
+
     private $idCategorie;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nom_categorie", type="string", length=255, nullable=false)
-     */
+     * @Groups("post:read")
+    */
     private $nomCategorie;
 
   
@@ -50,7 +56,7 @@ class Categorie
     public function getNomCategorie(): ?string
     {
         return $this->nomCategorie;
-    }
+    } 
 
     public function setNomCategorie(string $nomCategorie): self
     {
