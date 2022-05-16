@@ -71,7 +71,7 @@ class CongeApiController extends AbstractController
 
     }
   /*TEST AJOUT
-  addConge?dateDeb=2022-05-12&dateFin=2022-05-15&idUtilisateur=26&idTypeConge=2
+  addConge?idUtilisateur=26&idTypeConge=2
 */
 
     /******************Supprimer Congé*****************************************/

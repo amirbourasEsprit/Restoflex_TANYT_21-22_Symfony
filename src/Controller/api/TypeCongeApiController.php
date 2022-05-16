@@ -111,6 +111,6 @@ class TypeCongeApiController extends AbstractController
 
     }
     /*tester Update
-    updateConge?idConge= &nom="test2"
+    updateTypeConge?idTypeConge=2
      */
 }
