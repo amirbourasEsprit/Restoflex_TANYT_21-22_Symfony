@@ -4,6 +4,7 @@ namespace App\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Facture
@@ -20,6 +21,7 @@ class Facture
      * @ORM\Column(name="num_facture", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("facture")
      */
     private $numFacture;
 
@@ -27,6 +29,7 @@ class Facture
      * @var \DateTime
      *
      * @ORM\Column(name="date_facture", type="date", nullable=false)
+     * @Groups("facture")
      */
     private $dateFacture;
 
@@ -39,6 +42,7 @@ class Facture
      * @var float
      *
      * @ORM\Column(name="total", type="float", precision=10, scale=0, nullable=false)
+     * @Groups("facture")
      */
     private $total;
 
@@ -46,6 +50,7 @@ class Facture
      * @var string
      *
      * @ORM\Column(name="statut", type="string", length=255, nullable=false)
+     * @Groups("facture")
      */
     private $statut;
 
@@ -56,6 +61,7 @@ class Facture
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_rest", referencedColumnName="id_rest")
      * })
+     * @Groups("facture")
      */
     private $idRest;
 
@@ -66,6 +72,7 @@ class Facture
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_fournisseur", referencedColumnName="id_fournisseur")
      * })
+     * @Groups("facture")
      */
     private $idFournisseur;
 
@@ -133,6 +140,8 @@ class Facture
 
         return $this;
     }
+
+
 
 
 }
